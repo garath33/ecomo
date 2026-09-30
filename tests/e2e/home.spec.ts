@@ -45,15 +45,16 @@ test.describe("homepage", () => {
     await expect(page.getByText("Vzduch–voda", { exact: false })).toBeVisible();
   });
 
-  test("offer cards use dark installation photos, not the carport sky shot", async ({ page }) => {
+  test("offer cards use a panel install photo and the heat-pump photo", async ({ page }) => {
     await page.goto("./");
     const offer = page.getByTestId("offer");
     await expect(offer.getByRole("img", { name: "Montáž černých fotovoltaických panelů na střešní lišty" })).toBeVisible();
-    await expect(offer.getByRole("img", { name: "Tmavé fotovoltaické panely" })).toBeVisible();
-    await expect(offer.getByRole("img", { name: "Tmavé fotovoltaické panely" })).toHaveAttribute(
-      "src",
-      /hero-fv-panels/,
-    );
+    await expect(
+      offer.getByRole("img", { name: "Venkovní jednotka tepelného čerpadla u domu" }),
+    ).toBeVisible();
+    await expect(
+      offer.getByRole("img", { name: "Venkovní jednotka tepelného čerpadla u domu" }),
+    ).toHaveAttribute("src", /nabidka-tc/);
   });
 
   test("stacks contact details above the inquiry form", async ({ page }) => {

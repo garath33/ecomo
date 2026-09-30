@@ -327,6 +327,12 @@ p {
     linear-gradient(180deg, rgb(0 0 0 / 40%) 0%, transparent 32%, rgb(0 0 0 / 55%) 100%);
 }
 
+.hero--open .hero__shade {
+  background:
+    linear-gradient(90deg, rgb(0 0 0 / 62%) 0%, rgb(0 0 0 / 24%) 46%, rgb(0 0 0 / 6%) 100%),
+    linear-gradient(180deg, rgb(0 0 0 / 18%) 0%, transparent 40%, rgb(0 0 0 / 34%) 100%);
+}
+
 .hero .wrap {
   padding: 5.5rem 0 3.4rem;
 }
