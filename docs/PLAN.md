@@ -14,7 +14,7 @@ Cíl: prezentační web malé firmy, která nabízí fotovoltaiku a tepelná če
 | Sekce | Kde | Stav |
 | --- | --- | --- |
 | Hero + CTA Kontaktujte nás | `/` | tmavé černé panely, bez modré oblohy |
-| Co nabízíme | `/#nabidka` | FVE montáž + foto TČ |
+| Co nabízíme | `/#nabidka` | FVE montáž + tmavé panely u TČ |
 | Fotovoltaika | `/fotovoltaika/` | rodinné domy, firmy, obce, SVJ |
 | Tepelná čerpadla | `/tepelna-cerpadla/` | první verze + foto jednotky |
 | Hotové zakázky | schováno | komponenta zůstává, není na úvodu ani v menu |

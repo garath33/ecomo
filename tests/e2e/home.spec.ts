@@ -49,7 +49,11 @@ test.describe("homepage", () => {
     await page.goto("./");
     const offer = page.getByTestId("offer");
     await expect(offer.getByRole("img", { name: "Montáž černých fotovoltaických panelů na střešní lišty" })).toBeVisible();
-    await expect(offer.getByRole("img", { name: "Venkovní jednotka tepelného čerpadla u domu" })).toBeVisible();
+    await expect(offer.getByRole("img", { name: "Tmavé fotovoltaické panely" })).toBeVisible();
+    await expect(offer.getByRole("img", { name: "Tmavé fotovoltaické panely" })).toHaveAttribute(
+      "src",
+      /hero-fv-panels/,
+    );
   });
 
   test("stacks contact details above the inquiry form", async ({ page }) => {
