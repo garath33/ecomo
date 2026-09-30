@@ -275,11 +275,9 @@ p {
   font-size: 0.92rem;
 }
 
-.nav a:hover,
-.nav a:focus-visible,
-.nav a[aria-current="page"] {
-  text-decoration: underline;
-  text-underline-offset: 0.28em;
+.nav a:not(.button):hover,
+.nav a:not(.button):focus-visible {
+  opacity: 0.72;
 }
 
 .nav-toggle {
@@ -476,7 +474,7 @@ p {
 
 .contact-list {
   list-style: none;
-  margin: 0 0 1.5rem;
+  margin: 0;
   padding: 0;
 }
 
@@ -485,6 +483,23 @@ p {
 }
 
 .contact-list a {
+  font-weight: 700;
+}
+
+.contact-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 42rem;
+}
+
+.contact-bridge {
+  margin: 0;
+  padding: 1.1rem 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.contact-bridge a {
   font-weight: 700;
 }
 

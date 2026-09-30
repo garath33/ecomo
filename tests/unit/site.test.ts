@@ -30,7 +30,7 @@ describe("production content contract", () => {
 
   it("lists the live homepage sections without completed jobs or about", () => {
     const labels = navigation.map((item) => item.label);
-    expect(labels).toEqual(["Co nabízím", "Fotovoltaika", "Tepelná čerpadla", "Kontakt"]);
+    expect(labels).toEqual(["Co nabízíme", "Fotovoltaika", "Tepelná čerpadla", "Kontakt"]);
   });
 
   it("keeps completed-job photos in config for later, off the homepage", () => {

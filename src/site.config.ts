@@ -56,7 +56,7 @@ export const site = {
 } as const;
 
 export const navigation = [
-  { href: "/#nabidka", label: "Co nabízím" },
+  { href: "/#nabidka", label: "Co nabízíme" },
   { href: "/fotovoltaika/", label: "Fotovoltaika" },
   { href: "/tepelna-cerpadla/", label: "Tepelná čerpadla" },
   { href: "/#kontakt", label: "Kontakt" },

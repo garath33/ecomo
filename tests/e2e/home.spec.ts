@@ -6,7 +6,9 @@ test.describe("homepage", () => {
     await expect(page.getByTestId("hero").getByRole("heading", { level: 1 })).toContainText(
       "Smysluplné elektrárny",
     );
-    await expect(page.getByTestId("offer")).toBeVisible();
+    await expect(page.getByTestId("offer")).toContainText("Co nabízíme");
+    await expect(page.getByRole("navigation").getByRole("link", { name: "Co nabízíme" })).toBeVisible();
+    await expect(page.getByTestId("contact-bridge")).toContainText("Neváhejte nás kontaktovat");
     await expect(page.getByTestId("contact")).toBeVisible();
     await expect(page.getByTestId("projects")).toHaveCount(0);
     await expect(page.getByTestId("about")).toHaveCount(0);
@@ -49,5 +51,20 @@ test.describe("homepage", () => {
     const offer = page.getByTestId("offer");
     await expect(offer.getByRole("img", { name: "Montáž černých fotovoltaických panelů na střešní lišty" })).toBeVisible();
     await expect(offer.getByRole("img", { name: "Venkovní jednotka tepelného čerpadla u domu" })).toBeVisible();
+  });
+
+  test("stacks contact details above the inquiry form", async ({ page }) => {
+    await page.goto("./");
+    const list = page.getByTestId("contact").locator(".contact-list");
+    const bridge = page.getByTestId("contact-bridge");
+    const form = page.locator("#poptavka");
+    const listBox = await list.boundingBox();
+    const bridgeBox = await bridge.boundingBox();
+    const formBox = await form.boundingBox();
+    expect(listBox).toBeTruthy();
+    expect(bridgeBox).toBeTruthy();
+    expect(formBox).toBeTruthy();
+    expect(listBox!.y).toBeLessThan(bridgeBox!.y);
+    expect(bridgeBox!.y).toBeLessThan(formBox!.y);
   });
 });

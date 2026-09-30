@@ -8,7 +8,7 @@ test.describe("preview matches production content", () => {
     for (const fact of productionFacts) {
       await expect(contact).toContainText(fact);
     }
-    await expect(contact.getByRole("link", { name: site.phoneDisplay, exact: true })).toHaveAttribute(
+    await expect(contact.getByRole("link", { name: site.phoneDisplay, exact: true }).first()).toHaveAttribute(
       "href",
       `tel:${site.phoneTel}`,
     );

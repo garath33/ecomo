@@ -4,7 +4,7 @@ import { site } from "../site.config";
 ---
 
 <section class="section" id="kontakt" data-testid="contact">
-  <div class="wrap grid-2">
+  <div class="wrap contact-stack">
     <div>
       <p class="eyebrow">Kontakt</p>
       <h2>Ozvěte se nezávazně</h2>
@@ -45,6 +45,11 @@ import { site } from "../site.config";
         </li>
       </ul>
     </div>
+    <p class="lede contact-bridge" data-testid="contact-bridge">
+      Neváhejte nás kontaktovat, nebo rovnou zavolejte na
+      <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
+      ohledně řešení a konzultace. Můžete taky rovnou vyplnit formulář níže.
+    </p>
     <div class="card" id="poptavka">
       <h3>Nezávazná poptávka</h3>
       <p class="muted">Formulář připraví e-mail. Když chcete rychleji, rovnou volejte.</p>

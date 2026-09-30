@@ -67,6 +67,14 @@ test.describe("responsiveness", () => {
     await expect(page.getByRole("navigation").getByRole("link", { name: "Nezávazná poptávka" })).toBeVisible();
   });
 
+  test("current page in the header is not underlined", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto("./tepelna-cerpadla/");
+    const current = page.getByRole("navigation").getByRole("link", { name: "Tepelná čerpadla" });
+    await expect(current).toHaveAttribute("aria-current", "page");
+    await expect(current).toHaveCSS("text-decoration-line", "none");
+  });
+
   test("service pages do not overflow on a narrow screen", async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 });
     for (const path of ["./fotovoltaika/", "./tepelna-cerpadla/"]) {
