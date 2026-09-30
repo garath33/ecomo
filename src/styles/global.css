@@ -143,6 +143,11 @@ p {
 
 .section {
   padding: 5rem 0;
+  scroll-margin-top: 6.25rem;
+}
+
+#poptavka {
+  scroll-margin-top: 6.25rem;
 }
 
 .section.alt {

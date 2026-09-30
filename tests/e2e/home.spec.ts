@@ -22,6 +22,7 @@ test.describe("homepage", () => {
     await page.getByTestId("hero").getByRole("link", { name: "Nezávazná poptávka" }).click();
     await expect(page.locator("#poptavka")).toBeVisible();
     await expect(page.getByRole("button", { name: "Odeslat poptávku" })).toBeVisible();
+    await expect(page.locator("#poptavka")).toBeInViewport();
   });
 
   test("opens service pages from the offer section", async ({ page }) => {

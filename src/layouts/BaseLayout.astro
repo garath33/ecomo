@@ -44,5 +44,15 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       <slot />
     </main>
     <Footer />
+    <script>
+      function scrollToHash() {
+        const id = window.location.hash.replace("#", "");
+        if (!id) return;
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      window.addEventListener("hashchange", scrollToHash);
+      window.addEventListener("load", scrollToHash);
+    </script>
   </body>
 </html>
