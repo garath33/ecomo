@@ -1,0 +1,20 @@
+---
+import { withBase } from "../lib/paths";
+
+interface Props {
+  onDark?: boolean;
+}
+
+const { onDark = false } = Astro.props;
+const src = onDark ? "brand/ecomo-wordmark-white.png" : "brand/ecomo-wordmark.png";
+---
+
+<img class="logo-mark" src={withBase(src)} alt="ecomo" width="158" height="27" />
+
+<style>
+  .logo-mark {
+    display: block;
+    width: min(9.8rem, 42vw);
+    height: auto;
+  }
+</style>

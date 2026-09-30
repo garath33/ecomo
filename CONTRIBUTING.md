@@ -20,9 +20,14 @@ Ostří je větev `main`. Do ní se nic nemerguje, dokud není změna otestovan�
 | `npm run lint` | ESLint |
 | `npm test` | unit testy obsahu a formuláře |
 | `npm run build` | TypeScript + produkční sestavení |
-| `npm run test:e2e` | Playwright: sekce, CTA, poptávka, podstránky |
+| `npm run test:e2e` | Playwright: sekce, CTA, poptávka, podstránky, **responsivita**, **shoda náhledu s ostřím** |
 
-Každá změna se testuje samostatně. Neslučujeme více nesouvisejících věcí v jednom PR.
+Každá změna se testuje samostatně. V e2e vždy běží:
+
+- layout na 375 / 768 / 1280 px bez vodorovného overflow
+- stejné IČO, DIČ, sídlo, telefon, e-mail a web jako v `src/site.config.ts` (zdroj pravdy pro náhled i ostří)
+
+Neslučujeme více nesouvisejících věcí v jednom PR.
 
 ## Náhled vs. ostří
 

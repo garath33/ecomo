@@ -4,16 +4,23 @@ import { withBase } from "../lib/paths";
 ---
 
 <section class="hero" data-testid="hero">
+  <div class="hero__media">
+    <img
+      src={withBase("images/zakazka-pristresek.jpg")}
+      alt="Fotovoltaický přístřešek ecomo na ocelové konstrukci"
+    />
+  </div>
+  <div class="hero__shade"></div>
   <div class="wrap">
     <p class="eyebrow">Fotovoltaika a tepelná čerpadla</p>
-    <h1>Smysluplné řešení na míru, s rozumnou cenou</h1>
+    <h1>Smysluplné elektrárny na míru, s rozumnou cenou</h1>
     <p class="lede">
-      {site.name} je malá firma, která navrhuje a instaluje energetická řešení, která dávají smysl
-      konkrétnímu domu — od studie návratnosti přes dotace až po montáž a spuštění.
+      Malá firma, která nejdřív spočítá, jestli se to vyplatí — a teprve potom staví. Od studie
+      návratnosti přes dotace až po montáž a spuštění.
     </p>
     <div class="hero__actions">
       <a class="button" href={withBase("/#poptavka")}>Nezávazná poptávka</a>
-      <a class="button secondary" href={`tel:${site.phoneTel}`}>Zavolat {site.phoneDisplay}</a>
+      <a class="button secondary" href={`tel:${site.phoneTel}`}>Zavolat {site.phoneShort}</a>
     </div>
     <div class="hero__meta">
       <div>

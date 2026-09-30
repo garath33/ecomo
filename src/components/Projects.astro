@@ -1,0 +1,29 @@
+---
+import { projects } from "../site.config";
+import { withBase } from "../lib/paths";
+---
+
+<section class="section alt" id="zakazky" data-testid="projects">
+  <div class="wrap">
+    <p class="eyebrow">Hotové zakázky</p>
+    <h2>Práce, kterou můžeme ukázat</h2>
+    <p class="lede">
+      Portfolio dokončených instalací. Další lokality a parametry doplníme, jakmile k tomu budeme mít
+      souhlas klienta.
+    </p>
+    <div class="grid-2">
+      {
+        projects.map((project) => (
+          <article class="card">
+            <div class:list={["media", project.slug === "montaz-strecha" && "portrait"]}>
+              <img src={withBase(project.image)} alt={project.alt} />
+            </div>
+            <h3>{project.title}</h3>
+            <p class="muted">{project.summary}</p>
+            <span class="note">Hotová zakázka</span>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

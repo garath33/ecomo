@@ -1,5 +1,6 @@
 ---
-import { navigation, site } from "../site.config";
+import Logo from "./Logo.astro";
+import { navigation } from "../site.config";
 import { withBase } from "../lib/paths";
 
 const currentPath = Astro.url.pathname;
@@ -8,12 +9,7 @@ const currentPath = Astro.url.pathname;
 <header class="site-header">
   <div class="wrap site-header__inner">
     <a class="logo" href={withBase()}>
-      <svg viewBox="0 0 32 32" aria-hidden="true">
-        <rect width="32" height="32" rx="8" fill="#1c4634"></rect>
-        <path d="M8 20h16l-8-12-8 12z" fill="#d4a017"></path>
-        <path d="M10 21.5h12v2.5H10z" fill="#f3eee4"></path>
-      </svg>
-      {site.name}
+      <Logo />
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="hlavni-menu" data-nav-toggle>
       <span class="sr-only">Menu</span>
@@ -32,7 +28,7 @@ const currentPath = Astro.url.pathname;
           </a>
         ))
       }
-      <a class="button" href={withBase("/#poptavka")}>Nezávazná poptávka</a>
+      <a class="button inverse" href={withBase("/#poptavka")}>Nezávazná poptávka</a>
     </nav>
   </div>
 </header>

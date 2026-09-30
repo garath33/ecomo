@@ -1,19 +1,20 @@
 import { expect, test } from "@playwright/test";
+import { site } from "../../src/site.config";
 
 test.describe("homepage", () => {
   test("shows all requested sections and the inquiry CTA", async ({ page }) => {
     await page.goto("./");
     await expect(page.getByTestId("hero").getByRole("heading", { level: 1 })).toContainText(
-      "Smysluplné řešení",
+      "Smysluplné elektrárny",
     );
     await expect(page.getByTestId("offer")).toBeVisible();
-    await expect(page.getByTestId("references")).toBeVisible();
+    await expect(page.getByTestId("projects")).toBeVisible();
     await expect(page.getByTestId("about")).toBeVisible();
     await expect(page.getByTestId("contact")).toBeVisible();
     await expect(page.getByTestId("hero").getByRole("link", { name: "Nezávazná poptávka" })).toBeVisible();
     await expect(page.getByTestId("hero").getByRole("link", { name: /Zavolat 604 251 324/ })).toHaveAttribute(
       "href",
-      "tel:+420604251324",
+      `tel:${site.phoneTel}`,
     );
   });
 
@@ -38,5 +39,14 @@ test.describe("homepage", () => {
     await page.getByRole("link", { name: "Více o tepelných čerpadlech" }).click();
     await expect(page.getByRole("heading", { level: 1 })).toContainText("Tepelná čerpadla");
     await expect(page.getByText("Vzduch–voda", { exact: false })).toBeVisible();
+  });
+
+  test("shows completed jobs with real photos", async ({ page }) => {
+    await page.goto("./");
+    const projects = page.getByTestId("projects");
+    await expect(projects.getByRole("heading", { name: "Fotovoltaický přístřešek" })).toBeVisible();
+    await expect(projects.getByRole("heading", { name: "Montáž panelů na střechu" })).toBeVisible();
+    await expect(projects.getByRole("img", { name: "Fotovoltaický přístřešek na ocelové konstrukci" })).toBeVisible();
+    await expect(projects.getByRole("img", { name: "Detail montáže fotovoltaických panelů na střeše" })).toBeVisible();
   });
 });

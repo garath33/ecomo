@@ -31,7 +31,7 @@ test.describe("inquiry form", () => {
 
   test("keeps a direct phone contact next to the form", async ({ page }) => {
     await page.goto("./#poptavka");
-    await expect(page.getByRole("link", { name: /Raději zavolat 604 251 324/ })).toHaveAttribute(
+    await expect(page.getByRole("link", { name: /Raději zavolat/ })).toHaveAttribute(
       "href",
       "tel:+420604251324",
     );

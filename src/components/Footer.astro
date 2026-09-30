@@ -1,4 +1,5 @@
 ---
+import Logo from "./Logo.astro";
 import { site } from "../site.config";
 import { withBase } from "../lib/paths";
 ---
@@ -6,24 +7,32 @@ import { withBase } from "../lib/paths";
 <footer class="site-footer">
   <div class="wrap site-footer__grid">
     <div>
-      <strong>{site.legalName}</strong>
+      <a class="logo" href={withBase()}><Logo onDark /></a>
       <p>
-        {site.address.line1}, {site.address.line2}, {site.address.zip} {site.address.city}
+        {site.legalName}<br />
+        {site.address.line1}, {site.address.line2}<br />
+        {site.address.zip} {site.address.city}
       </p>
       <p>IČO {site.ico} · DIČ {site.dic}</p>
     </div>
     <div>
-      <p>{site.person}</p>
+      <p>
+        <strong>{site.person}</strong><br />
+        {site.specialty}<br />
+        {site.role}
+      </p>
       <p>
         <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a><br />
-        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <a href={`mailto:${site.email}`}>{site.email}</a><br />
+        <a href={site.web}>{site.webDisplay}</a>
       </p>
     </div>
     <div>
       <p>
         <a href={withBase("/#poptavka")}>Nezávazná poptávka</a><br />
         <a href={withBase("/fotovoltaika/")}>Fotovoltaika</a><br />
-        <a href={withBase("/tepelna-cerpadla/")}>Tepelná čerpadla</a>
+        <a href={withBase("/tepelna-cerpadla/")}>Tepelná čerpadla</a><br />
+        <a href={withBase("/#zakazky")}>Hotové zakázky</a>
       </p>
     </div>
   </div>

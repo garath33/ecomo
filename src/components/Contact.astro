@@ -15,6 +15,7 @@ import { site } from "../site.config";
       <ul class="contact-list">
         <li>
           <strong>{site.person}</strong><br />
+          {site.specialty}<br />
           {site.role}, {site.legalName}
         </li>
         <li>
@@ -22,6 +23,9 @@ import { site } from "../site.config";
         </li>
         <li>
           E-mail: <a href={`mailto:${site.email}`}>{site.email}</a>
+        </li>
+        <li>
+          Web: <a href={site.web}>{site.webDisplay}</a>
         </li>
         <li>
           {site.address.line1}, {site.address.line2}<br />
