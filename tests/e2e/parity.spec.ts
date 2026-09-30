@@ -47,9 +47,11 @@ test.describe("preview matches production content", () => {
       await expect(banners).toHaveCount(1);
     }
     await expect(page.getByTestId("hero")).toContainText("Smysluplné elektrárny");
+    await expect(page.getByTestId("hero")).toContainText(site.approach);
     await expect(page.getByTestId("offer")).toContainText("Instalace fotovoltaiky");
     await expect(page.getByTestId("projects")).toContainText("Hotové zakázky");
     await expect(page.getByTestId("about")).toContainText(site.about.slice(0, 40));
+    await expect(page.getByTestId("about")).toContainText(site.approach);
   });
 
   test("section links land below the sticky header", async ({ page }) => {

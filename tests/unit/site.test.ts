@@ -17,6 +17,8 @@ describe("production content contract", () => {
     expect(site.address.line2).toBe("Přemyšlení");
     expect(site.address.zip).toBe("250 66");
     expect(site.address.city).toBe("Zdiby");
+    expect(site.approach).toMatch(/osobním a lidském přístupu/);
+    expect(site.approach).toMatch(/vstříc potřebám na míru/);
   });
 
   it("exposes every production fact for preview/production parity checks", () => {

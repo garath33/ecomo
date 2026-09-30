@@ -1,5 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { site } from "../../src/site.config";
 
 test.describe("homepage", () => {
   test("shows all requested sections and the inquiry CTA", async ({ page }) => {
@@ -11,16 +10,17 @@ test.describe("homepage", () => {
     await expect(page.getByTestId("projects")).toBeVisible();
     await expect(page.getByTestId("about")).toBeVisible();
     await expect(page.getByTestId("contact")).toBeVisible();
-    await expect(page.getByTestId("hero").getByRole("link", { name: "Nezávazná poptávka" })).toBeVisible();
-    await expect(page.getByTestId("hero").getByRole("link", { name: /Zavolat 604 251 324/ })).toHaveAttribute(
-      "href",
-      `tel:${site.phoneTel}`,
-    );
+    const heroCta = page.getByTestId("hero").getByRole("link", { name: "Kontaktujte nás" });
+    await expect(heroCta).toBeVisible();
+    await expect(heroCta).toHaveCount(1);
+    await expect(page.getByTestId("hero").getByRole("link", { name: /Zavolat/ })).toHaveCount(0);
+    await expect(page.getByTestId("hero")).toContainText("osobním a lidském přístupu");
+    await expect(page.getByTestId("about")).toContainText("vstříc potřebám na míru");
   });
 
   test("navigates from CTA to the inquiry form", async ({ page }) => {
     await page.goto("./");
-    await page.getByTestId("hero").getByRole("link", { name: "Nezávazná poptávka" }).click();
+    await page.getByTestId("hero").getByRole("link", { name: "Kontaktujte nás" }).click();
     await expect(page.locator("#poptavka")).toBeVisible();
     await expect(page.getByRole("button", { name: "Odeslat poptávku" })).toBeVisible();
     await expect(page.locator("#poptavka")).toBeInViewport();

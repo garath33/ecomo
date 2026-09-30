@@ -13,7 +13,7 @@ Cíl: prezentační web malé firmy, která nabízí fotovoltaiku a tepelná če
 
 | Sekce | Kde | Stav |
 | --- | --- | --- |
-| Hero + CTA Nezávazná poptávka | `/` | branding + foto přístřešku |
+| Hero + CTA Kontaktujte nás | `/` | jeden button, osobní přístup v textu |
 | Co nabízím | `/#nabidka` | FVE foto ze střechy, TČ zatím bez fotky |
 | Fotovoltaika | `/fotovoltaika/` | rodinné domy, firmy, obce, SVJ |
 | Tepelná čerpadla | `/tepelna-cerpadla/` | první verze |

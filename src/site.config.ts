@@ -24,6 +24,8 @@ export const site = {
   foundedYear: 2024,
   about:
     "Zajišťujeme kompletní servis při realizaci fotovoltaiky. Od návrhu systému, studie jeho smysluplnosti a návratnosti, přes vyřízení dotací, připojení k distribuční soustavě a případnou změnu dodavatele elektřiny, až po odbornou montáž a spuštění technologie u zákazníka doma.",
+  approach:
+    "Zakládáme si na osobním a lidském přístupu. Umíme vyjít vstříc potřebám na míru — od první schůzky až po předání díla.",
 } as const;
 
 export const navigation = [
