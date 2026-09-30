@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Contact from "../components/Contact.astro";
+import { site } from "../site.config";
 import { withBase } from "../lib/paths";
 ---
 
 <BaseLayout
-  title="Tepelná čerpadla"
-  description="Instalace tepelných čerpadel vzduch–voda pro vytápění, chlazení a ohřev vody. Návrh výkonu a montáž na klíč."
+  title={site.seo.tepelnaTitle}
+  description={site.seo.tepelnaDescription}
 >
   <section class="hero page">
     <div class="wrap">

@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Contact from "../components/Contact.astro";
+import { site } from "../site.config";
 import { withBase } from "../lib/paths";
 ---
 
 <BaseLayout
-  title="Fotovoltaika"
-  description="Instalace fotovoltaických elektráren pro rodinné domy, firmy, obce i bytové domy. Návrh na míru, dotace a montáž na klíč."
+  title={site.seo.fotovoltaikaTitle}
+  description={site.seo.fotovoltaikaDescription}
 >
   <section class="hero page">
     <div class="hero__media">

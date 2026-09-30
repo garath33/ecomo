@@ -17,6 +17,7 @@
     "test:all": "npm run lint && npm run test && npm run build && npm run test:e2e"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
     "astro": "^5.13.8"
   },
   "devDependencies": {

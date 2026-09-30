@@ -20,6 +20,33 @@ export const site = {
     line2: "Přemyšlení",
     zip: "250 66",
     city: "Zdiby",
+    district: "Praha-východ",
+    region: "Středočeský kraj",
+    country: "CZ",
+    countryName: "Česko",
+  },
+  geo: {
+    latitude: 50.164968,
+    longitude: 14.419141,
+  },
+  maps: {
+    google:
+      "https://www.google.com/maps/search/?api=1&query=Ecomo%20s.r.o.%2C%20Poln%C3%AD%20%C4%8D.ev.%20275%2C%20P%C5%99emy%C5%A1len%C3%AD%2C%20250%2066%20Zdiby",
+    mapy: "https://mapy.com/?q=Poln%C3%AD%20%C4%8D.ev.%20275%2C%20P%C5%99emy%C5%A1len%C3%AD%2C%20250%2066%20Zdiby",
+    googlePlace: "",
+    mapyPlace: "",
+  },
+  areaServed: ["Praha", "Praha-východ", "Středočeský kraj"],
+  seo: {
+    homeTitle: "Fotovoltaika a tepelná čerpadla na míru | Ecomo Zdiby",
+    homeDescription:
+      "Ecomo s.r.o. ze Zdib navrhuje a instaluje fotovoltaiku a tepelná čerpadla. Osobní přístup, řešení na míru, dotace a montáž na klíč v Praze a Středočeském kraji.",
+    fotovoltaikaTitle: "Fotovoltaika pro rodinné domy, firmy i obce | Ecomo",
+    fotovoltaikaDescription:
+      "Instalace fotovoltaiky na klíč pro rodinné domy, firmy, obce i SVJ. Návrh podle spotřeby, dotace, připojení k síti a montáž. Ecomo, Zdiby.",
+    tepelnaTitle: "Tepelná čerpadla vzduch–voda na klíč | Ecomo",
+    tepelnaDescription:
+      "Tepelná čerpadla vzduch–voda pro vytápění, chlazení a ohřev vody. Návrh výkonu, technické šetření a montáž na klíč. Ecomo, Zdiby.",
   },
   foundedYear: 2024,
   about:
@@ -79,4 +106,5 @@ export const productionFacts = [
   site.address.line2,
   site.address.zip,
   site.address.city,
+  site.address.district,
 ] as const;

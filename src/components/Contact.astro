@@ -29,9 +29,20 @@ import { site } from "../site.config";
         </li>
         <li>
           {site.address.line1}, {site.address.line2}<br />
-          {site.address.zip} {site.address.city}
+          {site.address.zip} {site.address.city}<br />
+          {site.address.district}, {site.address.region}
         </li>
         <li>IČO {site.ico} · DIČ {site.dic}</li>
+        <li>
+          Mapa a recenze<br />
+          <a href={site.maps.google} rel="noopener noreferrer" target="_blank">Google Maps</a>
+          {" · "}
+          <a href={site.maps.mapy} rel="noopener noreferrer" target="_blank">Mapy.com</a>
+          <p class="muted">
+            Profily na Google a Mapy.com připravujeme. Až budou živé, půjde firmu vyhledat a napsat
+            recenzi. Adresa sídla už mapy otevře.
+          </p>
+        </li>
       </ul>
     </div>
     <div class="card" id="poptavka">

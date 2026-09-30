@@ -17,6 +17,8 @@ test.describe("preview matches production content", () => {
       `mailto:${site.email}`,
     );
     await expect(contact.getByRole("link", { name: site.webDisplay })).toHaveAttribute("href", site.web);
+    await expect(contact.getByRole("link", { name: "Google Maps" })).toHaveAttribute("href", site.maps.google);
+    await expect(contact.getByRole("link", { name: "Mapy.com" })).toHaveAttribute("href", site.maps.mapy);
   });
 
   test("footer repeats the same legal identity", async ({ page }) => {
@@ -52,6 +54,16 @@ test.describe("preview matches production content", () => {
     await expect(page.getByTestId("projects")).toContainText("Hotové zakázky");
     await expect(page.getByTestId("about")).toContainText(site.about.slice(0, 40));
     await expect(page.getByTestId("about")).toContainText(site.approach);
+  });
+
+  test("exposes LocalBusiness JSON-LD and SEO title for crawlers", async ({ page }) => {
+    await page.goto("./");
+    await expect(page).toHaveTitle(site.seo.homeTitle);
+    const jsonLd = page.locator('script[type="application/ld+json"]');
+    await expect(jsonLd).toHaveCount(1);
+    const payload = JSON.parse((await jsonLd.textContent()) ?? "{}") as { name?: string; taxID?: string };
+    expect(payload.name).toBe(site.legalName);
+    expect(payload.taxID).toBe(site.ico);
   });
 
   test("section links land below the sticky header", async ({ page }) => {

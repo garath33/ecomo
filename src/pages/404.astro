@@ -1,9 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../site.config";
 import { withBase } from "../lib/paths";
 ---
 
-<BaseLayout title="Stránka nenalezena">
+<BaseLayout title={`Stránka nenalezena | ${site.legalName}`}>
   <section class="section">
     <div class="wrap">
       <h1>Tady nic není</h1>
