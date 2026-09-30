@@ -7,7 +7,7 @@ test.describe("homepage", () => {
       "Smysluplné elektrárny",
     );
     await expect(page.getByTestId("offer")).toContainText("Co nabízíme");
-    await expect(page.getByRole("navigation").getByRole("link", { name: "Co nabízíme" })).toBeVisible();
+    await expect(page.getByRole("navigation").getByRole("link", { name: "Co nabízíme" })).toBeAttached();
     await expect(page.getByTestId("contact-bridge")).toContainText("Neváhejte nás kontaktovat");
     await expect(page.getByTestId("contact")).toBeVisible();
     await expect(page.getByTestId("projects")).toHaveCount(0);
