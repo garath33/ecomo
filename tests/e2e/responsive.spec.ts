@@ -3,14 +3,16 @@ import { expect, test, type Page } from "@playwright/test";
 const viewports = [
   { name: "mobile", width: 375, height: 812 },
   { name: "tablet", width: 768, height: 1024 },
+  { name: "laptop", width: 1024, height: 768 },
   { name: "desktop", width: 1280, height: 800 },
 ] as const;
 
-async function hasHorizontalOverflow(page: Page): Promise<boolean> {
-  return page.evaluate(() => {
-    const doc = document.documentElement;
-    return doc.scrollWidth > doc.clientWidth + 1;
-  });
+async function hasHorizontalOverflow(page: Page, selector = "html"): Promise<boolean> {
+  return page.evaluate((sel) => {
+    const el = document.querySelector(sel);
+    if (!el) return true;
+    return el.scrollWidth > el.clientWidth + 1;
+  }, selector);
 }
 
 test.describe("responsiveness", () => {
@@ -32,8 +34,19 @@ test.describe("responsiveness", () => {
       await expect(page.getByTestId("contact")).toBeVisible();
       await expect(page.getByRole("link", { name: "Nezávazná poptávka" }).first()).toBeAttached();
       expect(await hasHorizontalOverflow(page)).toBe(false);
+      expect(await hasHorizontalOverflow(page, "header.site-header")).toBe(false);
     });
   }
+
+  test("widths under 1100px use a menu instead of a crushed nav", async ({ page }) => {
+    await page.setViewportSize({ width: 1024, height: 768 });
+    await page.goto("./");
+    await expect(page.getByRole("button", { name: "Menu" })).toBeVisible();
+    await page.getByRole("button", { name: "Menu" }).click();
+    await expect(page.getByRole("navigation").getByRole("link", { name: "Hotové zakázky" })).toBeVisible();
+    await expect(page.getByRole("navigation").getByRole("link", { name: "Kontakt" })).toBeVisible();
+    expect(await hasHorizontalOverflow(page)).toBe(false);
+  });
 
   test("mobile menu opens navigation and the inquiry CTA", async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 });
@@ -42,6 +55,14 @@ test.describe("responsiveness", () => {
     await expect(page.getByRole("navigation").getByRole("link", { name: "Hotové zakázky" })).toBeVisible();
     await page.getByRole("navigation").getByRole("link", { name: "Nezávazná poptávka" }).click();
     await expect(page.locator("#poptavka")).toBeInViewport();
+  });
+
+  test("desktop keeps inline navigation without a menu button", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto("./");
+    await expect(page.getByRole("button", { name: "Menu" })).toBeHidden();
+    await expect(page.getByRole("navigation").getByRole("link", { name: "Hotové zakázky" })).toBeVisible();
+    await expect(page.getByRole("navigation").getByRole("link", { name: "Nezávazná poptávka" })).toBeVisible();
   });
 
   test("service pages do not overflow on a narrow screen", async ({ page }) => {

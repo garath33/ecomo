@@ -74,5 +74,7 @@ export const productionFacts = [
   site.ico,
   site.dic,
   site.address.line1,
+  site.address.line2,
+  site.address.zip,
   site.address.city,
 ] as const;

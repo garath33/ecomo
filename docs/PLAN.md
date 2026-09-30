@@ -7,7 +7,7 @@ Cíl: prezentační web malé firmy, která nabízí fotovoltaiku a tepelná če
 - Ostří = `main`. Merge jen po náhledu a schválení.
 - Malé PR, každá změna otestovaná samostatně (`npm run test:all`).
 - Náhled i ostří berou stejný obsah z `src/site.config.ts`. Liší se jen pruh „Náhledové prostředí“.
-- Každá změna má testy responsivity (375 / 768 / 1280) a kontrolu, že na náhledu jsou stejné firemní údaje jako na ostří.
+- Každá změna má testy responsivity (375 / 768 / 1024 / 1280) a kontrolu, že na náhledu jsou stejné firemní údaje jako na ostří.
 
 ## Informační architektura
 

@@ -24,7 +24,7 @@ Ostří je větev `main`. Do ní se nic nemerguje, dokud není změna otestovan�
 
 Každá změna se testuje samostatně. V e2e vždy běží:
 
-- layout na 375 / 768 / 1280 px bez vodorovného overflow
+- layout na 375 / 768 / 1024 / 1280 px bez vodorovného overflow (do 1100 px hamburger, na desktopu horní menu)
 - stejné IČO, DIČ, sídlo, telefon, e-mail a web jako v `src/site.config.ts` (zdroj pravdy pro náhled i ostří)
 
 Neslučujeme více nesouvisejících věcí v jednom PR.

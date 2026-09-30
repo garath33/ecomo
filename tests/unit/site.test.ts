@@ -14,6 +14,8 @@ describe("production content contract", () => {
     expect(site.ico).toBe("21140456");
     expect(site.dic).toBe("CZ21140456");
     expect(site.address.line1).toBe("Polní č.ev. 275");
+    expect(site.address.line2).toBe("Přemyšlení");
+    expect(site.address.zip).toBe("250 66");
     expect(site.address.city).toBe("Zdiby");
   });
 
