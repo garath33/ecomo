@@ -1,0 +1,33 @@
+---
+import { site } from "../site.config";
+import { withBase } from "../lib/paths";
+---
+
+<section class="hero" data-testid="hero">
+  <div class="wrap">
+    <p class="eyebrow">Fotovoltaika a tepelná čerpadla</p>
+    <h1>Smysluplné řešení na míru, s rozumnou cenou</h1>
+    <p class="lede">
+      {site.name} je malá firma, která navrhuje a instaluje energetická řešení, která dávají smysl
+      konkrétnímu domu — od studie návratnosti přes dotace až po montáž a spuštění.
+    </p>
+    <div class="hero__actions">
+      <a class="button" href={withBase("/#poptavka")}>Nezávazná poptávka</a>
+      <a class="button secondary" href={`tel:${site.phoneTel}`}>Zavolat {site.phoneDisplay}</a>
+    </div>
+    <div class="hero__meta">
+      <div>
+        <strong>Na klíč</strong>
+        návrh, dotace, montáž, připojení
+      </div>
+      <div>
+        <strong>Osobně</strong>
+        jednáte s {site.person}
+      </div>
+      <div>
+        <strong>Dva obory</strong>
+        FVE i tepelná čerpadla
+      </div>
+    </div>
+  </div>
+</section>

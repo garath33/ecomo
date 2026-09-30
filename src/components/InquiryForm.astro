@@ -1,0 +1,50 @@
+---
+import { inquiryTopics, site } from "../site.config";
+---
+
+<form class="form" data-inquiry-form novalidate>
+  <label>
+    Jméno a příjmení
+    <input type="text" name="name" autocomplete="name" required />
+    <span class="error" data-error-for="name"></span>
+  </label>
+  <label>
+    Telefon
+    <input type="tel" name="phone" autocomplete="tel" inputmode="tel" required />
+    <span class="error" data-error-for="phone"></span>
+  </label>
+  <label>
+    E-mail
+    <input type="email" name="email" autocomplete="email" required />
+    <span class="error" data-error-for="email"></span>
+  </label>
+  <label>
+    Mám zájem o
+    <select name="topic" required>
+      <option value="">Vyberte</option>
+      {inquiryTopics.map((topic) => <option value={topic.value}>{topic.label}</option>)}
+    </select>
+    <span class="error" data-error-for="topic"></span>
+  </label>
+  <label>
+    Stručně popište dům / poptávku
+    <textarea name="message" required></textarea>
+    <span class="error" data-error-for="message"></span>
+  </label>
+  <label class="hp" aria-hidden="true">
+    Web
+    <input type="text" name="website" tabindex="-1" autocomplete="off" />
+  </label>
+  <p class="muted">
+    Odesláním souhlasíte se zpracováním údajů jen kvůli vyřízení poptávky. Údaje jdou přímo na
+    {site.email}.
+  </p>
+  <span class="error" data-error-for="form"></span>
+  <button class="button" type="submit">Odeslat poptávku</button>
+  <a class="button ghost" href={`tel:${site.phoneTel}`}>Raději zavolat {site.phoneDisplay}</a>
+  <p class="form-status" data-inquiry-status hidden></p>
+</form>
+
+<script>
+  import "../scripts/inquiry";
+</script>

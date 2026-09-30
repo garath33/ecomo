@@ -1,0 +1,39 @@
+---
+import InquiryForm from "./InquiryForm.astro";
+import { site } from "../site.config";
+---
+
+<section class="section" id="kontakt" data-testid="contact">
+  <div class="wrap grid-2">
+    <div>
+      <p class="eyebrow">Kontakt</p>
+      <h2>Ozvěte se nezávazně</h2>
+      <p class="lede">
+        Stačí zavolat, napsat e-mail, nebo vyplnit formulář. Ozveme se a domluvíme, co dává smysl
+        právě u vás.
+      </p>
+      <ul class="contact-list">
+        <li>
+          <strong>{site.person}</strong><br />
+          {site.role}, {site.legalName}
+        </li>
+        <li>
+          Tel.: <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
+        </li>
+        <li>
+          E-mail: <a href={`mailto:${site.email}`}>{site.email}</a>
+        </li>
+        <li>
+          {site.address.line1}, {site.address.line2}<br />
+          {site.address.zip} {site.address.city}
+        </li>
+        <li>IČO {site.ico} · DIČ {site.dic}</li>
+      </ul>
+    </div>
+    <div class="card" id="poptavka">
+      <h3>Nezávazná poptávka</h3>
+      <p class="muted">Formulář připraví e-mail. Když chcete rychleji, rovnou volejte.</p>
+      <InquiryForm />
+    </div>
+  </div>
+</section>

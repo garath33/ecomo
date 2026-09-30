@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Contact from "../components/Contact.astro";
+import { withBase } from "../lib/paths";
+---
+
+<BaseLayout
+  title="Tepelná čerpadla"
+  description="Instalace tepelných čerpadel vzduch–voda pro vytápění, chlazení a ohřev vody. Návrh výkonu a montáž na klíč."
+>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Co nabízím</p>
+      <h1>Tepelná čerpadla pro vytápění, chlazení i teplou vodu</h1>
+      <p class="lede">
+        Tepelné čerpadlo bere teplo z okolního vzduchu a mění ho na vytápění domu. Má nízké provozní
+        náklady, umí i chladit a výborně se páruje s fotovoltaikou.
+      </p>
+      <div class="hero__actions">
+        <a class="button" href={withBase("/#poptavka")}>Nezávazná poptávka</a>
+        <a class="button secondary" href={withBase("/fotovoltaika/")}>Fotovoltaika</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid-2">
+      <article>
+        <h2>Proč tepelné čerpadlo</h2>
+        <p>
+          Obnovitelné zdroje se posouvají od střechy dál do celého domu. Tepelné čerpadlo je jeden z
+          nejčistších způsobů, jak mít teplo v zimě a příjemný chlad v létě, aniž byste topili
+          drahým přímotopem nebo starým kotlem.
+        </p>
+        <p>
+          Zařízení bere energii z venkovního vzduchu a předává ji do otopné soustavy a zásobníku
+          teplé vody. Díky nízkým provozním nákladům se hodí pro domácnosti i menší provozy.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Co řešíme</h3>
+        <ul class="list">
+          <li>Návrh výkonu podle tepelné ztráty, ne odhadem</li>
+          <li>Vzduch–voda pro radiátory i podlahové topení</li>
+          <li>Ohřev teplé vody a možnost chlazení</li>
+          <li>Technické šetření na místě před montáží</li>
+          <li>Napojení na stávající rozvody v rozumném rozsahu</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <h2>Jak vybíráme technologii</h2>
+      <p class="lede">
+        Značku a provedení (split, monoblok, hydrosplit) doporučíme až podle domu, hluku, prostoru
+        venku a toho, jak hluboko v zimě potřebujete držet výkon. Necpeme jednu značku všem.
+      </p>
+      <div class="grid-3">
+        <article class="card">
+          <h3>Novostavba</h3>
+          <p>Nízkoteplotní systém, často podlahové topení. Čerpadlo tu bývá nejpřirozenější volba.</p>
+        </article>
+        <article class="card">
+          <h3>Rekonstrukce</h3>
+          <p>Záleží na radiátorech, izolaci a komínu. Nejdřív spočítáme, jestli čerpadlo stačí samo.</p>
+        </article>
+        <article class="card">
+          <h3>S fotovoltaikou</h3>
+          <p>Vlastní elektřina snižuje náklady na provoz čerpadla. Dává to smysl jako jeden celek.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Co cena obvykle obsahuje — a co ne</h2>
+      <p>
+        Orientační nabídka počítá s venkovní a vnitřní jednotkou, základním napojením na topení a
+        teplou vodu a s montáží. Do ceny se nemusí vejít konstrukce pod venkovní jednotku, silnější
+        elektro přípojka, úpravy starých rozvodů nebo delší trasy mezi jednotkami. To vždycky
+        řekneme dopředu, ne až na stavbě.
+      </p>
+    </div>
+  </section>
+
+  <Contact />
+</BaseLayout>

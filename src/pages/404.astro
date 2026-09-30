@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../lib/paths";
+---
+
+<BaseLayout title="Stránka nenalezena">
+  <section class="section">
+    <div class="wrap">
+      <h1>Tady nic není</h1>
+      <p class="lede">Stránka neexistuje nebo se přesunula.</p>
+      <a class="button" href={withBase()}>Zpět na úvod</a>
+    </div>
+  </section>
+</BaseLayout>

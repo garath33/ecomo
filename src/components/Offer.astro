@@ -1,0 +1,46 @@
+---
+import { withBase } from "../lib/paths";
+---
+
+<section class="section" id="nabidka" data-testid="offer">
+  <div class="wrap">
+    <p class="eyebrow">Co nabízím</p>
+    <h2>Instalace, které šetří energie i starosti</h2>
+    <p class="lede">
+      Navrhujeme řešení podle spotřeby, střechy a rozpočtu. Neprodáváme balíček z katalogu — nejdřív
+      spočítáme, co se vyplatí, a teprve potom stavíme.
+    </p>
+    <div class="grid-2">
+      <article class="card panel">
+        <div class="placeholder-photo">Foto instalace FVE — doplníme z vašich realizací</div>
+        <h3>Instalace fotovoltaiky</h3>
+        <p>
+          Elektrárna pro rodinný dům, firmu, obec i bytový dům. Cílem je snížit účty za elektřinu,
+          pokrýt vlastní spotřebu a zkrátit návratnost díky vhodnému návrhu a dotačnímu titulu.
+        </p>
+        <ul class="list muted">
+          <li>Rodinné domy — vlastní výroba, baterie, vyšší hodnota nemovitosti</li>
+          <li>Komerční střechy — nižší provozní náklady a větší nezávislost</li>
+          <li>Obce, města a veřejné budovy</li>
+          <li>Bytové domy a SVJ — sdílení výroby v domě</li>
+        </ul>
+        <a class="button ghost" href={withBase("/fotovoltaika/")}>Více o fotovoltaice</a>
+      </article>
+      <article class="card panel">
+        <div class="placeholder-photo">Foto tepelného čerpadla — doplníme z vašich realizací</div>
+        <h3>Instalace tepelných čerpadel</h3>
+        <p>
+          Tepelné čerpadlo vytápí, chladí a ohřívá vodu z obnovitelného zdroje. Hodí se k novostavbě
+          i k rekonstrukci a výborně se doplňuje s fotovoltaikou.
+        </p>
+        <ul class="list muted">
+          <li>Vzduch–voda pro domácnosti i menší provozy</li>
+          <li>Návrh výkonu podle tepelné ztráty objektu</li>
+          <li>Technické šetření na místě před montáží</li>
+          <li>Kombinace s FVE pro levnější provoz v zimě</li>
+        </ul>
+        <a class="button ghost" href={withBase("/tepelna-cerpadla/")}>Více o tepelných čerpadlech</a>
+      </article>
+    </div>
+  </div>
+</section>

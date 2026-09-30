@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Contact from "../components/Contact.astro";
+import { withBase } from "../lib/paths";
+---
+
+<BaseLayout
+  title="Fotovoltaika"
+  description="Instalace fotovoltaických elektráren pro rodinné domy, firmy, obce i bytové domy. Návrh na míru, dotace a montáž na klíč."
+>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Co nabízím</p>
+      <h1>Fotovoltaika, která má v tomhle domě smysl</h1>
+      <p class="lede">
+        Navrhujeme elektrárny podle spotřeby, orientace střechy a rozpočtu. Cílem není maximum
+        panelů, ale řešení, které se vrací a které umíme poctivě postavit.
+      </p>
+      <div class="hero__actions">
+        <a class="button" href={withBase("/#poptavka")}>Nezávazná poptávka</a>
+        <a class="button secondary" href={withBase("/tepelna-cerpadla/")}>Tepelná čerpadla</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid-2">
+      <article class="card">
+        <h2>Rodinné domy</h2>
+        <p>
+          Pro domácnost je fotovoltaika způsob, jak snížit účty za elektřinu a méně záviset na
+          cenách ze sítě. Dobře navržená elektrárna zkracuje návratnost, zejména pokud se podaří
+          využít dotační program. Montáž na střechu zároveň zvedá užitnou hodnotu domu.
+        </p>
+        <p class="muted">
+          Řešíme hybridní i ostrovní varianty, bateriové úložiště a přípravu na elektromobil — vždy
+          podle toho, jak dům elektřinu skutečně spotřebovává.
+        </p>
+      </article>
+      <article class="card">
+        <h2>Komerční instalace</h2>
+        <p>
+          Firmě fotovoltaika snižuje provozní náklady nejen v létě. Výroba z vlastní střechy se
+          projeví ve výrobě, skladu, obchodě i kancelářích. Dobře navržený výkon snižuje nákup ze
+          sítě v hodinách, kdy objekt bere nejvíc energie.
+        </p>
+        <p class="muted">
+          Umíme navrhnout řešení pro výrobní haly, obchody, sklady i administrativní budovy.
+        </p>
+      </article>
+      <article class="card">
+        <h2>Obce a města</h2>
+        <p>
+          Veřejné budovy mají stabilní spotřebu a tlak na úspory. Fotovoltaika na škole, úřadě,
+          čistírně nebo kulturním domě snižuje provozní výdaje a ukazuje, že obec bere energii
+          vážně.
+        </p>
+        <p class="muted">
+          Pomůžeme s návrhem, administrativou připojení i s vysvětlením návratnosti zastupitelům.
+        </p>
+      </article>
+      <article class="card">
+        <h2>Bytové domy a SVJ</h2>
+        <p>
+          Legislativa od roku 2023 usnadnila sdílení výroby v bytovém domě. Panely na střeše mohou
+          pokrývat společné prostory i byty a snížit náklady celému domu. Dotační titul je často
+          dostupný i pro SVJ.
+        </p>
+        <p class="muted">
+          Nejdřív projdeme spotřebu domu, stav střechy a dohodu mezi vlastníky, potom navrhneme
+          výkon, který dává smysl.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <h2>Jak probíhá zakázka</h2>
+      <div class="grid-3">
+        <article class="card">
+          <h3>1. Studie</h3>
+          <p>Spočítáme spotřebu, vhodný výkon a návratnost. Pokud se to nevyplatí, řekneme to.</p>
+        </article>
+        <article class="card">
+          <h3>2. Dotace a síť</h3>
+          <p>Připravíme podklady k dotačnímu titulu a k připojení do distribuční soustavy.</p>
+        </article>
+        <article class="card">
+          <h3>3. Montáž a spuštění</h3>
+          <p>Instalace, revize, nastavení a předání. Víte, s kým mluvíte i po zapnutí.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <Contact />
+</BaseLayout>

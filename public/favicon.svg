@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Ecomo">
+  <rect width="32" height="32" rx="8" fill="#1c4634"/>
+  <path d="M8 20h16l-8-12-8 12z" fill="#d4a017"/>
+  <path d="M10 21.5h12v2.5H10z" fill="#f3eee4"/>
+</svg>

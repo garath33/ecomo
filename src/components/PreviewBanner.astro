@@ -1,0 +1,11 @@
+---
+import { isPreview } from "../lib/paths";
+---
+
+{
+  isPreview() && (
+    <div class="preview-banner" data-testid="preview-banner">
+      Náhledové prostředí — toto ještě není ostrý web. Po schválení se změna slučuje do main.
+    </div>
+  )
+}
