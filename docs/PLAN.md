@@ -13,12 +13,12 @@ Cíl: prezentační web malé firmy, která nabízí fotovoltaiku a tepelná če
 
 | Sekce | Kde | Stav |
 | --- | --- | --- |
-| Hero + CTA Kontaktujte nás | `/` | jeden button, osobní přístup v textu |
-| Co nabízím | `/#nabidka` | FVE foto ze střechy, TČ zatím bez fotky |
+| Hero + CTA Kontaktujte nás | `/` | tmavé černé panely, bez modré oblohy |
+| Co nabízím | `/#nabidka` | FVE montáž + foto TČ |
 | Fotovoltaika | `/fotovoltaika/` | rodinné domy, firmy, obce, SVJ |
-| Tepelná čerpadla | `/tepelna-cerpadla/` | první verze |
-| Hotové zakázky | `/#zakazky` | 2 reálné instalace |
-| O nás | `/#o-nas` | text ze stávajícího ecomo.cz |
+| Tepelná čerpadla | `/tepelna-cerpadla/` | první verze + foto jednotky |
+| Hotové zakázky | schováno | komponenta zůstává, není na úvodu ani v menu |
+| O nás | schováno | komponenta zůstává, není na úvodu ani v menu |
 | Kontakt + formulář | `/#kontakt`, `/#poptavka` | údaje z ecomo.cz + vizitky |
 
 ## Kroky

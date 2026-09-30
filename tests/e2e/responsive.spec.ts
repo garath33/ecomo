@@ -29,9 +29,9 @@ test.describe("responsiveness", () => {
 
       await expect(page.getByTestId("hero")).toBeVisible();
       await expect(page.getByTestId("offer")).toBeVisible();
-      await expect(page.getByTestId("projects")).toBeVisible();
-      await expect(page.getByTestId("about")).toBeVisible();
       await expect(page.getByTestId("contact")).toBeVisible();
+      await expect(page.getByTestId("projects")).toHaveCount(0);
+      await expect(page.getByTestId("about")).toHaveCount(0);
       await expect(page.getByRole("link", { name: "Nezávazná poptávka" }).first()).toBeAttached();
       expect(await hasHorizontalOverflow(page)).toBe(false);
       expect(await hasHorizontalOverflow(page, "header.site-header")).toBe(false);
@@ -43,8 +43,10 @@ test.describe("responsiveness", () => {
     await page.goto("./");
     await expect(page.getByRole("button", { name: "Menu" })).toBeVisible();
     await page.getByRole("button", { name: "Menu" }).click();
-    await expect(page.getByRole("navigation").getByRole("link", { name: "Hotové zakázky" })).toBeVisible();
+    await expect(page.getByRole("navigation").getByRole("link", { name: "Fotovoltaika" })).toBeVisible();
     await expect(page.getByRole("navigation").getByRole("link", { name: "Kontakt" })).toBeVisible();
+    await expect(page.getByRole("navigation").getByRole("link", { name: "Hotové zakázky" })).toHaveCount(0);
+    await expect(page.getByRole("navigation").getByRole("link", { name: "O nás" })).toHaveCount(0);
     expect(await hasHorizontalOverflow(page)).toBe(false);
   });
 
@@ -52,7 +54,7 @@ test.describe("responsiveness", () => {
     await page.setViewportSize({ width: 375, height: 812 });
     await page.goto("./");
     await page.getByRole("button", { name: "Menu" }).click();
-    await expect(page.getByRole("navigation").getByRole("link", { name: "Hotové zakázky" })).toBeVisible();
+    await expect(page.getByRole("navigation").getByRole("link", { name: "Kontakt" })).toBeVisible();
     await page.getByRole("navigation").getByRole("link", { name: "Nezávazná poptávka" }).click();
     await expect(page.locator("#poptavka")).toBeInViewport();
   });
@@ -61,7 +63,7 @@ test.describe("responsiveness", () => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto("./");
     await expect(page.getByRole("button", { name: "Menu" })).toBeHidden();
-    await expect(page.getByRole("navigation").getByRole("link", { name: "Hotové zakázky" })).toBeVisible();
+    await expect(page.getByRole("navigation").getByRole("link", { name: "Kontakt" })).toBeVisible();
     await expect(page.getByRole("navigation").getByRole("link", { name: "Nezávazná poptávka" })).toBeVisible();
   });
 

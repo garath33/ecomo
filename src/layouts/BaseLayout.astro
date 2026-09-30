@@ -15,7 +15,7 @@ interface Props {
 const { title, description = site.seo.homeDescription } = Astro.props;
 const pageTitle = title ?? site.seo.homeTitle;
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const ogImage = new URL(withBase("images/zakazka-pristresek.jpg"), Astro.site).href;
+const ogImage = new URL(withBase("images/hero-fv-panels.jpg"), Astro.site).href;
 ---
 
 <!doctype html>
@@ -38,7 +38,7 @@ const ogImage = new URL(withBase("images/zakazka-pristresek.jpg"), Astro.site).h
     <meta property="og:locale" content="cs_CZ" />
     <meta property="og:url" content={canonical.href} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:alt" content="Fotovoltaický přístřešek ecomo" />
+    <meta property="og:image:alt" content="Černé fotovoltaické panely ecomo" />
     <meta property="og:site_name" content={site.legalName} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />

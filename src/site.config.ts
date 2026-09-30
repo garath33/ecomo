@@ -59,8 +59,6 @@ export const navigation = [
   { href: "/#nabidka", label: "Co nabízím" },
   { href: "/fotovoltaika/", label: "Fotovoltaika" },
   { href: "/tepelna-cerpadla/", label: "Tepelná čerpadla" },
-  { href: "/#zakazky", label: "Hotové zakázky" },
-  { href: "/#o-nas", label: "O nás" },
   { href: "/#kontakt", label: "Kontakt" },
 ] as const;
 

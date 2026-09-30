@@ -51,9 +51,8 @@ test.describe("preview matches production content", () => {
     await expect(page.getByTestId("hero")).toContainText("Smysluplné elektrárny");
     await expect(page.getByTestId("hero")).toContainText(site.approach);
     await expect(page.getByTestId("offer")).toContainText("Instalace fotovoltaiky");
-    await expect(page.getByTestId("projects")).toContainText("Hotové zakázky");
-    await expect(page.getByTestId("about")).toContainText(site.about.slice(0, 40));
-    await expect(page.getByTestId("about")).toContainText(site.approach);
+    await expect(page.getByTestId("projects")).toHaveCount(0);
+    await expect(page.getByTestId("about")).toHaveCount(0);
   });
 
   test("exposes LocalBusiness JSON-LD and SEO title for crawlers", async ({ page }) => {
@@ -69,8 +68,8 @@ test.describe("preview matches production content", () => {
   test("section links land below the sticky header", async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto("./");
-    await page.getByRole("navigation").getByRole("link", { name: "Hotové zakázky" }).click();
-    const heading = page.getByTestId("projects").locator("h2");
+    await page.getByRole("navigation").getByRole("link", { name: "Kontakt" }).click();
+    const heading = page.getByTestId("contact").locator("h2");
     await expect(heading).toBeInViewport();
     const headingBox = await heading.boundingBox();
     const headerBox = await page.locator("header.site-header").boundingBox();

@@ -1,21 +1,24 @@
 import { expect, test } from "@playwright/test";
 
 test.describe("homepage", () => {
-  test("shows all requested sections and the inquiry CTA", async ({ page }) => {
+  test("shows the live sections and a single contact CTA", async ({ page }) => {
     await page.goto("./");
     await expect(page.getByTestId("hero").getByRole("heading", { level: 1 })).toContainText(
       "Smysluplné elektrárny",
     );
     await expect(page.getByTestId("offer")).toBeVisible();
-    await expect(page.getByTestId("projects")).toBeVisible();
-    await expect(page.getByTestId("about")).toBeVisible();
     await expect(page.getByTestId("contact")).toBeVisible();
+    await expect(page.getByTestId("projects")).toHaveCount(0);
+    await expect(page.getByTestId("about")).toHaveCount(0);
     const heroCta = page.getByTestId("hero").getByRole("link", { name: "Kontaktujte nás" });
     await expect(heroCta).toBeVisible();
     await expect(heroCta).toHaveCount(1);
     await expect(page.getByTestId("hero").getByRole("link", { name: /Zavolat/ })).toHaveCount(0);
     await expect(page.getByTestId("hero")).toContainText("osobním a lidském přístupu");
-    await expect(page.getByTestId("about")).toContainText("vstříc potřebám na míru");
+    await expect(page.getByTestId("hero").getByRole("img")).toHaveAttribute(
+      "src",
+      /hero-fv-panels/,
+    );
   });
 
   test("navigates from CTA to the inquiry form", async ({ page }) => {
@@ -41,12 +44,10 @@ test.describe("homepage", () => {
     await expect(page.getByText("Vzduch–voda", { exact: false })).toBeVisible();
   });
 
-  test("shows completed jobs with real photos", async ({ page }) => {
+  test("offer cards use dark installation photos, not the carport sky shot", async ({ page }) => {
     await page.goto("./");
-    const projects = page.getByTestId("projects");
-    await expect(projects.getByRole("heading", { name: "Fotovoltaický přístřešek" })).toBeVisible();
-    await expect(projects.getByRole("heading", { name: "Montáž panelů na střechu" })).toBeVisible();
-    await expect(projects.getByRole("img", { name: "Fotovoltaický přístřešek na ocelové konstrukci" })).toBeVisible();
-    await expect(projects.getByRole("img", { name: "Detail montáže fotovoltaických panelů na střeše" })).toBeVisible();
+    const offer = page.getByTestId("offer");
+    await expect(offer.getByRole("img", { name: "Montáž černých fotovoltaických panelů na střešní lišty" })).toBeVisible();
+    await expect(offer.getByRole("img", { name: "Venkovní jednotka tepelného čerpadla u domu" })).toBeVisible();
   });
 });

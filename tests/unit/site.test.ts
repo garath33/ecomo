@@ -28,21 +28,12 @@ describe("production content contract", () => {
     expect([...productionFacts]).toEqual(expect.arrayContaining([site.ico, site.email, site.person]));
   });
 
-  it("lists the live sections including completed jobs", () => {
+  it("lists the live homepage sections without completed jobs or about", () => {
     const labels = navigation.map((item) => item.label);
-    expect(labels).toEqual(
-      expect.arrayContaining([
-        "Co nabízím",
-        "Hotové zakázky",
-        "O nás",
-        "Kontakt",
-        "Fotovoltaika",
-        "Tepelná čerpadla",
-      ]),
-    );
+    expect(labels).toEqual(["Co nabízím", "Fotovoltaika", "Tepelná čerpadla", "Kontakt"]);
   });
 
-  it("publishes the supplied installation photos as completed jobs", () => {
+  it("keeps completed-job photos in config for later, off the homepage", () => {
     expect(projects.map((project) => project.image)).toEqual([
       "images/zakazka-pristresek.jpg",
       "images/zakazka-strecha.jpg",
