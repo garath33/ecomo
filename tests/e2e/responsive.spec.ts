@@ -44,6 +44,7 @@ test.describe("responsiveness", () => {
     await expect(page.getByRole("button", { name: "Menu" })).toBeVisible();
     await page.getByRole("button", { name: "Menu" }).click();
     await expect(page.getByRole("navigation").getByRole("link", { name: "Fotovoltaika" })).toBeVisible();
+    await expect(page.getByRole("navigation").getByRole("link", { name: "Co nabízíme" })).toBeVisible();
     await expect(page.getByRole("navigation").getByRole("link", { name: "Kontakt" })).toBeVisible();
     await expect(page.getByRole("navigation").getByRole("link", { name: "Hotové zakázky" })).toHaveCount(0);
     await expect(page.getByRole("navigation").getByRole("link", { name: "O nás" })).toHaveCount(0);
