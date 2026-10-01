@@ -481,7 +481,8 @@ p {
 .contact-list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 1.1rem 0 0;
+  border-top: 1px solid var(--line);
 }
 
 .contact-list li {
@@ -499,13 +500,7 @@ p {
   max-width: 42rem;
 }
 
-.contact-bridge {
-  margin: 0;
-  padding: 1.1rem 0 0;
-  border-top: 1px solid var(--line);
-}
-
-.contact-bridge a {
+.contact-stack .lede a {
   font-weight: 700;
 }
 

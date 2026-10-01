@@ -7,7 +7,9 @@ test.describe("homepage", () => {
       "Smysluplné elektrárny",
     );
     await expect(page.getByTestId("offer")).toContainText("Co nabízíme");
-    await expect(page.getByTestId("contact-bridge")).toContainText("Neváhejte nás kontaktovat");
+    await expect(page.getByTestId("contact-intro")).toContainText("Ozvěte se nezávazně");
+    await expect(page.getByTestId("contact-intro")).toContainText("Neváhejte nás kontaktovat");
+    await expect(page.getByTestId("contact-intro")).toContainText("ne balíček z ceníku");
     await expect(page.getByTestId("contact")).toBeVisible();
     await expect(page.getByTestId("projects")).toHaveCount(0);
     await expect(page.getByTestId("about")).toHaveCount(0);
@@ -57,18 +59,20 @@ test.describe("homepage", () => {
     ).toHaveAttribute("src", /nabidka-tc/);
   });
 
-  test("stacks contact details above the inquiry form", async ({ page }) => {
+  test("places intro, then the form, then contact details", async ({ page }) => {
     await page.goto("./");
-    const list = page.getByTestId("contact").locator(".contact-list");
-    const bridge = page.getByTestId("contact-bridge");
+    const intro = page.getByTestId("contact-intro");
     const form = page.locator("#poptavka");
-    const listBox = await list.boundingBox();
-    const bridgeBox = await bridge.boundingBox();
+    const list = page.getByTestId("contact").locator(".contact-list");
+    const introBox = await intro.boundingBox();
     const formBox = await form.boundingBox();
-    expect(listBox).toBeTruthy();
-    expect(bridgeBox).toBeTruthy();
+    const listBox = await list.boundingBox();
+    expect(introBox).toBeTruthy();
     expect(formBox).toBeTruthy();
-    expect(listBox!.y).toBeLessThan(bridgeBox!.y);
-    expect(bridgeBox!.y).toBeLessThan(formBox!.y);
+    expect(listBox).toBeTruthy();
+    expect(introBox!.y).toBeLessThan(formBox!.y);
+    expect(formBox!.y).toBeLessThan(listBox!.y);
+    await expect(page.getByRole("link", { name: /Raději zavolat/ })).toHaveCount(0);
+    await expect(page.getByTestId("contact")).not.toContainText("Profily na Google");
   });
 });

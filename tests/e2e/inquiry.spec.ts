@@ -29,11 +29,12 @@ test.describe("inquiry form", () => {
     );
   });
 
-  test("keeps a direct phone contact next to the form", async ({ page }) => {
+  test("keeps the phone in the contact intro, not on the form", async ({ page }) => {
     await page.goto("./#poptavka");
-    await expect(page.getByRole("link", { name: /Raději zavolat/ })).toHaveAttribute(
+    await expect(page.getByTestId("contact-intro").getByRole("link", { name: "+420 604 251 324" })).toHaveAttribute(
       "href",
       "tel:+420604251324",
     );
+    await expect(page.locator("#poptavka").getByRole("link", { name: /Raději zavolat/ })).toHaveCount(0);
   });
 });

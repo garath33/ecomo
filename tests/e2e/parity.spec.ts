@@ -19,6 +19,8 @@ test.describe("preview matches production content", () => {
     await expect(contact.getByRole("link", { name: site.webDisplay })).toHaveAttribute("href", site.web);
     await expect(contact.getByRole("link", { name: "Google Maps" })).toHaveAttribute("href", site.maps.google);
     await expect(contact.getByRole("link", { name: "Mapy.com" })).toHaveAttribute("href", site.maps.mapy);
+    await expect(contact).not.toContainText("Profily na Google");
+    await expect(contact).not.toContainText("napsat recenzi");
   });
 
   test("footer repeats the same legal identity", async ({ page }) => {
