@@ -9,7 +9,8 @@ test.describe("homepage", () => {
     await expect(page.getByTestId("offer")).toContainText("Co nabízíme");
     await expect(page.getByTestId("contact-intro")).toContainText("Ozvěte se nezávazně");
     await expect(page.getByTestId("contact-intro")).toContainText("Neváhejte nás kontaktovat");
-    await expect(page.getByTestId("contact-intro")).toContainText("ne balíček z ceníku");
+    await expect(page.getByTestId("contact-intro")).toContainText("které sedí právě vám");
+    await expect(page.getByTestId("contact-intro")).not.toContainText("balíček z ceníku");
     await expect(page.getByTestId("contact")).toBeVisible();
     await expect(page.getByTestId("projects")).toHaveCount(0);
     await expect(page.getByTestId("about")).toHaveCount(0);
