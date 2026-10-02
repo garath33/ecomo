@@ -478,11 +478,15 @@ p {
   font-weight: 700;
 }
 
+.contact-details {
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+}
+
 .contact-list {
   list-style: none;
   margin: 0;
-  padding: 1.1rem 0 0;
-  border-top: 1px solid var(--line);
+  padding: 0;
 }
 
 .contact-list li {

@@ -6,7 +6,6 @@ import { site } from "../site.config";
 <section class="section" id="kontakt" data-testid="contact">
   <div class="wrap contact-stack">
     <div data-testid="contact-intro">
-      <p class="eyebrow">Kontakt</p>
       <h2>Ozvěte se nezávazně</h2>
       <p class="lede">
         Neváhejte nás kontaktovat. Zavolejte na
@@ -19,33 +18,36 @@ import { site } from "../site.config";
       <h3>Nezávazná poptávka</h3>
       <InquiryForm />
     </div>
-    <ul class="contact-list">
-      <li>
-        <strong>{site.person}</strong><br />
-        {site.specialty}<br />
-        {site.role}, {site.legalName}
-      </li>
-      <li>
-        Tel.: <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
-      </li>
-      <li>
-        E-mail: <a href={`mailto:${site.email}`}>{site.email}</a>
-      </li>
-      <li>
-        Web: <a href={site.web}>{site.webDisplay}</a>
-      </li>
-      <li>
-        {site.address.line1}, {site.address.line2}<br />
-        {site.address.zip} {site.address.city}<br />
-        {site.address.district}, {site.address.region}
-      </li>
-      <li>IČO {site.ico} · DIČ {site.dic}</li>
-      <li>
-        Mapa<br />
-        <a href={site.maps.google} rel="noopener noreferrer" target="_blank">Google Maps</a>
-        {" · "}
-        <a href={site.maps.mapy} rel="noopener noreferrer" target="_blank">Mapy.com</a>
-      </li>
-    </ul>
+    <div data-testid="contact-details">
+      <p class="eyebrow">Kontakt</p>
+      <ul class="contact-list">
+        <li>
+          <strong>{site.person}</strong><br />
+          {site.specialty}<br />
+          {site.role}, {site.legalName}
+        </li>
+        <li>
+          Tel.: <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
+        </li>
+        <li>
+          E-mail: <a href={`mailto:${site.email}`}>{site.email}</a>
+        </li>
+        <li>
+          Web: <a href={site.web}>{site.webDisplay}</a>
+        </li>
+        <li>
+          {site.address.line1}, {site.address.line2}<br />
+          {site.address.zip} {site.address.city}<br />
+          {site.address.district}, {site.address.region}
+        </li>
+        <li>IČO {site.ico} · DIČ {site.dic}</li>
+        <li>
+          Mapa<br />
+          <a href={site.maps.google} rel="noopener noreferrer" target="_blank">Google Maps</a>
+          {" · "}
+          <a href={site.maps.mapy} rel="noopener noreferrer" target="_blank">Mapy.com</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </section>
