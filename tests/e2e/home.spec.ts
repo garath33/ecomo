@@ -60,21 +60,22 @@ test.describe("homepage", () => {
     ).toHaveAttribute("src", /nabidka-tc/);
   });
 
-  test("places intro, then the form, then contact details", async ({ page }) => {
+  test("keeps the inquiry form without repeating footer contacts", async ({ page }) => {
     await page.goto("./");
     const intro = page.getByTestId("contact-intro");
     const form = page.locator("#poptavka");
-    const details = page.getByTestId("contact-details");
+    const footer = page.getByTestId("site-footer");
     const introBox = await intro.boundingBox();
     const formBox = await form.boundingBox();
-    const detailsBox = await details.boundingBox();
+    const footerBox = await footer.boundingBox();
     expect(introBox).toBeTruthy();
     expect(formBox).toBeTruthy();
-    expect(detailsBox).toBeTruthy();
+    expect(footerBox).toBeTruthy();
     expect(introBox!.y).toBeLessThan(formBox!.y);
-    expect(formBox!.y).toBeLessThan(detailsBox!.y);
+    expect(formBox!.y).toBeLessThan(footerBox!.y);
+    await expect(page.getByTestId("contact-details")).toHaveCount(0);
     await expect(intro.getByText("Kontakt", { exact: true })).toHaveCount(0);
-    await expect(details.getByText("Kontakt", { exact: true })).toBeVisible();
+    await expect(footer.getByRole("heading", { name: "Kontakt" })).toBeVisible();
     await expect(page.getByRole("link", { name: /Raději zavolat/ })).toHaveCount(0);
     await expect(page.getByTestId("contact")).not.toContainText("Profily na Google");
   });

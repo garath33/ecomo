@@ -478,25 +478,6 @@ p {
   font-weight: 700;
 }
 
-.contact-details {
-  padding-top: 1.1rem;
-  border-top: 1px solid var(--line);
-}
-
-.contact-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.contact-list li {
-  margin-bottom: 0.75rem;
-}
-
-.contact-list a {
-  font-weight: 700;
-}
-
 .contact-stack {
   display: flex;
   flex-direction: column;
@@ -512,6 +493,13 @@ p {
   padding: 2.6rem 0 3rem;
   background: var(--ink);
   color: rgb(255 255 255 / 78%);
+  scroll-margin-top: 6.5rem;
+}
+
+.site-footer .eyebrow {
+  display: block;
+  color: var(--brand);
+  margin-bottom: 1.4rem;
 }
 
 .site-footer a {

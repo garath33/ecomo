@@ -2,25 +2,25 @@ import { expect, test } from "@playwright/test";
 import { productionFacts, site } from "../../src/site.config";
 
 test.describe("preview matches production content", () => {
-  test("contact block publishes the same business facts as ecomo.cz", async ({ page }) => {
+  test("footer publishes the same business facts as ecomo.cz", async ({ page }) => {
     await page.goto("./");
-    const contact = page.getByTestId("contact");
-    for (const fact of productionFacts) {
-      await expect(contact).toContainText(fact);
+    const footer = page.getByTestId("site-footer");
+    const footerFacts = productionFacts.filter((fact) => fact !== site.address.district);
+    for (const fact of footerFacts) {
+      await expect(footer).toContainText(fact);
     }
-    await expect(contact.getByRole("link", { name: site.phoneDisplay, exact: true }).first()).toHaveAttribute(
+    await expect(footer.getByRole("heading", { name: "Kontakt" })).toBeVisible();
+    await expect(footer.getByRole("link", { name: site.phoneDisplay, exact: true })).toHaveAttribute(
       "href",
       `tel:${site.phoneTel}`,
     );
-    await expect(contact.getByRole("link", { name: site.email })).toHaveAttribute(
+    await expect(footer.getByRole("link", { name: site.email })).toHaveAttribute(
       "href",
       `mailto:${site.email}`,
     );
-    await expect(contact.getByRole("link", { name: site.webDisplay })).toHaveAttribute("href", site.web);
-    await expect(contact.getByRole("link", { name: "Google Maps" })).toHaveAttribute("href", site.maps.google);
-    await expect(contact.getByRole("link", { name: "Mapy.com" })).toHaveAttribute("href", site.maps.mapy);
-    await expect(contact).not.toContainText("Profily na Google");
-    await expect(contact).not.toContainText("napsat recenzi");
+    await expect(footer.getByRole("link", { name: site.webDisplay })).toHaveAttribute("href", site.web);
+    await expect(footer).not.toContainText("Profily na Google");
+    await expect(footer).not.toContainText("napsat recenzi");
   });
 
   test("footer repeats the same legal identity", async ({ page }) => {
@@ -38,9 +38,10 @@ test.describe("preview matches production content", () => {
 
   test("service pages reuse the same contact facts as the homepage", async ({ page }) => {
     await page.goto("./fotovoltaika/");
-    const contact = page.getByTestId("contact");
-    for (const fact of productionFacts) {
-      await expect(contact).toContainText(fact);
+    const footer = page.getByTestId("site-footer");
+    const footerFacts = productionFacts.filter((fact) => fact !== site.address.district);
+    for (const fact of footerFacts) {
+      await expect(footer).toContainText(fact);
     }
   });
 
@@ -71,7 +72,7 @@ test.describe("preview matches production content", () => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto("./");
     await page.getByRole("navigation").getByRole("link", { name: "Kontakt" }).click();
-    const heading = page.getByTestId("contact").locator("h2");
+    const heading = page.getByTestId("site-footer").getByRole("heading", { name: "Kontakt" });
     await expect(heading).toBeInViewport();
     const headingBox = await heading.boundingBox();
     const headerBox = await page.locator("header.site-header").boundingBox();

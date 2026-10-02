@@ -4,35 +4,38 @@ import { site } from "../site.config";
 import { withBase } from "../lib/paths";
 ---
 
-<footer class="site-footer">
-  <div class="wrap site-footer__grid">
-    <div>
-      <a class="logo" href={withBase()}><Logo onDark /></a>
-      <p>
-        {site.legalName}<br />
-        {site.address.line1}, {site.address.line2}<br />
-        {site.address.zip} {site.address.city}
-      </p>
-      <p>IČO {site.ico} · DIČ {site.dic}</p>
-    </div>
-    <div>
-      <p>
-        <strong>{site.person}</strong><br />
-        {site.specialty}<br />
-        {site.role}
-      </p>
-      <p>
-        <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a><br />
-        <a href={`mailto:${site.email}`}>{site.email}</a><br />
-        <a href={site.web}>{site.webDisplay}</a>
-      </p>
-    </div>
-    <div>
-      <p>
-        <a href={withBase("/#poptavka")}>Nezávazná poptávka</a><br />
-        <a href={withBase("/fotovoltaika/")}>Fotovoltaika</a><br />
-        <a href={withBase("/tepelna-cerpadla/")}>Tepelná čerpadla</a>
-      </p>
+<footer class="site-footer" id="kontakt" data-testid="site-footer">
+  <div class="wrap">
+    <h2 class="eyebrow">Kontakt</h2>
+    <div class="site-footer__grid">
+      <div>
+        <a class="logo" href={withBase()}><Logo onDark /></a>
+        <p>
+          {site.legalName}<br />
+          {site.address.line1}, {site.address.line2}<br />
+          {site.address.zip} {site.address.city}
+        </p>
+        <p>IČO {site.ico} · DIČ {site.dic}</p>
+      </div>
+      <div>
+        <p>
+          <strong>{site.person}</strong><br />
+          {site.specialty}<br />
+          {site.role}
+        </p>
+        <p>
+          <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a><br />
+          <a href={`mailto:${site.email}`}>{site.email}</a><br />
+          <a href={site.web}>{site.webDisplay}</a>
+        </p>
+      </div>
+      <div>
+        <p>
+          <a href={withBase("/#poptavka")}>Nezávazná poptávka</a><br />
+          <a href={withBase("/fotovoltaika/")}>Fotovoltaika</a><br />
+          <a href={withBase("/tepelna-cerpadla/")}>Tepelná čerpadla</a>
+        </p>
+      </div>
     </div>
   </div>
 </footer>
