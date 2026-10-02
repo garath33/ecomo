@@ -47,6 +47,9 @@ export const site = {
     tepelnaTitle: "Tepelná čerpadla vzduch–voda na klíč | Ecomo",
     tepelnaDescription:
       "Tepelná čerpadla vzduch–voda pro vytápění, chlazení a ohřev vody. Návrh výkonu, technické šetření a montáž na klíč. Ecomo, Zdiby.",
+    aboutTitle: "O nás | Ecomo — Jiří Uldrich",
+    aboutDescription:
+      "Ecomo s.r.o. ze Zdib. Za firmou stojí Jiří Uldrich. Osobní a lidský přístup, řešení na míru a znalost technologie i montáže od A do Z.",
   },
   foundedYear: 2024,
   about:
@@ -59,6 +62,7 @@ export const navigation = [
   { href: "/#nabidka", label: "Co nabízíme" },
   { href: "/fotovoltaika/", label: "Fotovoltaika" },
   { href: "/tepelna-cerpadla/", label: "Tepelná čerpadla" },
+  { href: "/o-nas/", label: "O nás" },
   { href: "/#kontakt", label: "Kontakt" },
 ] as const;
 

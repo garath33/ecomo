@@ -28,9 +28,10 @@ describe("production content contract", () => {
     expect([...productionFacts]).toEqual(expect.arrayContaining([site.ico, site.email, site.person]));
   });
 
-  it("lists the live homepage sections without completed jobs or about", () => {
+  it("lists live nav items with about as its own page", () => {
     const labels = navigation.map((item) => item.label);
-    expect(labels).toEqual(["Co nabízíme", "Fotovoltaika", "Tepelná čerpadla", "Kontakt"]);
+    expect(labels).toEqual(["Co nabízíme", "Fotovoltaika", "Tepelná čerpadla", "O nás", "Kontakt"]);
+    expect(navigation.find((item) => item.label === "O nás")?.href).toBe("/o-nas/");
   });
 
   it("keeps completed-job photos in config for later, off the homepage", () => {

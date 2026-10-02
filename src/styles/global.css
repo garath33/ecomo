@@ -109,6 +109,18 @@ p {
   max-width: 40rem;
 }
 
+.about-copy {
+  max-width: 42rem;
+}
+
+.about-copy h1 {
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+}
+
+.about-copy .button {
+  margin-top: 0.6rem;
+}
+
 .button {
   display: inline-flex;
   align-items: center;

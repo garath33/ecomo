@@ -38,5 +38,7 @@ describe("maps and SEO copy stay in one config", () => {
     expect(site.seo.homeTitle).toMatch(/Fotovoltaika/);
     expect(site.seo.homeTitle).toMatch(/Zdiby/);
     expect(site.seo.homeDescription).toMatch(/tepelná čerpadla/i);
+    expect(site.seo.aboutTitle).toMatch(/O nás/);
+    expect(site.seo.aboutDescription).toMatch(/Jiří Uldrich/);
   });
 });

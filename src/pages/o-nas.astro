@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import About from "../components/About.astro";
+import { site } from "../site.config";
+---
+
+<BaseLayout title={site.seo.aboutTitle} description={site.seo.aboutDescription}>
+  <About />
+</BaseLayout>
