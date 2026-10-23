@@ -1,6 +1,6 @@
 # Po spuštění
 
-Sitemap a `robots.txt` jsou na veřejné adrese hned. Google Search Console je jediný krok, který nejde udělat z repozitáře, protože ověření webu vyžaduje přihlášení do Googlu. Až změna bude v `main` a zmizí pruh „Náhledové prostředí“, projděte postup níž.
+GitHub Pages (`garath33.github.io`) ani dočasná adresa na Cloudflare Pages se neindexují. `robots.txt` je zakazuje a stránky mají `noindex`. Search Console a sitemap se řeší až ve chvíli, kdy web běží na vlastní doméně, cílově `https://www.ecomo.cz/`. Do té doby Google na dočasnou adresu neposílejte.
 
 HTTPS vynucuje hosting. GitHub Pages přesměruje `http://` na `https://`. U vlastní domény ještě v repozitáři zapněte **Settings → Pages → Enforce HTTPS**.
 
@@ -9,7 +9,7 @@ HTTPS vynucuje hosting. GitHub Pages přesměruje `http://` na `https://`. U vla
 1. Otevřete [Google Search Console](https://search.google.com/search-console).
 2. Přihlaste se účtem, který má web spravovat.
 3. Zvolte **Přidat službu** a typ **Předpona adresy URL**.
-4. Vložte ostrou adresu i s cestou a lomítkem na konci. Dokud web běží na GitHub Pages, je to `https://garath33.github.io/ecomo/`. Až poběží na vlastní doméně, přidejte novou službu pro `https://www.ecomo.cz/`.
+4. Vložte ostrou adresu vlastní domény i s lomítkem na konci, cílově `https://www.ecomo.cz/`. Adresu na `github.io` ani `pages.dev` nepřidávejte.
 5. Ověřte vlastnictví. Na GitHub Pages je nejjednodušší **Značka HTML**: zkopírujte `content` z meta tagu, který Console nabídne, a doplňte ho do `<head>` v `src/layouts/BaseLayout.astro`. Po merge ověření zopakujte.
 6. V levém menu otevřete **Soubory sitemap** (Index → Soubory sitemap).
 7. Do pole vložte jen název souboru, ne celou adresu: `sitemap-index.xml`.

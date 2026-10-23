@@ -1,27 +1,34 @@
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { robotsMeta, robotsTxt } from "../../src/lib/robots";
+import { isIndexableSite, robotsMeta, robotsTxt } from "../../src/lib/robots";
 import { contentSecurityPolicy, hostingHeadersFile } from "../../src/lib/security";
 
 const root = path.resolve(import.meta.dirname, "../..");
 
 describe("robots.txt", () => {
-  it("publishes the sitemap for the public site", () => {
+  it("indexes only the future company domain", () => {
+    expect(isIndexableSite("https://www.ecomo.cz/")).toBe(true);
+    expect(isIndexableSite("https://ecomo.cz/fotovoltaika/")).toBe(true);
+    expect(isIndexableSite("https://garath33.github.io/ecomo/")).toBe(false);
+    expect(isIndexableSite("https://ecomo.pages.dev/ecomo/")).toBe(false);
+    expect(isIndexableSite("http://127.0.0.1:4321/ecomo/")).toBe(false);
+
     const production = robotsTxt({
       indexable: true,
-      sitemapUrl: "https://garath33.github.io/ecomo/sitemap-index.xml",
+      sitemapUrl: "https://www.ecomo.cz/sitemap-index.xml",
     });
     expect(production).toContain("Allow: /");
-    expect(production).toContain("Sitemap: https://garath33.github.io/ecomo/sitemap-index.xml");
-    expect(robotsTxt({ indexable: false, sitemapUrl: "https://example.test/sitemap.xml" })).toBe(
+    expect(production).toContain("Sitemap: https://www.ecomo.cz/sitemap-index.xml");
+    expect(robotsTxt({ indexable: false, sitemapUrl: "https://garath33.github.io/ecomo/sitemap-index.xml" })).toBe(
       "User-agent: *\nDisallow: /\n",
     );
   });
 
-  it("indexes pages and lets a missing page opt out", () => {
-    expect(robotsMeta()).toBe("index, follow");
-    expect(robotsMeta("noindex, follow")).toBe("noindex, follow");
+  it("hides temporary hosts and lets a missing page opt out on the real domain", () => {
+    expect(robotsMeta(false)).toBe("noindex, nofollow");
+    expect(robotsMeta(true)).toBe("index, follow");
+    expect(robotsMeta(true, "noindex, follow")).toBe("noindex, follow");
   });
 });
 
