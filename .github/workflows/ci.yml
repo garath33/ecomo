@@ -19,6 +19,11 @@ jobs:
           node-version-file: ".nvmrc"
           cache: npm
       - run: npm ci
+      - name: Conventional commit messages
+        if: github.event_name == 'pull_request'
+        run: |
+          git fetch --no-tags origin ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }}
+          sh scripts/check-commit-messages.sh ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }}
       - run: npm run lint
       - run: npm test
       - run: npx playwright install --with-deps chromium

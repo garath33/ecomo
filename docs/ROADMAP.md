@@ -9,6 +9,7 @@
 
 ## Další malé PR (bez vlastní domény)
 
+- [ ] Ochrana větve `main` v nastavení GitHubu (Require a pull request before merging). Token agenta na to nemá právo, zapnout může jen vlastník repa.
 - [ ] Kontrola broken links v CI (Lychee / htmlproofer) — pravidlo v `.cursorrules`, zatím není v pipeline
 - [ ] Další fotky (hlavně tepelná čerpadla) a popisy zakázek se souhlasem klienta
 - [ ] Vlastní SVG wordmark, pokud designér dodá čistý vektor

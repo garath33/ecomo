@@ -16,7 +16,7 @@ Příklad: `feature/responsive-navigation`.
 
 1. Větev z aktuálního `main`.
 2. Jedna věc: jedna sekce, jeden bug, jeden obsahový balík.
-3. Commit ve tvaru Conventional Commits, srozumitelně: `feat: add responsive navigation menu`.
+3. Commit ve tvaru Conventional Commits, srozumitelně: `feat: add responsive navigation menu`. CI na pull requestu zprávu zkontroluje (`feat`, `fix`, `docs`, `ci`, `chore`, `test`, `refactor`).
 4. Lokálně: `npm run test:all` (lint, unit, build, Playwright).
 5. Push a pull request do `main`.
 6. CI musí být zelené. Job uloží screenshoty úvodu, fotovoltaiky, tepelných čerpadel a kontaktu jako artifact `preview-screenshots`.
