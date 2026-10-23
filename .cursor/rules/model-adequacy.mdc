@@ -1,0 +1,19 @@
+---
+alwaysApply: true
+---
+
+# Double-check modelu
+
+Před implementací většího úkolu nebo nové feature nejdřív písemně odpověz na ověřovací otázku níže. Teprve potom začni navrhovat nebo psát kód. U drobné úpravy (překlep, jeden řádek, jasně ohraničená kosmetická změna) otázku vynech a rovnou pokračuj.
+
+Otázka, kterou zodpověz (místo `[název feature]` dosaď skutečný úkol):
+
+> Než začneme, zhodnoť, zda je tento úkol (implementace [název feature]) adekvátní pro aktuálně zvolený model v Cursoru, nebo zda by pro komplexní architekturu / psaní kódu / refaktoring byl vhodnější jiný model (např. přechod na silnější model pro návrh architektury a lehčí model pro drobné úpravy). Navrhni optimální rozdělení.
+
+Odpověz česky, krátce, na začátku zprávy:
+
+1. Pojmenuj úkol a aktuálně zvolený model.
+2. Rozděl práci na návrh architektury, psaní kódu a drobné úpravy.
+3. U každé části řekni, jestli stačí aktuální model, nebo je vhodnější silnější model na architekturu a lehčí model na drobné úpravy.
+4. Navrhni jedno konkrétní rozdělení: co udělat teď a co nechat jinému modelu.
+5. Pak pokračuj v té části, která aktuálnímu modelu sedí. Rozsáhlý architektonický návrh, který patří silnějšímu modelu, nerozepisuj do finálního kódu — nech ho jako návrh rozdělení.
