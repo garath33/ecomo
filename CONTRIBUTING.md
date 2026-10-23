@@ -1,17 +1,29 @@
 # Vývojový postup
 
-Ostří je větev `main`. Do ní se nic nemerguje, dokud není změna otestovaná a schválená.
+Repozitář: [garath33/ecomo](https://github.com/garath33/ecomo). Ostří je větev `main`. Do ní se necommituje napřímo a nic se nemerguje, dokud není změna otestovaná a schválená.
+
+## Větve
+
+| Větev | Kdo | Účel |
+| --- | --- | --- |
+| `main` | nikdo přímo | ostrá verze |
+| `feature/<nazev-funkce>` | člověk v Cursoru / lokálně | jedna úprava |
+| `cursor/<nazev>-<id>` | Cursor Cloud Agent | totéž co `feature/`; platforma jiný prefix nepovolí |
+
+Příklad: `feature/responsive-navigation`.
 
 ## Tok jedné změny
 
-1. Malá větev z `main` (`cursor/<kratky-nazev>-35b8`).
+1. Větev z aktuálního `main`.
 2. Jedna věc: jedna sekce, jeden bug, jeden obsahový balík.
-3. Lokálně: `npm run test:all` (lint, unit, build, Playwright).
-4. Push a **draft pull request** do `main`.
-5. CI na PR musí být zelené.
-6. GitHub Pages nasadí náhled z feature větve: https://garath33.github.io/ecomo/
-7. Až po vašem schválení se PR označí jako ready a sloučí do `main`.
-8. Merge na `main` nasadí ostrou verzi stejné adresy, bez náhledového pruhu.
+3. Commit ve tvaru Conventional Commits, srozumitelně: `feat: add responsive navigation menu`.
+4. Lokálně: `npm run test:all` (lint, unit, build, Playwright).
+5. Push a pull request do `main`.
+6. CI musí být zelené. Job uloží screenshoty úvodu, fotovoltaiky, tepelných čerpadel a kontaktu jako artifact `preview-screenshots`.
+7. GitHub Pages nasadí náhled: https://garath33.github.io/ecomo/
+8. Před schválením projde celá finální verze (včetně jazykových mutací, až nějaké budou; teď je web jen česky).
+9. Uživateli se předloží odkaz na PR, náhled, výsledek CI a screenshoty. Merge do `main` až po jeho schválení.
+10. Merge na `main` nasadí ostrou verzi stejné adresy, bez náhledového pruhu.
 
 ## Testy
 
@@ -20,7 +32,7 @@ Ostří je větev `main`. Do ní se nic nemerguje, dokud není změna otestovan�
 | `npm run lint` | ESLint |
 | `npm test` | unit testy obsahu a formuláře |
 | `npm run build` | TypeScript + produkční sestavení |
-| `npm run test:e2e` | Playwright: sekce, CTA, poptávka, podstránky, **responsivita**, **shoda náhledu s ostřím** |
+| `npm run test:e2e` | Playwright: sekce, CTA, poptávka, podstránky, **responsivita**, **shoda náhledu s ostřím**, screenshoty pro PR |
 
 Každá změna se testuje samostatně. V e2e vždy běží:
 
@@ -33,7 +45,7 @@ Neslučujeme více nesouvisejících věcí v jednom PR.
 
 GitHub Pages umí v tomto repu jednu veřejnou adresu. Proto:
 
-- push na `cursor/**` → prostředí `preview`
+- push na `feature/**` nebo `cursor/**` → prostředí `preview`
 - push na `main` → prostředí `production`
 
 Dokud je otevřený PR, na adrese běží náhled. Po merge přepne na ostří.

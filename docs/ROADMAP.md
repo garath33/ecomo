@@ -5,6 +5,7 @@
 ## Hotovo (nedávno)
 
 - [x] Tokenová optimalizace Cursoru: `.cursorignore` + `.cursorrules` (minimalizace kontextu)
+- [x] Git workflow: `main` / `feature/*` (+ `cursor/*` pro cloud agenta), conventional commits, PR až po schválení, CI screenshoty náhledu
 
 ## Další malé PR (bez vlastní domény)
 

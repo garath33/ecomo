@@ -27,3 +27,21 @@
 ## 3. Dokumentace
 
 - Každá nová feature musí být zaznamenána v `docs/ROADMAP.md` a `docs/CHANGELOG.md`.
+
+## 4. Vývojová pipeline a Git
+
+- Repozitář je `garath33/ecomo`. Ostří je větev `main`. Na `main` se necommituje napřímo.
+
+- Každá úprava jde na vlastní pracovní větev z aktuálního `main`:
+  - člověk: `feature/<nazev-funkce>` (např. `feature/responsive-navigation`)
+  - Cursor Cloud Agent: `cursor/<nazev>-<id>` (platforma jiný prefix nepovolí; význam je stejný jako `feature/`)
+
+- Jeden účel na větev. Nesouvisející změny neslučovat.
+
+- Commit message ve tvaru Conventional Commits: `feat:`, `fix:`, `docs:`, `ci:`, `chore:` + srozumitelný popis (např. `feat: add responsive navigation menu`).
+
+- Po dokončení vždy otevři pull request do `main`. Merge jen po explicitním schválení uživatele.
+
+- Před předložením ke schválení ověř celou finální verzi (lint, unit, build, e2e). Web je teď jen česky; až přibudou jazykové mutace, ověř je v tomto kroku všechny, ne po jedné až po releasu.
+
+- K PR přilož odkaz na náhled (https://garath33.github.io/ecomo/), výsledek CI a screenshoty z artifactu `preview-screenshots`. Bez těchto podkladů merge nenavrhuj.

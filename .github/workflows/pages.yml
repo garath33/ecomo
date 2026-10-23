@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - "cursor/**"
+      - "feature/**"
   workflow_dispatch:
 
 concurrency:
