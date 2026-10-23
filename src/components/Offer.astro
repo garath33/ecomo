@@ -1,49 +1,35 @@
 ---
+import { messages } from "../locales";
 import { withBase } from "../lib/paths";
 ---
 
 <section class="section" id="nabidka" data-testid="offer">
   <div class="wrap">
-    <p class="eyebrow">Co nabízíme</p>
-    <h2>Instalace, které šetří energie i starosti</h2>
-    <p class="lede">
-      Navrhujeme řešení podle spotřeby, střechy a rozpočtu. Neprodáváme balíček z katalogu — vyjdeme
-      vstříc tomu, co dům a rodina skutečně potřebují, a teprve potom stavíme.
-    </p>
+    <p class="eyebrow">{messages.nav.offer}</p>
+    <h2>{messages.offer.title}</h2>
+    <p class="lede">{messages.offer.lede}</p>
     <div class="grid-2">
       <article class="card panel">
         <div class="media">
-          <img src={withBase("images/nabidka-fv.jpg")} alt="Montáž černých fotovoltaických panelů na střešní lišty" />
+          <img src={withBase("images/nabidka-fv.jpg")} alt={messages.offer.pv.imageAlt} />
         </div>
-        <h3>Instalace fotovoltaiky</h3>
-        <p>
-          Elektrárna pro rodinný dům, firmu, obec i bytový dům. Cílem je snížit účty za elektřinu,
-          pokrýt vlastní spotřebu a zkrátit návratnost díky vhodnému návrhu a dotačnímu titulu.
-        </p>
+        <h3>{messages.offer.pv.title}</h3>
+        <p>{messages.offer.pv.body}</p>
         <ul class="list muted">
-          <li>Rodinné domy — vlastní výroba, baterie, vyšší hodnota nemovitosti</li>
-          <li>Komerční střechy — nižší provozní náklady a větší nezávislost</li>
-          <li>Obce, města a veřejné budovy</li>
-          <li>Bytové domy a SVJ — sdílení výroby v domě</li>
+          {messages.offer.pv.points.map((point) => <li>{point}</li>)}
         </ul>
-        <a class="button ghost" href={withBase("/fotovoltaika/")}>Více o fotovoltaice</a>
+        <a class="button ghost" href={withBase("/fotovoltaika/")}>{messages.cta.morePv}</a>
       </article>
       <article class="card panel">
         <div class="media">
-          <img src={withBase("images/nabidka-tc.jpg")} alt="Venkovní jednotka tepelného čerpadla u domu" />
+          <img src={withBase("images/nabidka-tc.jpg")} alt={messages.offer.hp.imageAlt} />
         </div>
-        <h3>Instalace tepelných čerpadel</h3>
-        <p>
-          Tepelné čerpadlo vytápí, chladí a ohřívá vodu z obnovitelného zdroje. Hodí se k novostavbě
-          i k rekonstrukci a výborně se doplňuje s fotovoltaikou.
-        </p>
+        <h3>{messages.offer.hp.title}</h3>
+        <p>{messages.offer.hp.body}</p>
         <ul class="list muted">
-          <li>Vzduch–voda pro domácnosti i menší provozy</li>
-          <li>Návrh výkonu podle tepelné ztráty objektu</li>
-          <li>Technické šetření na místě před montáží</li>
-          <li>Kombinace s FVE pro levnější provoz v zimě</li>
+          {messages.offer.hp.points.map((point) => <li>{point}</li>)}
         </ul>
-        <a class="button ghost" href={withBase("/tepelna-cerpadla/")}>Více o tepelných čerpadlech</a>
+        <a class="button ghost" href={withBase("/tepelna-cerpadla/")}>{messages.cta.moreHp}</a>
       </article>
     </div>
   </div>

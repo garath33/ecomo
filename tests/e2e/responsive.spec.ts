@@ -1,11 +1,7 @@
 import { expect, test, type Page } from "@playwright/test";
+import { layoutViewports } from "./viewports";
 
-const viewports = [
-  { name: "mobile", width: 375, height: 812 },
-  { name: "tablet", width: 768, height: 1024 },
-  { name: "laptop", width: 1024, height: 768 },
-  { name: "desktop", width: 1280, height: 800 },
-] as const;
+const viewports = layoutViewports;
 
 async function hasHorizontalOverflow(page: Page, selector = "html"): Promise<boolean> {
   return page.evaluate((sel) => {
@@ -15,7 +11,7 @@ async function hasHorizontalOverflow(page: Page, selector = "html"): Promise<boo
   }, selector);
 }
 
-test.describe("responsiveness", () => {
+test.describe("responsiveness @regression", () => {
   for (const viewport of viewports) {
     test(`homepage layout holds together at ${viewport.name} ${viewport.width}px`, async ({
       page,
@@ -52,7 +48,7 @@ test.describe("responsiveness", () => {
   });
 
   test("mobile menu opens navigation and the inquiry CTA", async ({ page }) => {
-    await page.setViewportSize({ width: 375, height: 812 });
+    await page.setViewportSize({ width: 320, height: 720 });
     await page.goto("./");
     await page.getByRole("button", { name: "Menu" }).click();
     await expect(page.getByRole("navigation").getByRole("link", { name: "Kontakt" })).toBeVisible();
@@ -61,7 +57,7 @@ test.describe("responsiveness", () => {
   });
 
   test("desktop keeps inline navigation without a menu button", async ({ page }) => {
-    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto("./");
     await expect(page.getByRole("button", { name: "Menu" })).toBeHidden();
     await expect(page.getByRole("navigation").getByRole("link", { name: "Kontakt" })).toBeVisible();
@@ -70,7 +66,7 @@ test.describe("responsiveness", () => {
   });
 
   test("current page in the header is not underlined", async ({ page }) => {
-    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto("./tepelna-cerpadla/");
     const current = page.getByRole("navigation").getByRole("link", { name: "Tepelná čerpadla" });
     await expect(current).toHaveAttribute("aria-current", "page");
@@ -78,7 +74,7 @@ test.describe("responsiveness", () => {
   });
 
   test("service pages do not overflow on a narrow screen", async ({ page }) => {
-    await page.setViewportSize({ width: 375, height: 812 });
+    await page.setViewportSize({ width: 320, height: 720 });
     for (const path of ["./fotovoltaika/", "./tepelna-cerpadla/"]) {
       await page.goto(path);
       expect(await hasHorizontalOverflow(page)).toBe(false);

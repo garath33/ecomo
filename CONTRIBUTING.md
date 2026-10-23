@@ -17,11 +17,11 @@ Příklad: `feature/responsive-navigation`.
 1. Větev z aktuálního `main`.
 2. Jedna věc: jedna sekce, jeden bug, jeden obsahový balík.
 3. Commit ve tvaru Conventional Commits, srozumitelně: `feat: add responsive navigation menu`. CI na pull requestu zprávu zkontroluje (`feat`, `fix`, `docs`, `ci`, `chore`, `test`, `refactor`).
-4. Lokálně: `npm run test:all` (lint, unit, build, Playwright).
+4. Lokálně: `npm run test:all` (lint, unit, build, smoke, validace HTML/CSS, Playwright).
 5. Push a pull request do `main`.
-6. CI musí být zelené. Job uloží screenshoty úvodu, fotovoltaiky, tepelných čerpadel a kontaktu jako artifact `preview-screenshots`.
+6. CI musí být zelené, včetně jobu Broken links. Job uloží screenshoty úvodu, fotovoltaiky, tepelných čerpadel a kontaktu jako artifact `preview-screenshots` a snímky vizuální regrese jako `visual-screenshots`.
 7. GitHub Pages nasadí náhled: https://garath33.github.io/ecomo/
-8. Před schválením projde celá finální verze (včetně jazykových mutací, až nějaké budou; teď je web jen česky).
+8. Průběžně se ověřuje jen primární čeština. `npm run test:i18n` patří až před vydáním, ne do každého PR.
 9. Uživateli se předloží odkaz na PR, náhled, výsledek CI a screenshoty. Merge do `main` až po jeho schválení.
 10. Merge na `main` nasadí ostrou verzi stejné adresy, bez náhledového pruhu.
 
@@ -32,12 +32,22 @@ Příklad: `feature/responsive-navigation`.
 | `npm run lint` | ESLint |
 | `npm test` | unit testy obsahu a formuláře |
 | `npm run build` | TypeScript + produkční sestavení |
-| `npm run test:e2e` | Playwright: sekce, CTA, poptávka, podstránky, **responsivita**, **shoda náhledu s ostřím**, screenshoty pro PR |
+| `npm run test:smoke` | Po buildu: `index.html`, načtené CSS, interní odkazy |
+| `npm run test:validate` | Validita HTML (html-validate) a CSS (syntaktická) |
+| `npm run test:regression` | Unit testy a funkční Playwright (`@regression`) |
+| `npm run test:e2e` | Playwright včetně regrese, responsivity, vizuální regrese a screenshotů pro PR |
+| `npm run test:visual` | Screenshotová regrese úvodu na 320 / 768 / 1024 / 1440 px |
+| `npm run test:i18n` | Před vydáním: klíče dalších locale proti `cs.json` |
 
-Každá změna se testuje samostatně. V e2e vždy běží:
+Podrobnosti jsou v [docs/TESTING.md](docs/TESTING.md).
 
-- layout na 375 / 768 / 1024 / 1280 px bez vodorovného overflow (do 1100 px hamburger, na desktopu horní menu)
+Každá změna se testuje samostatně. Uprav test, který změna rozbije, a nepřidávej nové scénáře k částem, kterých se netýká. V e2e vždy běží:
+
+- layout na 320 / 768 / 1024 / 1440 px bez vodorovného overflow (do 1100 px hamburger, na desktopu horní menu)
 - stejné IČO, DIČ, sídlo, telefon, e-mail a web jako v `src/site.config.ts` (zdroj pravdy pro náhled i ostří)
+- jen primární čeština (`src/locales/cs.json` a české šablony)
+
+Rozbité odkazy v pull requestu hlídá job **Broken links** (Lychee, offline, proti sestavenému `dist/`). V editoru se odkazy neprocházejí ručně.
 
 Neslučujeme více nesouvisejících věcí v jednom PR.
 

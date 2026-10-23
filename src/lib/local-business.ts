@@ -1,3 +1,4 @@
+import { messages } from "../locales";
 import { site } from "../site.config";
 
 export function localBusinessJsonLd(input: { pageUrl: string; image: string }) {
@@ -38,11 +39,11 @@ export function localBusinessJsonLd(input: { pageUrl: string; image: string }) {
     },
     hasMap: site.maps.google,
     areaServed: site.areaServed.map((name) => ({ "@type": "AdministrativeArea", name })),
-    knowsAbout: ["Fotovoltaika", "Tepelná čerpadla", "Dotace na obnovitelné zdroje"],
+    knowsAbout: messages.seo.knowsAbout,
     sameAs,
     additionalProperty: {
       "@type": "PropertyValue",
-      name: "Adresa",
+      name: messages.seo.addressLabel,
       value: address,
     },
   };

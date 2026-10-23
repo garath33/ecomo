@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test.describe("about page", () => {
+test.describe("about page @regression", () => {
   test("is reachable only from the header and stays off the homepage", async ({ page }) => {
     await page.goto("./");
     await expect(page.getByTestId("about")).toHaveCount(0);
@@ -22,7 +22,7 @@ test.describe("about page", () => {
   });
 
   test("does not overflow on a narrow screen", async ({ page }) => {
-    await page.setViewportSize({ width: 375, height: 812 });
+    await page.setViewportSize({ width: 320, height: 720 });
     await page.goto("./o-nas/");
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
     expect(overflow).toBe(false);

@@ -1,0 +1,32 @@
+name: Locale release check
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  locales:
+    name: Locale keys and primary visual pass
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: npm
+      - run: npm ci
+      - run: npm run test:i18n
+      - run: npx playwright install --with-deps chromium
+      - name: Visual check of the primary locale
+        run: npm run test:visual
+        env:
+          CI: true
+      - name: Upload release screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-visual-screenshots
+          path: test-results
+          retention-days: 14
+          if-no-files-found: ignore

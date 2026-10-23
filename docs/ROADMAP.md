@@ -27,7 +27,7 @@ Zásady, které platí pořád: ostří je `main`, obsah náhledu i ostří bere
 | Vlastní doména ecomo.cz | plánováno |
 | Text GDPR podle způsobu odesílání | plánováno |
 | Ochrana větve `main` na GitHubu | plánováno, zapne vlastník repa |
-| Kontrola nefunkčních odkazů v CI (Lychee nebo htmlproofer) | plánováno |
+| Kontrola nefunkčních odkazů v CI (Lychee) | hotovo |
 | Odkazy na profily Google a Mapy.com | háčky v konfiguraci, adresy zatím prázdné |
 
 ## Hotovo
@@ -44,6 +44,7 @@ Zásady, které platí pořád: ostří je `main`, obsah náhledu i ostří bere
 - Náhled z větve `cursor/**` nebo `feature/**` ukazuje pruh „Náhledové prostředí“. Nasazení z `main` pruh nemá.
 - Testy rozvržení na 375 / 768 / 1024 / 1280 px a kontrola, že na stránce jsou stejné firemní údaje jako v konfiguraci.
 - Double-check modelu před větším úkolem: `.cursor/rules/model-adequacy.mdc`.
+- Testy: smoke po buildu, validace HTML/CSS, layout na 320 / 768 / 1024 / 1440 px, vizuální regrese úvodu a Lychee v jobu Broken links. Průběžně se testuje jen `src/locales/cs.json`.
 
 ## Nástroje v tomto PR
 
@@ -59,7 +60,6 @@ Zásady, které platí pořád: ostří je `main`, obsah náhledu i ostří bere
 - Veřejná adresa na vlastní doméně ecomo.cz. Teď web běží na `garath33.github.io/ecomo`. Až doména poběží: custom domain na GitHub Pages, `PUBLIC_SITE_URL=https://www.ecomo.cz`, `PUBLIC_BASE_PATH=/`, kontrola sitemap, `robots.txt`, canonical a Open Graph, Search Console a úprava odkazů v README a CONTRIBUTING.
 - Text o zpracování osobních údajů podle toho, jak se poptávky nakonec odesílají.
 - Ochrana větve `main` (Require a pull request before merging). Token agenta na to nemá právo.
-- Kontrola nefunkčních odkazů v CI (Lychee nebo htmlproofer). Do té doby ji AI v Cursoru nepouští ručně.
 - Vyplnit `maps.googlePlace` a `maps.mapyPlace` v `src/site.config.ts`, až budou existovat profily. Prázdné hodnoty se do JSON-LD nedávají.
 
 ## Mimo úvod

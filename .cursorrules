@@ -42,6 +42,6 @@
 
 - Po dokončení vždy otevři pull request do `main`. Merge jen po explicitním schválení uživatele.
 
-- Před předložením ke schválení ověř celou finální verzi (lint, unit, build, e2e). Web je teď jen česky; až přibudou jazykové mutace, ověř je v tomto kroku všechny, ne po jedné až po releasu.
+- Před předložením ke schválení ověř celou finální verzi na primární češtině (lint, unit, build, smoke, e2e). Další jazykové mutace neotevírej v běžném PR. `npm run test:i18n` spusť až před vydáním.
 
 - K PR přilož odkaz na náhled (https://garath33.github.io/ecomo/), výsledek CI a screenshoty z artifactu `preview-screenshots`. Bez těchto podkladů merge nenavrhuj.

@@ -1,21 +1,21 @@
 ---
 import InquiryForm from "./InquiryForm.astro";
+import { messages } from "../locales";
 import { site } from "../site.config";
 ---
 
 <section class="section" data-testid="contact">
   <div class="wrap contact-stack">
     <div data-testid="contact-intro">
-      <h2>Ozvěte se nezávazně</h2>
+      <h2>{messages.contact.title}</h2>
       <p class="lede">
-        Neváhejte nás kontaktovat. Zavolejte na
+        {messages.contact.beforePhone}
         <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
-        ohledně řešení a konzultace, napište e-mail, nebo vyplňte formulář níže. Ozveme se osobně a
-        domluvíme řešení, které sedí právě vám.
+        {messages.contact.afterPhone}
       </p>
     </div>
     <div class="card" id="poptavka">
-      <h3>Nezávazná poptávka</h3>
+      <h3>{messages.cta.inquiry}</h3>
       <InquiryForm />
     </div>
   </div>

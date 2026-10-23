@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { productionFacts, site } from "../../src/site.config";
 
-test.describe("preview matches production content", () => {
+test.describe("preview matches production content @regression", () => {
   test("footer publishes the same business facts as ecomo.cz", async ({ page }) => {
     await page.goto("./");
     const footer = page.getByTestId("site-footer");
@@ -69,7 +69,7 @@ test.describe("preview matches production content", () => {
   });
 
   test("section links land below the sticky header", async ({ page }) => {
-    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto("./");
     await page.getByRole("navigation").getByRole("link", { name: "Kontakt" }).click();
     const heading = page.getByTestId("site-footer").getByRole("heading", { name: "Kontakt" });

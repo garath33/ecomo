@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test.describe("inquiry form", () => {
+test.describe("inquiry form @regression", () => {
   test("shows validation errors for an empty submit", async ({ page }) => {
     await page.goto("./#poptavka");
     await page.getByRole("button", { name: "Odeslat poptávku" }).click();
