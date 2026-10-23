@@ -1,0 +1,47 @@
+# .cursorrules - Pravidla pro Cursor AI
+
+## 1. Princip minimalizace kontextu a tokenů
+
+- Vždy respektuj pravidla z .cursorignore. Nečti ani neindexuj vynechané složky a soubory.
+
+- Nečti ani neupravuj soubory, které nejsou explicitně potřeba pro aktuální úkol.
+
+- Pokud upravuješ konkrétní komponentu nebo stránku (např. `index.html` nebo `styles.css`), pracuj pouze s tímto souborem a jeho bezprostředními závislostmi.
+
+- Nikdy nenačítaj do kontextu celou historii gitu ani velké binární soubory.
+
+- Ecomo je jen v češtině. Texty upravuj v `src/locales/cs.json`. Další jazyk nepřidávej, dokud o něj uživatel výslovně nepožádá. Do té doby nespouštěj kontrolu mutací a další `src/locales/*.json` nezakládej.
+
+- Kontrolu nefunkčních odkazů (broken links / 404) přenechej automatickému CI/CD pipeline (GitHub Actions - např. Lychee nebo htmlproofer).
+
+- Před mergem do `main` vždy připrav PR, odkaž na preview prostředí, proveď závěrečnou kontrolu celé finální verze a vyžádej si schválení uživatele. Kde je to možné, přilož vizuální screenshoty.
+
+## 2. Architektura a kódové standardy
+
+- Piš čistý, srozumitelný a modulární kód.
+
+- Pro stylování preferuj Tailwind CSS (nebo čisté CSS proměnné podle typu projektu).
+
+- Dbej na sémantický HTML5 kód (`<header>`, `<main>`, `<section>`, `<article>`, `<footer>`).
+
+## 3. Dokumentace
+
+- Každá nová feature musí být zaznamenána v `docs/ROADMAP.md` a `docs/CHANGELOG.md`.
+
+## 4. Vývojová pipeline a Git
+
+- Repozitář je `garath33/ecomo`. Ostří je větev `main`. Na `main` se necommituje napřímo.
+
+- Každá úprava jde na vlastní pracovní větev z aktuálního `main`:
+  - člověk: `feature/<nazev-funkce>` (např. `feature/responsive-navigation`)
+  - Cursor Cloud Agent: `cursor/<nazev>-<id>` (platforma jiný prefix nepovolí; význam je stejný jako `feature/`)
+
+- Jeden účel na větev. Nesouvisející změny neslučovat.
+
+- Commit message ve tvaru Conventional Commits: `feat:`, `fix:`, `docs:`, `ci:`, `chore:` + srozumitelný popis (např. `feat: add responsive navigation menu`).
+
+- Po dokončení vždy otevři pull request do `main`. Merge jen po explicitním schválení uživatele.
+
+- Před předložením ke schválení ověř finální verzi v češtině (lint, unit, build, smoke, e2e). Jazykové mutace do kontroly nepatří, dokud uživatel další jazyk sám nenahlásí.
+
+- K PR přilož odkaz na náhled (https://garath33.github.io/ecomo/), výsledek CI a screenshoty z artifactu `preview-screenshots`. Bez těchto podkladů merge nenavrhuj.

@@ -4,7 +4,12 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 
 ## [Unreleased]
 
-Zatím nic. Další plánované funkce jsou v [ROADMAP.md](ROADMAP.md).
+### Přidáno
+
+- `.cursorignore` a `.cursorrules`: AI neindexuje `node_modules/`, build, lockfile, logy ani `.git/` a drží se pravidel minimalizace kontextu, architektury a dokumentace.
+- Git workflow: člověk pracuje na `feature/<nazev>`, cloud agent na `cursor/<nazev>-<id>`. Merge do `main` až po schválení. CI kontroluje conventional commits (`feat`, `fix`, `docs`, `ci`, `chore`, `test`, `refactor`) a šablona PR žádá náhled, kontrolu a screenshoty.
+- CI ukládá desktop screenshoty úvodu, fotovoltaiky, tepelných čerpadel a kontaktu jako artifact `preview-screenshots`. Deploy na Pages běží i z větví `feature/**`.
+- Jazyk webu zůstává jen čeština, dokud uživatel nenahlásí další.
 
 ## [0.1.0] — 2026-10-02
 
