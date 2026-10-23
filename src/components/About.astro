@@ -1,4 +1,5 @@
 ---
+import { messages } from "../locales";
 import { site } from "../site.config";
 import { withBase } from "../lib/paths";
 ---
@@ -25,6 +26,6 @@ import { withBase } from "../lib/paths";
       <li>Individuální návrh podle domu, spotřeby a rozpočtu</li>
       <li>Technologie i montáž v jedněch rukách</li>
     </ul>
-    <a class="button" href={withBase("/#poptavka")}>Kontaktujte nás</a>
+    <a class="button" href={withBase("/#poptavka")}>{messages.cta.contactUs}</a>
   </div>
 </section>

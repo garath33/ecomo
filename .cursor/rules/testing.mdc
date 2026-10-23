@@ -1,0 +1,13 @@
+---
+description: Smoke, responsivita, primární jazyk a odkazy v CI
+alwaysApply: true
+---
+
+# Testy Ecomo
+
+- Po změně funkce aktualizuj test, který ten scénář pokrývá. Nové okrajové testy k nedotčeným částem nepřidávej.
+- Layout a průběžné testy patří jen primární češtině. Chrome texty jsou v `src/locales/cs.json`, stránkové texty v českých šablonách. Další `src/locales/*.json` při úpravě layoutu neotevírej a jejich vizuální testy do pull requestu nepřidávej.
+- Kompletní kontrola jazykových mutací je `npm run test:i18n` před vydáním.
+- Responsivní šířky jsou 320, 768, 1024 a 1440.
+- Rozbité odkazy nech na CI (Lychee v jobu Broken links) a na `npm run test:smoke` po buildu.
+- Vzhled v PR dokládají screenshoty z `tests/e2e/visual.spec.ts`, které CI ukládá jako artefakt.

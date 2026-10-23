@@ -1,12 +1,13 @@
 ---
 import Logo from "./Logo.astro";
+import { messages } from "../locales";
 import { site } from "../site.config";
 import { withBase } from "../lib/paths";
 ---
 
 <footer class="site-footer" id="kontakt" data-testid="site-footer">
   <div class="wrap">
-    <h2 class="eyebrow">Kontakt</h2>
+    <h2 class="eyebrow">{messages.nav.contact}</h2>
     <div class="site-footer__grid">
       <div>
         <a class="logo" href={withBase()}><Logo onDark /></a>
@@ -31,9 +32,9 @@ import { withBase } from "../lib/paths";
       </div>
       <div>
         <p>
-          <a href={withBase("/#poptavka")}>Nezávazná poptávka</a><br />
-          <a href={withBase("/fotovoltaika/")}>Fotovoltaika</a><br />
-          <a href={withBase("/tepelna-cerpadla/")}>Tepelná čerpadla</a>
+          <a href={withBase("/#poptavka")}>{messages.cta.inquiry}</a><br />
+          <a href={withBase("/fotovoltaika/")}>{messages.nav.pv}</a><br />
+          <a href={withBase("/tepelna-cerpadla/")}>{messages.nav.hp}</a>
         </p>
       </div>
     </div>

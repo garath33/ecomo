@@ -6,7 +6,7 @@ Ostří je větev `main`. Do ní se nic nemerguje, dokud není změna otestovan�
 
 1. Malá větev z `main` (`cursor/<kratky-nazev>-35b8`).
 2. Jedna věc: jedna sekce, jeden bug, jeden obsahový balík.
-3. Lokálně: `npm run test:all` (lint, unit, build, Playwright).
+3. Lokálně: `npm run test:all` (lint, unit, build, smoke, validace HTML/CSS, Playwright).
 4. Push a **draft pull request** do `main`.
 5. CI na PR musí být zelené.
 6. GitHub Pages nasadí náhled z feature větve: https://garath33.github.io/ecomo/
@@ -20,12 +20,20 @@ Ostří je větev `main`. Do ní se nic nemerguje, dokud není změna otestovan�
 | `npm run lint` | ESLint |
 | `npm test` | unit testy obsahu a formuláře |
 | `npm run build` | TypeScript + produkční sestavení |
-| `npm run test:e2e` | Playwright: sekce, CTA, poptávka, podstránky, **responsivita**, **shoda náhledu s ostřím** |
+| `npm run test:smoke` | Po buildu: `index.html`, načtené CSS, interní odkazy |
+| `npm run test:validate` | Validita HTML (html-validate) a CSS (syntaktická) |
+| `npm run test:e2e` | Playwright: sekce, CTA, poptávka, podstránky, **responsivita**, **screenshoty**, **shoda náhledu s ostřím** |
+| `npm run test:i18n` | Jednorázově před vydáním: klíče dalších locale proti `cs.json` |
 
-Každá změna se testuje samostatně. V e2e vždy běží:
+Podrobnosti jsou v [docs/TESTING.md](docs/TESTING.md).
 
-- layout na 375 / 768 / 1024 / 1280 px bez vodorovného overflow (do 1100 px hamburger, na desktopu horní menu)
+Každá změna se testuje samostatně. Uprav test, který změna rozbije, a nepřidávej nové scénáře k částem, kterých se netýká. V e2e vždy běží:
+
+- layout na 320 / 768 / 1024 / 1440 px bez vodorovného overflow (do 1100 px hamburger, na desktopu horní menu)
 - stejné IČO, DIČ, sídlo, telefon, e-mail a web jako v `src/site.config.ts` (zdroj pravdy pro náhled i ostří)
+- jen primární čeština (`src/locales/cs.json` a české šablony)
+
+Rozbité odkazy v pull requestu hlídá job **Broken links** (Lychee, offline, proti sestavenému `dist/`). V editoru se odkazy neprocházejí ručně.
 
 Neslučujeme více nesouvisejících věcí v jednom PR.
 

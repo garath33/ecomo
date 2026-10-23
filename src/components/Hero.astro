@@ -1,4 +1,5 @@
 ---
+import { messages } from "../locales";
 import { site } from "../site.config";
 import { withBase } from "../lib/paths";
 ---
@@ -16,7 +17,7 @@ import { withBase } from "../lib/paths";
       vyplatí — a teprve potom stavíme.
     </p>
     <div class="hero__actions">
-      <a class="button" href={withBase("/#poptavka")}>Kontaktujte nás</a>
+      <a class="button" href={withBase("/#poptavka")}>{messages.cta.contactUs}</a>
     </div>
     <div class="hero__meta">
       <div>

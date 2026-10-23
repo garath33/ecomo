@@ -1,3 +1,5 @@
+import { messages } from "./locales";
+
 export const site = {
   name: "ecomo",
   legalName: "Ecomo s.r.o.",
@@ -58,19 +60,20 @@ export const site = {
     "Zakládáme si na osobním a lidském přístupu. Umíme vyjít vstříc potřebám na míru — od první schůzky až po předání díla.",
 } as const;
 
+/** Chrome copy lives in the primary locale file. Page prose stays in the Czech templates. */
 export const navigation = [
-  { href: "/#nabidka", label: "Co nabízíme" },
-  { href: "/fotovoltaika/", label: "Fotovoltaika" },
-  { href: "/tepelna-cerpadla/", label: "Tepelná čerpadla" },
-  { href: "/o-nas/", label: "O nás" },
-  { href: "/#kontakt", label: "Kontakt" },
+  { href: "/#nabidka", label: messages.nav.offer },
+  { href: "/fotovoltaika/", label: messages.nav.pv },
+  { href: "/tepelna-cerpadla/", label: messages.nav.hp },
+  { href: "/o-nas/", label: messages.nav.about },
+  { href: "/#kontakt", label: messages.nav.contact },
 ] as const;
 
 export const inquiryTopics = [
-  { value: "fve", label: "Instalace fotovoltaiky" },
-  { value: "tc", label: "Instalace tepelného čerpadla" },
-  { value: "both", label: "Fotovoltaika i tepelné čerpadlo" },
-  { value: "other", label: "Jiné / konzultace" },
+  { value: "fve", label: messages.inquiry.fve },
+  { value: "tc", label: messages.inquiry.tc },
+  { value: "both", label: messages.inquiry.both },
+  { value: "other", label: messages.inquiry.other },
 ] as const;
 
 export type InquiryTopic = (typeof inquiryTopics)[number]["value"];

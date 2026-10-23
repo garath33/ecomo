@@ -1,0 +1,25 @@
+{
+  "locale": "cs",
+  "primary": true,
+  "htmlLang": "cs",
+  "ogLocale": "cs_CZ",
+  "skipToContent": "Přeskočit na obsah",
+  "menu": "Menu",
+  "nav": {
+    "offer": "Co nabízíme",
+    "pv": "Fotovoltaika",
+    "hp": "Tepelná čerpadla",
+    "about": "O nás",
+    "contact": "Kontakt"
+  },
+  "cta": {
+    "inquiry": "Nezávazná poptávka",
+    "contactUs": "Kontaktujte nás"
+  },
+  "inquiry": {
+    "fve": "Instalace fotovoltaiky",
+    "tc": "Instalace tepelného čerpadla",
+    "both": "Fotovoltaika i tepelné čerpadlo",
+    "other": "Jiné / konzultace"
+  }
+}
