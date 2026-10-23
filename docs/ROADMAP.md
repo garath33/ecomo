@@ -44,7 +44,8 @@ Zásady, které platí pořád: ostří je `main`, obsah náhledu i ostří bere
 - Náhled z větve `cursor/**` nebo `feature/**` ukazuje pruh „Náhledové prostředí“. Nasazení z `main` pruh nemá.
 - Testy rozvržení na 375 / 768 / 1024 / 1280 px a kontrola, že na stránce jsou stejné firemní údaje jako v konfiguraci.
 - Double-check modelu před větším úkolem: `.cursor/rules/model-adequacy.mdc`.
-- Testy: smoke po buildu, validace HTML/CSS, layout na 320 / 768 / 1024 / 1440 px, vizuální regrese úvodu a Lychee v jobu Broken links. Průběžně se testuje jen `src/locales/cs.json`.
+- Testy: smoke po buildu, validace HTML/CSS, layout na 320 / 768 / 1024 / 1440 px, vizuální regrese úvodu a Lychee v jobu Broken links.
+- Jazyk: jen čeština (`src/locales/cs.json`). Další jazyk až na výslovnou žádost uživatele.
 
 ## Nástroje v tomto PR
 

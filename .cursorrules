@@ -10,7 +10,7 @@
 
 - Nikdy nenačítaj do kontextu celou historii gitu ani velké binární soubory.
 
-- Při vícejazyčných webech vyvíjej a testuj strukturu výhradně na originálním jazyku. Překlady odděluj do lokalizačních souborů (JSON) a mutace ověřuj až hromadně před finálním vydáním.
+- Ecomo je jen v češtině. Texty upravuj v `src/locales/cs.json`. Další jazyk nepřidávej, dokud o něj uživatel výslovně nepožádá. Do té doby nespouštěj kontrolu mutací a další `src/locales/*.json` nezakládej.
 
 - Kontrolu nefunkčních odkazů (broken links / 404) přenechej automatickému CI/CD pipeline (GitHub Actions - např. Lychee nebo htmlproofer).
 
@@ -42,6 +42,6 @@
 
 - Po dokončení vždy otevři pull request do `main`. Merge jen po explicitním schválení uživatele.
 
-- Před předložením ke schválení ověř celou finální verzi na primární češtině (lint, unit, build, smoke, e2e). Další jazykové mutace neotevírej v běžném PR. `npm run test:i18n` spusť až před vydáním.
+- Před předložením ke schválení ověř finální verzi v češtině (lint, unit, build, smoke, e2e). Jazykové mutace do kontroly nepatří, dokud uživatel další jazyk sám nenahlásí.
 
 - K PR přilož odkaz na náhled (https://garath33.github.io/ecomo/), výsledek CI a screenshoty z artifactu `preview-screenshots`. Bez těchto podkladů merge nenavrhuj.

@@ -21,7 +21,7 @@ Příklad: `feature/responsive-navigation`.
 5. Push a pull request do `main`.
 6. CI musí být zelené, včetně jobu Broken links. Job uloží screenshoty úvodu, fotovoltaiky, tepelných čerpadel a kontaktu jako artifact `preview-screenshots` a snímky vizuální regrese jako `visual-screenshots`.
 7. GitHub Pages nasadí náhled: https://garath33.github.io/ecomo/
-8. Průběžně se ověřuje jen primární čeština. `npm run test:i18n` patří až před vydáním, ne do každého PR.
+8. Web je jen v češtině. Další jazyk se nepřidává a `npm run test:i18n` se nespouští, dokud o něj uživatel výslovně nepožádá.
 9. Uživateli se předloží odkaz na PR, náhled, výsledek CI a screenshoty. Merge do `main` až po jeho schválení.
 10. Merge na `main` nasadí ostrou verzi stejné adresy, bez náhledového pruhu.
 
@@ -37,7 +37,7 @@ Příklad: `feature/responsive-navigation`.
 | `npm run test:regression` | Unit testy a funkční Playwright (`@regression`) |
 | `npm run test:e2e` | Playwright včetně regrese, responsivity, vizuální regrese a screenshotů pro PR |
 | `npm run test:visual` | Screenshotová regrese úvodu na 320 / 768 / 1024 / 1440 px |
-| `npm run test:i18n` | Před vydáním: klíče dalších locale proti `cs.json` |
+| `npm run test:i18n` | Až po žádosti o další jazyk: klíče locale proti `cs.json` |
 
 Podrobnosti jsou v [docs/TESTING.md](docs/TESTING.md).
 
@@ -45,7 +45,7 @@ Každá změna se testuje samostatně. Uprav test, který změna rozbije, a nep�
 
 - layout na 320 / 768 / 1024 / 1440 px bez vodorovného overflow (do 1100 px hamburger, na desktopu horní menu)
 - stejné IČO, DIČ, sídlo, telefon, e-mail a web jako v `src/site.config.ts` (zdroj pravdy pro náhled i ostří)
-- jen primární čeština (`src/locales/cs.json` a české šablony)
+- jen čeština (`src/locales/cs.json` a české šablony); další jazyk jen na výslovnou žádost
 
 Rozbité odkazy v pull requestu hlídá job **Broken links** (Lychee, offline, proti sestavenému `dist/`). V editoru se odkazy neprocházejí ručně.
 

@@ -23,14 +23,14 @@ Externí adresy, `mailto:` a `tel:` smoke přeskakuje. Playwright smoke navíc o
 - HTML v `dist/` prochází html-validate (sada recommended, jen chyby)
 - CSS v `src/` a v `dist/` musí jít parsovat
 
-## Primární jazyk a další mutace
+## Jazyk
 
-Vývoj, úpravy layoutu a průběžné testy běží jen na originálu.
+Web je jen v češtině. Další jazyk se nepřidává, dokud o něj uživatel výslovně nepožádá.
 
 - Všechny texty webu jsou v `src/locales/cs.json`. Šablony jen skládají tyto texty s firemními údaji ze `src/site.config.ts`.
-- `src/locales/index.ts` načítá jen `cs.json`. Další jazyk je soubor se stejnými klíči a do běžného bundlu se nepřidává.
-- Průběžné testy v pull requestu renderují jen češtinu.
-- `npm run test:i18n` porovná klíče všech locale souborů. Workflow `Locale release check` se spouští ručně, nebo při vydání release, a tehdy znovu pustí vizuální sadu primárního jazyka.
+- `src/locales/index.ts` načítá jen `cs.json`.
+- Testy v pull requestu renderují jen češtinu.
+- `npm run test:i18n` a workflow Locale release check se nespouští, dokud v `src/locales/` není další jazyk, o který uživatel požádal.
 
 ## Údržba testů
 
