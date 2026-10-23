@@ -32,7 +32,7 @@ tests/
 
 `BaseLayout` obalí každou routu. Do `<head>` dává titul, popis, geo meta, canonical, favicon, Open Graph, Twitter card a `JsonLd`. V `<body>` je odkaz „Přeskočit na obsah“, `PreviewBanner`, `Header`, `<main id="obsah">` a `Footer`. Skript v layoutu po načtení a při `hashchange` scrolluje na kotvu.
 
-`PUBLIC_SITE_ENV` se do buildu vkládá ve `vite.define` v `astro.config.mjs`. Workflow Pages nastaví `production` jen pro `main`, jinak `preview`. `isPreview()` v `src/lib/paths.ts` je pravda, když hodnota není `production`. Lokální `npm run dev` proto pruh ukazuje.
+`PUBLIC_SITE_ENV` se do buildu vkládá ve `vite.define` v `astro.config.mjs`. `isPreview()` v `src/lib/paths.ts` je pravda, když hodnota není `production`, a tehdy `BaseLayout` vloží náhledovou lištu a `noindex`. Lokální `npm run dev` proto pruh ukazuje. Workflow Pages na `main` staví jen ostří (`PUBLIC_BASE_PATH=/ecomo`). Workflow z `feature/**` a `cursor/**` přidá náhled do `/ecomo/preview/` a ostří vedle něj znovu sestaví z `origin/main`.
 
 `site` a `base` v `astro.config.mjs` berou `PUBLIC_SITE_URL` (výchozí `https://garath33.github.io`) a `PUBLIC_BASE_PATH` (výchozí `/ecomo`). Odkazy v komponentách jdou přes `withBase()`, aby fungovaly pod touto cestou. `trailingSlash` je `always`, formát buildu je `directory`.
 
@@ -103,4 +103,4 @@ Fotografie v `public/images/`: `hero-fv-panels.jpg`, `nabidka-fv.jpg`, `nabidka-
 
 E2E soubory: `home.spec.ts`, `about.spec.ts`, `inquiry.spec.ts`, `responsive.spec.ts`, `parity.spec.ts`. Projekty Playwright jsou `chromium` a `mobile` (Pixel 7). `parity` hlídá, že na stránce jsou hodnoty z `productionFacts`.
 
-`.github/workflows/ci.yml` pouští lint, unit, build a e2e na pull requestu a na push do `main` a `cursor/**`. `.github/workflows/pages.yml` sestaví `dist` a nasadí GitHub Pages. Prostředí se jmenuje `production` na `main` a `preview` na ostatních větvích z triggeru. Skupina `pages` má `cancel-in-progress`, takže v jednu chvíli běží jedno nasazení.
+`.github/workflows/ci.yml` pouští lint, unit, build a e2e na pull requestu a na push do `main` a `cursor/**`. `.github/workflows/pages.yml` nasadí GitHub Pages. Prostředí se jmenuje `production` na `main` (https://garath33.github.io/ecomo/) a `preview` na pracovní větvi (https://garath33.github.io/ecomo/preview/). Nasazení se řadí za sebe, aby se ostří a náhled nepřepsaly v půlce.

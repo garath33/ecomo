@@ -10,7 +10,7 @@ on:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions:
   contents: read
@@ -27,11 +27,19 @@ jobs:
           node-version-file: ".nvmrc"
           cache: npm
       - run: npm ci
-      - run: npm run build
+      - name: Build production site
+        if: github.ref == 'refs/heads/main'
+        run: npm run build
         env:
-          PUBLIC_SITE_ENV: ${{ github.ref_name == 'main' && 'production' || 'preview' }}
+          PUBLIC_SITE_ENV: production
           PUBLIC_SITE_URL: https://garath33.github.io
           PUBLIC_BASE_PATH: /ecomo
+      - name: Assert production has no preview bar
+        if: github.ref == 'refs/heads/main'
+        run: node scripts/assert-preview-banner.mjs dist production
+      - name: Build production plus this branch preview
+        if: github.ref != 'refs/heads/main'
+        run: bash scripts/assemble-pages.sh
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
@@ -41,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.ref_name == 'main' && 'production' || 'preview' }}
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ github.ref_name == 'main' && 'https://garath33.github.io/ecomo/' || 'https://garath33.github.io/ecomo/preview/' }}
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4

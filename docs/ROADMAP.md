@@ -18,6 +18,7 @@ Zásady, které platí pořád: ostří je `main`, obsah náhledu i ostří bere
 | Formulář poptávky (validace + mailto) | hotovo |
 | Lokální SEO (meta, Open Graph, JSON-LD, sitemap, robots) | hotovo |
 | Náhledový pruh mimo produkci | hotovo |
+| Samostatná adresa náhledu vedle ostří | hotovo |
 | Responsivní menu a testy shody náhledu s ostřím | hotovo |
 | Tokenová optimalizace (`.cursorignore`, `.cursorrules`) a git workflow | v tomto PR |
 | Hotové zakázky na webu | komponenta je v repu, na stránkách se nevykresluje |
@@ -41,7 +42,7 @@ Zásady, které platí pořád: ostří je `main`, obsah náhledu i ostří bere
 - Firemní údaje (IČO, DIČ, sídlo, telefon, e-mail, web, role) z jednoho místa, `src/site.config.ts`.
 - Poptávka: kontrola jména, českého telefonu, e-mailu, tématu a zprávy, skryté pole proti robotům, odeslání přes `mailto` na `jiri.uldrich@ecomo.cz`.
 - SEO: titulky a popisy stránek, canonical, Open Graph, Twitter card, JSON-LD `LocalBusiness`, `sitemap-index.xml`, `robots.txt`.
-- Náhled z větve `cursor/**` nebo `feature/**` ukazuje pruh „Náhledové prostředí“. Nasazení z `main` pruh nemá.
+- Náhled z větve `cursor/**` nebo `feature/**` je na `/preview/` a ukazuje žluto-černý pruh „Náhledové prostředí“. Ostří z `main` pruh nemá a pracovní větev ho nepřepisuje.
 - Testy rozvržení na 375 / 768 / 1024 / 1280 px a kontrola, že na stránce jsou stejné firemní údaje jako v konfiguraci.
 - Double-check modelu před větším úkolem: `.cursor/rules/model-adequacy.mdc`.
 - Testy: smoke po buildu, validace HTML/CSS, layout na 320 / 768 / 1024 / 1440 px, vizuální regrese úvodu a Lychee v jobu Broken links.

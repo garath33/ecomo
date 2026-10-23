@@ -5,6 +5,10 @@ export function withBase(path = "/"): string {
   return `${normalizedBase}${normalizedPath}`;
 }
 
+export function isPreviewEnv(siteEnv: string | undefined): boolean {
+  return siteEnv !== "production";
+}
+
 export function isPreview(): boolean {
-  return import.meta.env.PUBLIC_SITE_ENV !== "production";
+  return isPreviewEnv(import.meta.env.PUBLIC_SITE_ENV);
 }

@@ -27,6 +27,11 @@ export default defineConfig({
     url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
+    env: {
+      PUBLIC_SITE_ENV: "preview",
+      PUBLIC_SITE_URL: "https://garath33.github.io",
+      PUBLIC_BASE_PATH: process.env.PUBLIC_BASE_PATH ?? "/ecomo",
+    },
   },
   projects: [
     {
