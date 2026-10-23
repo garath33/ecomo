@@ -36,5 +36,6 @@ Cíl: prezentační web malé firmy, která nabízí fotovoltaiku a tepelná če
 - [ ] Další fotky (hlavně tepelná čerpadla) a popisy zakázek se souhlasem klienta
 - [ ] Vlastní SVG wordmark, pokud designér dodá čistý vektor
 - [ ] Napojení formuláře bez mailto
-- [ ] Vlastní doména ecomo.cz místo `garath33.github.io/ecomo`
 - [ ] GDPR text podle způsobu odesílání poptávek
+
+Odložené kroky po vlastní doméně a Cursor token pravidla: viz `docs/ROADMAP.md`.
