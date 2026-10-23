@@ -17,7 +17,7 @@ npm install
 npm run dev
 ```
 
-Testy, které má projít každá změna:
+Testy, které má projít každá změna (postup je v [docs/TESTING.md](docs/TESTING.md)):
 
 ```bash
 npm run test:all

@@ -1,35 +1,35 @@
 ---
+import { messages } from "../locales";
 import { site } from "../site.config";
 import { withBase } from "../lib/paths";
 ---
 
 <section class="hero" data-testid="hero">
   <div class="hero__media">
-    <img src={withBase("images/hero-fv-panels.jpg")} alt="Detail černých fotovoltaických panelů" />
+    <img src={withBase("images/hero-fv-panels.jpg")} alt={messages.hero.imageAlt} />
   </div>
   <div class="hero__shade"></div>
   <div class="wrap">
-    <p class="eyebrow">Fotovoltaika a tepelná čerpadla</p>
-    <h1>Smysluplné elektrárny na míru, s rozumnou cenou</h1>
+    <p class="eyebrow">{messages.hero.eyebrow}</p>
+    <h1>{messages.hero.title}</h1>
     <p class="lede">
-      {site.approach} Nejdřív si poslechneme, co dům a rodina potřebují, spočítáme, jestli se to
-      vyplatí — a teprve potom stavíme.
+      {site.approach} {messages.hero.afterApproach}
     </p>
     <div class="hero__actions">
-      <a class="button" href={withBase("/#poptavka")}>Kontaktujte nás</a>
+      <a class="button" href={withBase("/#poptavka")}>{messages.cta.contactUs}</a>
     </div>
     <div class="hero__meta">
       <div>
-        <strong>Na klíč</strong>
-        návrh, dotace, montáž, připojení
+        <strong>{messages.hero.meta[0].title}</strong>
+        {messages.hero.meta[0].text}
       </div>
       <div>
-        <strong>Osobně</strong>
-        jednáte s {site.person}
+        <strong>{messages.hero.meta[1].title}</strong>
+        {messages.hero.meta[1].text} {site.person}
       </div>
       <div>
-        <strong>Dva obory</strong>
-        FVE i tepelná čerpadla
+        <strong>{messages.hero.meta[2].title}</strong>
+        {messages.hero.meta[2].text}
       </div>
     </div>
   </div>

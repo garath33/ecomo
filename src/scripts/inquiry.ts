@@ -1,3 +1,4 @@
+import { messages } from "../locales";
 import { validateInquiry, buildMailto, readInquiryForm, type InquiryErrors } from "../lib/inquiry";
 import { site } from "../site.config";
 
@@ -37,12 +38,12 @@ export function initInquiryForm(): void {
     form.dataset.lastMailto = mailto;
     status.hidden = false;
     status.replaceChildren();
-    status.append("Poptávka je připravená. ");
+    status.append(messages.form.ready);
     const mailLink = document.createElement("a");
     mailLink.href = mailto;
-    mailLink.textContent = "Otevřít e-mailový klient";
+    mailLink.textContent = messages.form.openMail;
     status.append(mailLink);
-    status.append(" nebo zavolejte na 604 251 324.");
+    status.append(`${messages.form.callPrefix}${site.phoneShort}${messages.form.callSuffix}`);
   });
 }
 

@@ -1,5 +1,6 @@
 ---
 import Logo from "./Logo.astro";
+import { messages } from "../locales";
 import { navigation } from "../site.config";
 import { withBase } from "../lib/paths";
 
@@ -12,7 +13,7 @@ const currentPath = Astro.url.pathname;
       <Logo />
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="hlavni-menu" data-nav-toggle>
-      <span class="sr-only">Menu</span>
+      <span class="sr-only">{messages.menu}</span>
       <svg width="18" height="14" viewBox="0 0 18 14" aria-hidden="true">
         <path d="M0 1h18M0 7h18M0 13h18" stroke="currentColor" stroke-width="2"></path>
       </svg>
@@ -28,7 +29,7 @@ const currentPath = Astro.url.pathname;
           </a>
         ))
       }
-      <a class="button inverse" href={withBase("/#poptavka")}>Nezávazná poptávka</a>
+      <a class="button inverse" href={withBase("/#poptavka")}>{messages.cta.inquiry}</a>
     </nav>
   </div>
 </header>
