@@ -6,7 +6,7 @@ import PreviewBanner from "../components/PreviewBanner.astro";
 import JsonLd from "../components/JsonLd.astro";
 import { messages } from "../locales";
 import { site } from "../site.config";
-import { withBase } from "../lib/paths";
+import { isPreview, withBase } from "../lib/paths";
 
 interface Props {
   title?: string;
@@ -45,6 +45,7 @@ const ogImage = new URL(withBase("images/hero-fv-panels.jpg"), Astro.site).href;
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    {isPreview() && <meta name="robots" content="noindex, nofollow" />}
     <JsonLd pageUrl={canonical.href} image={ogImage} />
   </head>
   <body>

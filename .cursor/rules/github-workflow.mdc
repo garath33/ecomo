@@ -1,0 +1,13 @@
+---
+description: Závazný GitHub workflow, náhledová lišta a výstup uživateli
+alwaysApply: true
+---
+
+# Prostředí a GitHub
+
+- Kód, styly, skripty i struktura vznikají v souborech repozitáře `garath33/ecomo`. Do chatu nepatří hotové ukázky k odsouhlasení.
+- Ostří je větev `main`. Na `main` se nezapisuje přímo.
+- Pracovní větev člověka je `feature/<nazev>`. Cloud agent používá `cursor/<nazev>-<id>`, protože platforma jiný prefix nepustí. Význam je stejný jako `feature/`.
+- Po dokončení: commit (Conventional Commits), `git push -u origin <větev>` a pull request do `main`. Merge až po schválení uživatele.
+- Náhled pracovní větve je https://garath33.github.io/ecomo/preview/ a má žluto-černou lištu. Ostří https://garath33.github.io/ecomo/ lištu nemá. Lišta je v HTML jen když `PUBLIC_SITE_ENV` není `production`.
+- Závěrečná zpráva uživateli má jen stručné shrnutí, odkaz na náhled a odkaz na pull request.

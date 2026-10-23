@@ -44,4 +44,5 @@
 
 - Před předložením ke schválení ověř finální verzi v češtině (lint, unit, build, smoke, e2e). Jazykové mutace do kontroly nepatří, dokud uživatel další jazyk sám nenahlásí.
 
-- K PR přilož odkaz na náhled (https://garath33.github.io/ecomo/), výsledek CI a screenshoty z artifactu `preview-screenshots`. Bez těchto podkladů merge nenavrhuj.
+- K PR přilož odkaz na náhled (https://garath33.github.io/ecomo/preview/), výsledek CI a screenshoty z artifactu `preview-screenshots`. Bez těchto podkladů merge nenavrhuj. Ostří https://garath33.github.io/ecomo/ náhledovou lištu nemá.
+- Do chatu nepatří hotové kódy k odsouhlasení. Závěr práce je stručné shrnutí, odkaz na náhled a odkaz na pull request.

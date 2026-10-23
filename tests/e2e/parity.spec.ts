@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { messages } from "../../src/locales";
 import { productionFacts, site } from "../../src/site.config";
 
 test.describe("preview matches production content @regression", () => {
@@ -48,9 +49,8 @@ test.describe("preview matches production content @regression", () => {
   test("preview banner is extra chrome and does not replace production copy", async ({ page }) => {
     await page.goto("./");
     const banners = page.getByTestId("preview-banner");
-    if (await banners.count()) {
-      await expect(banners).toHaveCount(1);
-    }
+    await expect(banners).toHaveCount(1);
+    await expect(banners).toHaveText(messages.preview);
     await expect(page.getByTestId("hero")).toContainText("Smysluplné elektrárny");
     await expect(page.getByTestId("hero")).toContainText(site.approach);
     await expect(page.getByTestId("offer")).toContainText("Instalace fotovoltaiky");
