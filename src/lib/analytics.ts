@@ -13,12 +13,11 @@ export interface AnalyticsEnv {
 }
 
 /**
- * Bez cookies. Na ostří se zapne první vyplněná varianta v pořadí
- * Cloudflare → Plausible → Umami. Náhled se neměří.
+ * Bez cookies. Zapne se první vyplněná varianta v pořadí
+ * Cloudflare → Plausible → Umami. Stejná adresa slouží náhledu i ostří,
+ * takže měření není vázané na větev.
  */
 export function resolveAnalytics(env: AnalyticsEnv): Analytics {
-  if (env.siteEnv !== "production") return { provider: "none" };
-
   const cfToken = env.cfToken?.trim();
   const plausibleDomain = env.plausibleDomain?.trim();
   const umamiSrc = env.umamiSrc?.trim();

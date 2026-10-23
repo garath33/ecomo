@@ -1,11 +1,11 @@
 import type { APIRoute } from "astro";
 import { withBase } from "../lib/paths";
-import { isIndexable, robotsTxt } from "../lib/robots";
+import { robotsTxt } from "../lib/robots";
 
 export const GET: APIRoute = ({ site }) => {
   const sitemap = new URL(withBase("sitemap-index.xml"), site ?? "https://www.ecomo.cz");
   const body = robotsTxt({
-    indexable: isIndexable(import.meta.env.PUBLIC_SITE_ENV),
+    indexable: true,
     sitemapUrl: sitemap.href,
   });
   return new Response(body, {

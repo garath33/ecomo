@@ -9,7 +9,7 @@ import sansationLight from "../fonts/Sansation-Light.woff2?url";
 import sansationBold from "../fonts/Sansation-Bold.woff2?url";
 import { site } from "../site.config";
 import { withBase } from "../lib/paths";
-import { isIndexable, robotsMeta } from "../lib/robots";
+import { robotsMeta } from "../lib/robots";
 import { contentSecurityPolicy } from "../lib/security";
 import { resolveAnalytics } from "../lib/analytics";
 
@@ -30,8 +30,7 @@ const {
 } = Astro.props;
 
 const pageTitle = title ?? site.seo.homeTitle;
-const indexable = isIndexable(import.meta.env.PUBLIC_SITE_ENV);
-const robotsContent = robotsMeta(indexable, robots);
+const robotsContent = robotsMeta(robots);
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(withBase(image), Astro.site).href;
 const analytics = resolveAnalytics({

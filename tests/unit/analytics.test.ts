@@ -2,15 +2,9 @@ import { describe, expect, it } from "vitest";
 import { resolveAnalytics } from "../../src/lib/analytics";
 
 describe("cookie-free analytics", () => {
-  it("stays off outside production and when nothing is configured", () => {
-    expect(
-      resolveAnalytics({
-        siteEnv: "preview",
-        cfToken: "token",
-        plausibleDomain: "ecomo.cz",
-      }),
-    ).toEqual({ provider: "none" });
+  it("stays off when nothing is configured", () => {
     expect(resolveAnalytics({ siteEnv: "production" })).toEqual({ provider: "none" });
+    expect(resolveAnalytics({})).toEqual({ provider: "none" });
   });
 
   it("prefers Cloudflare, then Plausible, then Umami", () => {

@@ -1,33 +1,27 @@
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { isIndexable, robotsMeta, robotsTxt } from "../../src/lib/robots";
+import { robotsMeta, robotsTxt } from "../../src/lib/robots";
 import { contentSecurityPolicy, hostingHeadersFile } from "../../src/lib/security";
 
 const root = path.resolve(import.meta.dirname, "../..");
 
 describe("robots.txt", () => {
-  it("publishes the sitemap only on the production build", () => {
-    expect(isIndexable("production")).toBe(true);
-    expect(isIndexable("preview")).toBe(false);
-    expect(isIndexable("development")).toBe(false);
-
+  it("publishes the sitemap for the public site", () => {
     const production = robotsTxt({
       indexable: true,
       sitemapUrl: "https://garath33.github.io/ecomo/sitemap-index.xml",
     });
     expect(production).toContain("Allow: /");
     expect(production).toContain("Sitemap: https://garath33.github.io/ecomo/sitemap-index.xml");
-
     expect(robotsTxt({ indexable: false, sitemapUrl: "https://example.test/sitemap.xml" })).toBe(
       "User-agent: *\nDisallow: /\n",
     );
   });
 
-  it("keeps preview pages out of the index and lets production opt out per page", () => {
-    expect(robotsMeta(false)).toBe("noindex, nofollow");
-    expect(robotsMeta(true)).toBe("index, follow");
-    expect(robotsMeta(true, "noindex, follow")).toBe("noindex, follow");
+  it("indexes pages and lets a missing page opt out", () => {
+    expect(robotsMeta()).toBe("index, follow");
+    expect(robotsMeta("noindex, follow")).toBe("noindex, follow");
   });
 });
 

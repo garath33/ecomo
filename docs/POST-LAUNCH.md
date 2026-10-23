@@ -1,6 +1,6 @@
 # Po spuštění
 
-Platí až ve chvíli, kdy je změna sloučená do `main` a na adrese webu běží ostrá verze (bez pruhu „Náhledové prostředí“). Náhled se do vyhledávání neposílá: `robots.txt` ho zakazuje a stránky mají `noindex`.
+Sitemap a `robots.txt` jsou na veřejné adrese hned. Google Search Console je jediný krok, který nejde udělat z repozitáře, protože ověření webu vyžaduje přihlášení do Googlu. Až změna bude v `main` a zmizí pruh „Náhledové prostředí“, projděte postup níž.
 
 HTTPS vynucuje hosting. GitHub Pages přesměruje `http://` na `https://`. U vlastní domény ještě v repozitáři zapněte **Settings → Pages → Enforce HTTPS**.
 
@@ -20,7 +20,7 @@ Sitemap generuje build (`@astrojs/sitemap`) a odkazuje na ni `robots.txt`. Strá
 
 ## Analytika bez cookies
 
-Měření se do stránky vloží jen na ostrém buildu (`PUBLIC_SITE_ENV=production`) a jen když je vyplněná proměnná v GitHubu: **Settings → Secrets and variables → Actions → Variables**. Náhled se neměří. Vyplňte jednu variantu.
+Měření se vloží do každého buildu, jakmile je vyplněná jedna z proměnných níž. Cloudflare účet připojený k tomuto prostředí umí číst existující weby, ale vytvoření nového Web Analytics webu vrací 403 (chybí oprávnění Account Settings Write), takže beacon nejde vystavit automaticky.
 
 Doporučená je **Cloudflare Web Analytics**. Je zdarma, bez cookies a jeden účet utáhne víc webů.
 
@@ -35,4 +35,4 @@ Doporučená je **Cloudflare Web Analytics**. Je zdarma, bez cookies a jeden ú�
 
 ## Bezpečnostní hlavičky
 
-GitHub Pages umí HTTPS, ale neumí vlastní HTTP hlavičky. Proto je CSP i `Referrer-Policy` ve stránce jako meta tag. `script-src` povoluje i inline skripty sestavení (menu, formulář); stránka nevykresluje cizí HTML. Soubor `public/_headers` (`Content-Security-Policy`, `X-Content-Type-Options: nosniff` a další) začne platit, až se stejný build nasadí na Cloudflare Pages nebo Netlify, případně když před GitHub Pages postavíte Cloudflare proxy a hlavičky nastavíte tam.
+GitHub Pages vynucuje HTTPS, ale neumí vlastní HTTP hlavičky. CSP a `Referrer-Policy` jsou proto i v HTML. Stejný build je nasazený na Cloudflare Pages, kde `public/_headers` platí doopravdy: https://ecomo.pages.dev/ecomo/ vrací `Content-Security-Policy`, `X-Content-Type-Options: nosniff`, `X-Frame-Options` a HSTS. Kanonická adresa v HTML pořád ukazuje na GitHub Pages, protože tam CI nasazuje každou změnu.

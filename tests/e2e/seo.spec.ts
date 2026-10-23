@@ -34,6 +34,7 @@ test.describe("seo basics", () => {
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /^https:\/\//);
       await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
       await expect(page.locator("img:not([alt]), img[alt='']")).toHaveCount(0);
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "index, follow");
       await expect(page.locator('meta[http-equiv="Content-Security-Policy"]')).toHaveAttribute(
         "content",
         /default-src 'self'/,
@@ -59,7 +60,9 @@ test.describe("seo basics", () => {
   test("serves robots.txt and a sitemap without the 404 page", async ({ page }) => {
     const robots = await page.request.get("./robots.txt");
     expect(robots.ok()).toBeTruthy();
-    expect(await robots.text()).toContain("Disallow: /");
+    const robotsBody = await robots.text();
+    expect(robotsBody).toContain("Allow: /");
+    expect(robotsBody).toContain("sitemap-index.xml");
 
     const sitemap = await page.request.get("./sitemap-index.xml");
     expect(sitemap.ok()).toBeTruthy();
