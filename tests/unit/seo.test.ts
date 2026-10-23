@@ -41,4 +41,28 @@ describe("maps and SEO copy stay in one config", () => {
     expect(site.seo.aboutTitle).toMatch(/O nás/);
     expect(site.seo.aboutDescription).toMatch(/Jiří Uldrich/);
   });
+
+  it("gives every page a unique title and description", () => {
+    const titles = [
+      site.seo.homeTitle,
+      site.seo.fotovoltaikaTitle,
+      site.seo.tepelnaTitle,
+      site.seo.aboutTitle,
+      site.seo.notFoundTitle,
+    ];
+    const descriptions = [
+      site.seo.homeDescription,
+      site.seo.fotovoltaikaDescription,
+      site.seo.tepelnaDescription,
+      site.seo.aboutDescription,
+      site.seo.notFoundDescription,
+    ];
+
+    expect(new Set(titles).size).toBe(titles.length);
+    expect(new Set(descriptions).size).toBe(descriptions.length);
+    for (const description of descriptions) {
+      expect(description.length).toBeGreaterThan(50);
+      expect(description.length).toBeLessThanOrEqual(170);
+    }
+  });
 });

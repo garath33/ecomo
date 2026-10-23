@@ -1,0 +1,35 @@
+---
+import { resolveAnalytics } from "../lib/analytics";
+
+const analytics = resolveAnalytics({
+  siteEnv: import.meta.env.PUBLIC_SITE_ENV,
+  cfToken: import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN,
+  plausibleDomain: import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN,
+  umamiSrc: import.meta.env.PUBLIC_UMAMI_SRC,
+  umamiWebsiteId: import.meta.env.PUBLIC_UMAMI_WEBSITE_ID,
+});
+
+const beacon =
+  analytics.provider === "cloudflare" ? JSON.stringify({ token: analytics.token }) : "";
+---
+
+{
+  analytics.provider === "cloudflare" && (
+    <script
+      is:inline
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon={beacon}
+    />
+  )
+}
+{
+  analytics.provider === "plausible" && (
+    <script is:inline defer data-domain={analytics.domain} src="https://plausible.io/js/script.js" />
+  )
+}
+{
+  analytics.provider === "umami" && (
+    <script is:inline defer src={analytics.src} data-website-id={analytics.websiteId} />
+  )
+}

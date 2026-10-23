@@ -30,6 +30,10 @@ Cíl: prezentační web malé firmy, která nabízí fotovoltaiku a tepelná če
 - [x] Kontakty z ecomo.cz a vizitky (IČO, DIČ, sídlo, web, role)
 - [x] Hotové zakázky s dodanými fotografiemi
 - [x] Testy responsivity a shody náhled vs. ostří
+- [x] SEO: unikátní title, description, Open Graph, jeden h1, alt texty
+- [x] Výkon: lokální Sansation, lazy loading, WebP/AVIF
+- [x] robots.txt, sitemap a bezpečnostní hlavičky
+- [x] Analytika bez cookies (Cloudflare / Plausible / Umami, zapíná se proměnnou)
 
 ### Další malé PR
 
@@ -38,3 +42,4 @@ Cíl: prezentační web malé firmy, která nabízí fotovoltaiku a tepelná če
 - [ ] Napojení formuláře bez mailto
 - [ ] Vlastní doména ecomo.cz místo `garath33.github.io/ecomo`
 - [ ] GDPR text podle způsobu odesílání poptávek
+- [ ] Po merge do `main`: registrace `sitemap.xml` v Google Search Console — postup v [docs/POST-LAUNCH.md](POST-LAUNCH.md)

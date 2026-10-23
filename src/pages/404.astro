@@ -4,7 +4,11 @@ import { site } from "../site.config";
 import { withBase } from "../lib/paths";
 ---
 
-<BaseLayout title={`Stránka nenalezena | ${site.legalName}`}>
+<BaseLayout
+  title={site.seo.notFoundTitle}
+  description={site.seo.notFoundDescription}
+  robots="noindex, follow"
+>
   <section class="section">
     <div class="wrap">
       <h1>Tady nic není</h1>

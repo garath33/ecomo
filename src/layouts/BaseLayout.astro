@@ -4,18 +4,55 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import PreviewBanner from "../components/PreviewBanner.astro";
 import JsonLd from "../components/JsonLd.astro";
+import Analytics from "../components/Analytics.astro";
+import sansationLight from "../fonts/Sansation-Light.woff2?url";
+import sansationBold from "../fonts/Sansation-Bold.woff2?url";
 import { site } from "../site.config";
 import { withBase } from "../lib/paths";
+import { isIndexable, robotsMeta } from "../lib/robots";
+import { contentSecurityPolicy } from "../lib/security";
+import { resolveAnalytics } from "../lib/analytics";
 
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  imageAlt?: string;
+  robots?: string;
 }
 
-const { title, description = site.seo.homeDescription } = Astro.props;
+const {
+  title,
+  description = site.seo.homeDescription,
+  image = "images/hero-fv-panels.jpg",
+  imageAlt = "Detail černých fotovoltaických panelů",
+  robots,
+} = Astro.props;
+
 const pageTitle = title ?? site.seo.homeTitle;
+const indexable = isIndexable(import.meta.env.PUBLIC_SITE_ENV);
+const robotsContent = robotsMeta(indexable, robots);
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const ogImage = new URL(withBase("images/hero-fv-panels.jpg"), Astro.site).href;
+const ogImage = new URL(withBase(image), Astro.site).href;
+const analytics = resolveAnalytics({
+  siteEnv: import.meta.env.PUBLIC_SITE_ENV,
+  cfToken: import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN,
+  plausibleDomain: import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN,
+  umamiSrc: import.meta.env.PUBLIC_UMAMI_SRC,
+  umamiWebsiteId: import.meta.env.PUBLIC_UMAMI_WEBSITE_ID,
+});
+
+let csp = contentSecurityPolicy("meta");
+if (analytics.provider === "umami") {
+  try {
+    const origin = new URL(analytics.src).origin;
+    csp = csp
+      .replace("script-src 'self'", `script-src 'self' ${origin}`)
+      .replace("connect-src 'self'", `connect-src 'self' ${origin}`);
+  } catch {
+    // Neplatná adresa skriptu se do CSP nepřidá.
+  }
+}
 ---
 
 <!doctype html>
@@ -23,8 +60,13 @@ const ogImage = new URL(withBase("images/hero-fv-panels.jpg"), Astro.site).href;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content={csp} />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="preload" href={sansationLight} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={sansationBold} as="font" type="font/woff2" crossorigin />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content={robotsContent} />
     <meta name="author" content={site.legalName} />
     <meta name="geo.region" content="CZ-ST" />
     <meta name="geo.placename" content={`${site.address.line2}, ${site.address.city}`} />
@@ -38,13 +80,18 @@ const ogImage = new URL(withBase("images/hero-fv-panels.jpg"), Astro.site).href;
     <meta property="og:locale" content="cs_CZ" />
     <meta property="og:url" content={canonical.href} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:alt" content="Černé fotovoltaické panely ecomo" />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="720" />
     <meta property="og:site_name" content={site.legalName} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
     <JsonLd pageUrl={canonical.href} image={ogImage} />
+    <Analytics />
   </head>
   <body>
     <a class="skip-link" href="#obsah">Přeskočit na obsah</a>

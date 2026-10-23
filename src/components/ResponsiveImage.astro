@@ -1,0 +1,30 @@
+---
+import { withBase } from "../lib/paths";
+
+interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  loading?: "eager" | "lazy";
+  fetchpriority?: "high" | "low" | "auto";
+}
+
+const { src, alt, width, height, loading = "lazy", fetchpriority = "auto" } = Astro.props;
+const stem = src.replace(/\.(jpe?g|png|webp|avif)$/i, "");
+const fallback = /\.(jpe?g|png)$/i.test(src) ? src : `${stem}.jpg`;
+---
+
+<picture>
+  <source srcset={withBase(`${stem}.avif`)} type="image/avif" />
+  <source srcset={withBase(`${stem}.webp`)} type="image/webp" />
+  <img
+    src={withBase(fallback)}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    decoding="async"
+    fetchpriority={loading === "eager" ? fetchpriority : undefined}
+  />
+</picture>

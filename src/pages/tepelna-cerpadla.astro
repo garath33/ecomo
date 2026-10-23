@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Contact from "../components/Contact.astro";
+import ResponsiveImage from "../components/ResponsiveImage.astro";
 import { site } from "../site.config";
 import { withBase } from "../lib/paths";
 ---
@@ -8,12 +9,18 @@ import { withBase } from "../lib/paths";
 <BaseLayout
   title={site.seo.tepelnaTitle}
   description={site.seo.tepelnaDescription}
+  image="images/nabidka-tc.jpg"
+  imageAlt="Venkovní jednotka tepelného čerpadla u domu"
 >
   <section class="hero page hero--open">
     <div class="hero__media">
-      <img
-        src={withBase("images/nabidka-tc.jpg")}
+      <ResponsiveImage
+        src="images/nabidka-tc.jpg"
         alt="Venkovní jednotka tepelného čerpadla u domu"
+        width={1280}
+        height={720}
+        loading="eager"
+        fetchpriority="high"
       />
     </div>
     <div class="hero__shade"></div>

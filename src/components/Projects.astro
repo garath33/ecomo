@@ -1,6 +1,6 @@
 ---
 import { projects } from "../site.config";
-import { withBase } from "../lib/paths";
+import ResponsiveImage from "./ResponsiveImage.astro";
 ---
 
 <section class="section alt" id="zakazky" data-testid="projects">
@@ -16,7 +16,12 @@ import { withBase } from "../lib/paths";
         projects.map((project) => (
           <article class="card">
             <div class="media">
-              <img src={withBase(project.image)} alt={project.alt} />
+              <ResponsiveImage
+                src={project.image}
+                alt={project.alt}
+                width={project.width}
+                height={project.height}
+              />
             </div>
             <h3>{project.title}</h3>
             <p class="muted">{project.summary}</p>

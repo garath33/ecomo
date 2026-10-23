@@ -3,13 +3,22 @@ import { withBase } from "../lib/paths";
 
 interface Props {
   onDark?: boolean;
+  loading?: "eager" | "lazy";
 }
 
-const { onDark = false } = Astro.props;
+const { onDark = false, loading = "eager" } = Astro.props;
 const src = onDark ? "brand/ecomo-wordmark-white.png" : "brand/ecomo-wordmark.png";
 ---
 
-<img class="logo-mark" src={withBase(src)} alt="ecomo" width="158" height="27" />
+<img
+  class="logo-mark"
+  src={withBase(src)}
+  alt="ecomo"
+  width="158"
+  height="27"
+  loading={loading}
+  decoding="async"
+/>
 
 <style>
   .logo-mark {

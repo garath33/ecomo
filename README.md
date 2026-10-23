@@ -8,6 +8,7 @@ Prezentační web [Ecomo s.r.o.](https://www.ecomo.cz) — fotovoltaika a tepeln
 - Každá změna je na větvi `cursor/...`, má vlastní PR, CI a náhled.
 - Náhled: [https://garath33.github.io/ecomo/](https://garath33.github.io/ecomo/) (z feature větve s pruhem „Náhledové prostředí“, z `main` bez něj).
 - Plán práce je v [docs/PLAN.md](docs/PLAN.md). Pipeline je v [CONTRIBUTING.md](CONTRIBUTING.md).
+- Po ostrém spuštění (merge do `main`) zaregistrujte sitemapu v Google Search Console. Postup je v [docs/POST-LAUNCH.md](docs/POST-LAUNCH.md).
 
 ## Lokálně
 

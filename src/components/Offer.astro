@@ -1,5 +1,6 @@
 ---
 import { withBase } from "../lib/paths";
+import ResponsiveImage from "./ResponsiveImage.astro";
 ---
 
 <section class="section" id="nabidka" data-testid="offer">
@@ -13,7 +14,12 @@ import { withBase } from "../lib/paths";
     <div class="grid-2">
       <article class="card panel">
         <div class="media">
-          <img src={withBase("images/nabidka-fv.jpg")} alt="Montáž černých fotovoltaických panelů na střešní lišty" />
+          <ResponsiveImage
+            src="images/nabidka-fv.jpg"
+            alt="Montáž černých fotovoltaických panelů na střešní lišty"
+            width={1280}
+            height={720}
+          />
         </div>
         <h3>Instalace fotovoltaiky</h3>
         <p>
@@ -30,7 +36,12 @@ import { withBase } from "../lib/paths";
       </article>
       <article class="card panel">
         <div class="media">
-          <img src={withBase("images/nabidka-tc.jpg")} alt="Venkovní jednotka tepelného čerpadla u domu" />
+          <ResponsiveImage
+            src="images/nabidka-tc.jpg"
+            alt="Venkovní jednotka tepelného čerpadla u domu"
+            width={1280}
+            height={720}
+          />
         </div>
         <h3>Instalace tepelných čerpadel</h3>
         <p>

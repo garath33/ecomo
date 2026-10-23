@@ -9,7 +9,7 @@ import { withBase } from "../lib/paths";
     <h2 class="eyebrow">Kontakt</h2>
     <div class="site-footer__grid">
       <div>
-        <a class="logo" href={withBase()}><Logo onDark /></a>
+        <a class="logo" href={withBase()}><Logo onDark loading="lazy" /></a>
         <p>
           {site.legalName}<br />
           {site.address.line1}, {site.address.line2}<br />

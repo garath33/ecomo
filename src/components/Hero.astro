@@ -1,11 +1,19 @@
 ---
 import { site } from "../site.config";
 import { withBase } from "../lib/paths";
+import ResponsiveImage from "./ResponsiveImage.astro";
 ---
 
 <section class="hero" data-testid="hero">
   <div class="hero__media">
-    <img src={withBase("images/hero-fv-panels.jpg")} alt="Detail černých fotovoltaických panelů" />
+    <ResponsiveImage
+      src="images/hero-fv-panels.jpg"
+      alt="Detail černých fotovoltaických panelů"
+      width={1280}
+      height={720}
+      loading="eager"
+      fetchpriority="high"
+    />
   </div>
   <div class="hero__shade"></div>
   <div class="wrap">

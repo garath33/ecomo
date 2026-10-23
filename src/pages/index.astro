@@ -3,9 +3,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import Offer from "../components/Offer.astro";
 import Contact from "../components/Contact.astro";
+import { site } from "../site.config";
 ---
 
-<BaseLayout>
+<BaseLayout
+  title={site.seo.homeTitle}
+  description={site.seo.homeDescription}
+  image="images/hero-fv-panels.jpg"
+  imageAlt="Detail černých fotovoltaických panelů"
+>
   <Hero />
   <Offer />
   <Contact />

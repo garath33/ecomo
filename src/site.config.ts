@@ -50,6 +50,9 @@ export const site = {
     aboutTitle: "O nás | Ecomo — Jiří Uldrich",
     aboutDescription:
       "Ecomo s.r.o. ze Zdib. Za firmou stojí Jiří Uldrich. Osobní a lidský přístup, řešení na míru a znalost technologie i montáže od A do Z.",
+    notFoundTitle: "Stránka nenalezena | Ecomo",
+    notFoundDescription:
+      "Tahle adresa na webu Ecomo s.r.o. neexistuje. Pokračujte na úvod, fotovoltaiku nebo tepelná čerpadla.",
   },
   foundedYear: 2024,
   about:
@@ -83,6 +86,8 @@ export const projects = [
       "Ocelová konstrukce na betonových patkách s panely nad zpevněnou plochou. Výroba elektřiny i stínění v jednom.",
     image: "images/zakazka-pristresek.jpg",
     alt: "Fotovoltaický přístřešek na ocelové konstrukci",
+    width: 1600,
+    height: 1200,
   },
   {
     slug: "montaz-strecha",
@@ -90,6 +95,8 @@ export const projects = [
     summary: "Ukotvení modulů na střešní lišty. Přesná práce, ať sestava drží i ve větru a dešti.",
     image: "images/zakazka-strecha.jpg",
     alt: "Detail montáže fotovoltaických panelů na střeše",
+    width: 1200,
+    height: 1600,
   },
 ] as const;
 
