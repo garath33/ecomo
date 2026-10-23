@@ -57,7 +57,7 @@ export function releaseSummary(localesDir) {
     .sort();
   const secondary = files.filter((file) => file !== PRIMARY_FILE);
   if (secondary.length === 0) {
-    return "Primary locale only (cs). Visual coverage of cs is the PR screenshot set. No secondary locale to review.";
+    return "Primary locale only (cs). The release workflow runs visual regression for cs. No secondary locale to review.";
   }
   return `Release review for secondary locales: ${secondary.join(", ")}. Compare them with cs.json before shipping. PR pipelines keep testing cs only.`;
 }
