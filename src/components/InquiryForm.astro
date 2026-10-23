@@ -1,46 +1,47 @@
 ---
+import { messages } from "../locales";
 import { inquiryTopics, site } from "../site.config";
 ---
 
 <form class="form" data-inquiry-form novalidate>
   <label>
-    Jméno a příjmení
+    {messages.form.name}
     <input type="text" name="name" autocomplete="name" required />
     <span class="error" data-error-for="name"></span>
   </label>
   <label>
-    Telefon
+    {messages.form.phone}
     <input type="tel" name="phone" autocomplete="tel" inputmode="tel" required />
     <span class="error" data-error-for="phone"></span>
   </label>
   <label>
-    E-mail
+    {messages.form.email}
     <input type="email" name="email" autocomplete="email" required />
     <span class="error" data-error-for="email"></span>
   </label>
   <label>
-    Mám zájem o
+    {messages.form.topic}
     <select name="topic" required>
-      <option value="">Vyberte</option>
+      <option value="">{messages.form.topicEmpty}</option>
       {inquiryTopics.map((topic) => <option value={topic.value}>{topic.label}</option>)}
     </select>
     <span class="error" data-error-for="topic"></span>
   </label>
   <label>
-    Stručně popište dům / poptávku
+    {messages.form.message}
     <textarea name="message" required></textarea>
     <span class="error" data-error-for="message"></span>
   </label>
   <label class="hp" aria-hidden="true">
-    Web
+    {messages.form.honeypot}
     <input type="text" name="website" tabindex="-1" autocomplete="off" />
   </label>
   <p class="muted">
-    Odesláním souhlasíte se zpracováním údajů jen kvůli vyřízení poptávky. Údaje jdou přímo na
+    {messages.form.consent}
     {site.email}.
   </p>
   <span class="error" data-error-for="form"></span>
-  <button class="button" type="submit">Odeslat poptávku</button>
+  <button class="button" type="submit">{messages.form.submit}</button>
   <p class="form-status" data-inquiry-status hidden></p>
 </form>
 

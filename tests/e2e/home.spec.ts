@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test.describe("homepage", () => {
+test.describe("homepage @regression", () => {
   test("shows the live sections and a single contact CTA", async ({ page }) => {
     await page.goto("./");
     await expect(page.getByTestId("hero").getByRole("heading", { level: 1 })).toContainText(

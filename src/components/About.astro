@@ -6,25 +6,15 @@ import { withBase } from "../lib/paths";
 
 <section class="section" data-testid="about">
   <div class="wrap about-copy">
-    <p class="eyebrow">O nás</p>
-    <h1>Lidský přístup a znalost od A do Z</h1>
+    <p class="eyebrow">{messages.nav.about}</p>
+    <h1>{messages.about.title}</h1>
     <p class="lede">
       {site.legalName} tvoří {site.person}, {site.specialty.toLowerCase()} a {site.role.toLowerCase()}.
-      Zakázku vede osobně — od prvního výpočtu až po montáž a spuštění u vás.
+      {messages.about.afterNames}
     </p>
-    <p>
-      Zakládáme si na osobním a lidském přístupu. Každý dům, střecha i rodina mají jiné potřeby, proto
-      navrhujeme řešení na míru a vyjdeme vstříc tomu, co opravdu dává smysl.
-    </p>
-    <p>
-      Jiří má hluboké znalosti od A do Z: zná technologii i řemeslo. Spočítá, jestli se elektrárna nebo
-      čerpadlo vyplatí, navrhne sestavu, vyřídí připojení a postaví ji tak, aby držela. Když po předání
-      něco potřebujete, voláte člověku, který dílo zná.
-    </p>
+    {messages.about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
     <ul class="list muted">
-      <li>Osobní a lidský přístup, bez zbytečného tlaku</li>
-      <li>Individuální návrh podle domu, spotřeby a rozpočtu</li>
-      <li>Technologie i montáž v jedněch rukách</li>
+      {messages.about.points.map((point) => <li>{point}</li>)}
     </ul>
     <a class="button" href={withBase("/#poptavka")}>{messages.cta.contactUs}</a>
   </div>

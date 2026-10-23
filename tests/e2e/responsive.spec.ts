@@ -11,7 +11,7 @@ async function hasHorizontalOverflow(page: Page, selector = "html"): Promise<boo
   }, selector);
 }
 
-test.describe("responsiveness", () => {
+test.describe("responsiveness @regression", () => {
   for (const viewport of viewports) {
     test(`homepage layout holds together at ${viewport.name} ${viewport.width}px`, async ({
       page,

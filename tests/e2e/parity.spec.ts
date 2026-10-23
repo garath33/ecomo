@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { productionFacts, site } from "../../src/site.config";
 
-test.describe("preview matches production content", () => {
+test.describe("preview matches production content @regression", () => {
   test("footer publishes the same business facts as ecomo.cz", async ({ page }) => {
     await page.goto("./");
     const footer = page.getByTestId("site-footer");

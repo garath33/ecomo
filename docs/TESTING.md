@@ -27,19 +27,24 @@ Externí adresy, `mailto:` a `tel:` smoke přeskakuje. Playwright smoke navíc o
 
 Vývoj, úpravy layoutu a průběžné testy běží jen na originálu.
 
-- Chrome texty (menu, výzvy, jazyk dokumentu, popisky poptávky) jsou v `src/locales/cs.json`.
-- Delší texty stránek zůstávají v českých šablonách. To je verze, kterou při úpravě layoutu otevíráme.
-- `src/locales/index.ts` načítá jen `cs.json`, takže další jazyky nejsou součástí běžného bundlu.
-- Nový jazyk je další JSON se stejnými klíči. Do šablon ani do Playwrighte se v pull requestu nepřidává.
-- `npm run test:i18n` porovná klíče. Workflow `Locale release check` se spouští ručně, nebo při vydání release. Vizuální kontrola mutací patří sem, jednou před vydáním.
+- Všechny texty webu jsou v `src/locales/cs.json`. Šablony jen skládají tyto texty s firemními údaji ze `src/site.config.ts`.
+- `src/locales/index.ts` načítá jen `cs.json`. Další jazyk je soubor se stejnými klíči a do běžného bundlu se nepřidává.
+- Průběžné testy v pull requestu renderují jen češtinu.
+- `npm run test:i18n` porovná klíče všech locale souborů. Workflow `Locale release check` se spouští ručně, nebo při vydání release, a tehdy znovu pustí vizuální sadu primárního jazyka.
 
 ## Údržba testů
 
 U každé změny uprav test, který pokrývá dotčený scénář. Sadu nerozšiřuj o případy, kterých se změna netýká. Klíčové scénáře jsou úvod, nabídka, kontakt a poptávka, podstránky služeb, O nás, čtyři šířky a shoda firemních údajů.
 
-## Screenshoty v pull requestu
+## Regrese, E2E a screenshoty
 
-`tests/e2e/visual.spec.ts` uloží celou úvodní stránku na čtyřech šířkách. CI je přiloží jako artefakty `visual-screenshots` a `playwright-report`. Slouží k rychlému pohledu na vzhled v PR. Pixelové baseline v gitu nejsou, aby každá vizuální úprava nemusela přepisovat sadu obrázků.
+| Příkaz | Co spouští |
+| --- | --- |
+| `npm run test:regression` | Unit testy a funkční Playwright označený `@regression` |
+| `npm run test:e2e` | Celý Playwright: regrese, smoke v prohlížeči a `@visual` |
+| `npm run test:visual` | Jen vizuální regrese úvodu na 320, 768, 1024 a 1440 px |
+
+`tests/e2e/visual.spec.ts` porovná celou úvodní stránku s baseline v gitu a stejný snímek přiloží do artefaktů `visual-screenshots` a `playwright-report`. Po záměrné změně vzhledu se baseline obnoví příkazem `npx playwright test --grep @visual --update-snapshots`.
 
 ## Odkazy
 

@@ -39,7 +39,7 @@ const ogImage = new URL(withBase("images/hero-fv-panels.jpg"), Astro.site).href;
     <meta property="og:locale" content={messages.ogLocale} />
     <meta property="og:url" content={canonical.href} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:alt" content="Černé fotovoltaické panely ecomo" />
+    <meta property="og:image:alt" content={messages.ogImageAlt} />
     <meta property="og:site_name" content={site.legalName} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />

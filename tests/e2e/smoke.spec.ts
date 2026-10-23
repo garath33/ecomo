@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test.describe("smoke", () => {
+test.describe("smoke @regression", () => {
   test("loads the primary page, its stylesheet, and the Czech document language", async ({ page }) => {
     const response = await page.goto("./");
     expect(response?.ok()).toBeTruthy();

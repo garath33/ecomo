@@ -22,8 +22,10 @@ Ostří je větev `main`. Do ní se nic nemerguje, dokud není změna otestovan�
 | `npm run build` | TypeScript + produkční sestavení |
 | `npm run test:smoke` | Po buildu: `index.html`, načtené CSS, interní odkazy |
 | `npm run test:validate` | Validita HTML (html-validate) a CSS (syntaktická) |
-| `npm run test:e2e` | Playwright: sekce, CTA, poptávka, podstránky, **responsivita**, **screenshoty**, **shoda náhledu s ostřím** |
-| `npm run test:i18n` | Jednorázově před vydáním: klíče dalších locale proti `cs.json` |
+| `npm run test:regression` | Unit testy a funkční Playwright (`@regression`) |
+| `npm run test:e2e` | Playwright včetně regrese, responsivity a vizuální regrese |
+| `npm run test:visual` | Screenshotová regrese úvodu na 320 / 768 / 1024 / 1440 px |
+| `npm run test:i18n` | Před vydáním: klíče dalších locale proti `cs.json` |
 
 Podrobnosti jsou v [docs/TESTING.md](docs/TESTING.md).
 

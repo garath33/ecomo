@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test.describe("about page", () => {
+test.describe("about page @regression", () => {
   test("is reachable only from the header and stays off the homepage", async ({ page }) => {
     await page.goto("./");
     await expect(page.getByTestId("about")).toHaveCount(0);

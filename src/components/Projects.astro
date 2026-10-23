@@ -1,16 +1,14 @@
 ---
+import { messages } from "../locales";
 import { projects } from "../site.config";
 import { withBase } from "../lib/paths";
 ---
 
 <section class="section alt" id="zakazky" data-testid="projects">
   <div class="wrap">
-    <p class="eyebrow">Hotové zakázky</p>
-    <h2>Práce, kterou můžeme ukázat</h2>
-    <p class="lede">
-      Portfolio dokončených instalací. Další lokality a parametry doplníme, jakmile k tomu budeme mít
-      souhlas klienta.
-    </p>
+    <p class="eyebrow">{messages.projects.eyebrow}</p>
+    <h2>{messages.projects.title}</h2>
+    <p class="lede">{messages.projects.lede}</p>
     <div class="grid-2">
       {
         projects.map((project) => (
@@ -20,7 +18,7 @@ import { withBase } from "../lib/paths";
             </div>
             <h3>{project.title}</h3>
             <p class="muted">{project.summary}</p>
-            <span class="note">Hotová zakázka</span>
+            <span class="note">{messages.projects.done}</span>
           </article>
         ))
       }
