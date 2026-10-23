@@ -1,0 +1,37 @@
+# Historie změn
+
+Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Verze se shoduje s polem `version` v `package.json`. Datum je den, kdy se verze sešla na `main`, v čase Europe/Prague.
+
+## [Unreleased]
+
+Zatím nic. Další plánované funkce jsou v [ROADMAP.md](ROADMAP.md).
+
+## [0.1.0] — 2026-10-02
+
+První veřejná podoba prezentačního webu. Nasazuje se na GitHub Pages.
+
+### Přidáno
+
+- Statický web v Astro 5 a TypeScriptu: úvod, fotovoltaika, tepelná čerpadla, O nás a stránka 404.
+- Branding: žlutá `#D8E716`, černá, písmo Sansation, wordmark ecomo.
+- Firemní údaje, navigace, témata poptávky a dvě hotové zakázky v `src/site.config.ts`.
+- Hero, nabídka dvou oborů, kontakt a patička s IČO, DIČ, sídlem a přímými kontakty.
+- Formulář nezávazné poptávky: validace v prohlížeči, honeypot a sestavení `mailto`.
+- Lokální SEO: titulky, popisy, canonical, Open Graph, Twitter card, JSON-LD `LocalBusiness`, sitemap a `robots.txt`.
+- Náhledový pruh, když `PUBLIC_SITE_ENV` není `production`.
+- CI (lint, unit testy, build, Playwright) a workflow pro GitHub Pages. Push na `cursor/**` je náhled, push na `main` je ostří.
+- Testy responsivity (375 / 768 / 1024 / 1280 px) a shody firemních údajů s konfigurací.
+
+### Změněno
+
+- Úvod drží hero, nabídku a kontakt. Sekce hotových zakázek a O nás se na úvodu nevykreslují. O nás je samostatná stránka a odkaz v menu (2. 10. 2026, 9:26).
+- Kontakt je v patičce. Nad formulářem je jedna výzva „Ozvěte se nezávazně“, bez duplicitního seznamu kontaktů.
+- Texty mluví za firmu. Hero má jedno tlačítko „Kontaktujte nás“.
+- Karta tepelného čerpadla na úvodu používá světlejší fotografii venkovní jednotky (`images/nabidka-tc.jpg`). Fotovoltaika na úvodu ukazuje tmavé panely.
+- Nabídka tepelných čerpadel popisuje vzduch–voda, návrh výkonu, šetření na místě a spojení s fotovoltaikou. Stránka říká, co orientační cena obvykle obsahuje.
+
+### Opraveno
+
+- Kotva `#poptavka` doscrolluje formulář do viditelné oblasti.
+- Menu do 1100 px se otevírá hamburgerem; testy čtou položku „Co nabízíme“ v otevřeném menu.
+- Kontrola shody telefonu počítá s tím, že číslo je na stránce ve více odkazech `tel:`.
