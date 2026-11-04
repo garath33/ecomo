@@ -159,21 +159,25 @@
     "lede": "Navrhujeme elektrárny podle spotřeby, orientace střechy a rozpočtu. Cílem není maximum panelů, ale řešení, které se vrací a které umíme poctivě postavit.",
     "audiences": [
       {
+        "id": "house",
         "title": "Rodinné domy",
         "body": "Pro domácnost je fotovoltaika způsob, jak snížit účty za elektřinu a méně záviset na cenách ze sítě. Dobře navržená elektrárna zkracuje návratnost, zejména pokud se podaří využít dotační program. Montáž na střechu zároveň zvedá užitnou hodnotu domu.",
         "note": "Řešíme hybridní i ostrovní varianty, bateriové úložiště a přípravu na elektromobil — vždy podle toho, jak dům elektřinu skutečně spotřebovává."
       },
       {
+        "id": "commercial",
         "title": "Firemní instalace",
         "body": "Firmě fotovoltaika snižuje provozní náklady nejen v létě. Energie z vlastní střechy se projeví ve výrobě, skladu, obchodě i kancelářích. Dobře navržený výkon snižuje nákup ze sítě v hodinách, kdy objekt bere nejvíc energie.",
         "note": "Umíme navrhnout řešení pro výrobní haly, obchody, sklady i administrativní budovy."
       },
       {
+        "id": "town",
         "title": "Obce a města",
         "body": "Veřejné budovy mají stabilní spotřebu a tlak na úspory. Fotovoltaika na škole, úřadě, čistírně nebo kulturním domě snižuje provozní výdaje a ukazuje, že obec bere energii vážně.",
         "note": "Pomůžeme s návrhem, administrativou připojení i s vysvětlením návratnosti zastupitelům."
       },
       {
+        "id": "apartments",
         "title": "Bytové domy a SVJ",
         "body": "Legislativa od roku 2023 usnadnila sdílení výroby v bytovém domě. Panely na střeše mohou pokrývat společné prostory i byty a snížit náklady celému domu. Dotační titul je často dostupný i pro SVJ.",
         "note": "Nejdřív projdeme spotřebu domu, stav střechy a dohodu mezi vlastníky, potom navrhneme výkon, který dává smysl."
