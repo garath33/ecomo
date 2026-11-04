@@ -7,6 +7,10 @@ test.describe("homepage @regression", () => {
       "Smysluplné elektrárny",
     );
     await expect(page.getByTestId("offer")).toContainText("Co nabízíme");
+    await expect(page.getByTestId("offer")).toContainText(
+      "Firemní instalace — nižší provozní náklady ve výrobě, skladu i kancelářích",
+    );
+    await expect(page.getByTestId("offer")).not.toContainText("Komerční");
     await expect(page.getByTestId("contact-intro")).toContainText("Ozvěte se nezávazně");
     await expect(page.getByTestId("contact-intro")).toContainText("Neváhejte nás kontaktovat");
     await expect(page.getByTestId("contact-intro")).toContainText("které sedí právě vám");
