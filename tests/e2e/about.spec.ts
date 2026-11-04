@@ -19,6 +19,10 @@ test.describe("about page @regression", () => {
     await expect(page.getByTestId("about")).toContainText("nezačínáme ceníkem, ale rozhovorem");
     await expect(page.getByTestId("about")).toContainText("technologii i řemeslo");
     await expect(page.getByTestId("about")).toContainText("montáž");
+    await expect(page.getByTestId("about").getByRole("link", { name: "Kontaktujte nás" })).toHaveAttribute(
+      "href",
+      /#kontakt$/,
+    );
   });
 
   test("does not overflow on a narrow screen", async ({ page }) => {
