@@ -81,12 +81,13 @@ Menu v `navigation` vede na `/#nabidka`, `/fotovoltaika/`, `/tepelna-cerpadla/`,
 - Telefon po vyhození mezer a závorek musí sedět na `^(\+420)?[1-9]\d{8}$`.
 - Zpráva má alespoň 10 znaků, jméno alespoň 2, téma musí být v `inquiryTopics`.
 - `buildMailto` složí předmět a tělo na danou adresu.
-- `submitInquiry` pošle JSON na `https://formsubmit.co/ajax/`. `ok` znamená, že služba zprávu přijala. `rejected` znamená, že odpověď není úspěch (včetně stránky s kontrolou prohlížeče). `offline` znamená, že požadavek vůbec neodešel.
+- `submitInquiry` pošle JSON na `https://formsubmit.co/ajax/`. `ok` znamená, že služba zprávu přijala. `rejected` znamená, že odpověď není úspěch. `offline` znamená, že požadavek vůbec neodešel. Stránka tuhle cestu nevolá: adresa `/ajax/` v prohlížeči spadne na kontrole Cloudflare a formulář by zůstal na „Odesílám…“.
+- `inquiryHandoffFields` složí pole pro běžné odeslání formuláře, včetně `_url` a `_next`.
 - `readInquiryForm` čte `FormData`. Pole `_honey` ukládá do `website`.
 
 `src/lib/local-business.ts` skládá schema.org `LocalBusiness`: adresa, geo, telefon, e-mail, IČO, DIČ, founder, `areaServed`, `knowsAbout`. `sameAs` dostane web a jen neprázdné `maps.googlePlace` / `maps.mapyPlace`.
 
-`src/scripts/inquiry.ts` poslouchá submit na `[data-inquiry-form]`, vypíše chyby do `[data-error-for]` a nastaví `aria-invalid`. Platnou poptávku nejdřív odešle přes `submitInquiry`. Při úspěchu poděkuje, napíše, že se zpráva odeslala, a formulář vyprázdní. Když služba požadavek odmítne, formulář přejde na běžné odeslání na `action` (FormSubmit), aby ho prohlížeč dokončil sám, a po návratu na `?poptavka=odeslana` ukáže stejné potvrzení. Když není síť, ukáže odkaz „Otevřít e-mailový klient“ a adresu uloží do `data-last-mailto`.
+`src/scripts/inquiry.ts` poslouchá submit na `[data-inquiry-form]`, vypíše chyby do `[data-error-for]` a nastaví `aria-invalid`. Platnou poptávku odešle běžným POST na FormSubmit v novém okně `ecomo-inquiry`, aby šla dokončit kontrola prohlížeče a první aktivace schránky. Původní stránka zůstane na místě, tlačítko se znovu zapne a stav vysvětlí krok Activate Form. Po doručení FormSubmit vrátí nové okno na `?poptavka=odeslana`, kde se ukáže poděkování. Když okno nejde otevřít nebo není síť, ukáže se odkaz „Otevřít e-mailový klient“ a adresa se uloží do `data-last-mailto`. Návrat zpět na stránku (`pageshow`) tlačítko znovu odemkne.
 
 ## Vzhled
 

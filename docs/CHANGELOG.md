@@ -13,6 +13,10 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 - CI ukládá desktop screenshoty úvodu, fotovoltaiky, tepelných čerpadel a kontaktu jako artifact `preview-screenshots`. Deploy na Pages běží i z větví `feature/**`.
 - Jazyk webu zůstává jen čeština, dokud uživatel nenahlásí další.
 
+### Opraveno
+
+- Poptávka se po kliknutí na Odeslat už nezasekne na „Odesílám poptávku…“. FormSubmit v prohlížeči nebere tichý požadavek (kontrola Cloudflare) a stránka kvůli tomu zůstávala ve stavu odesílání, nebo přešla na ověření „Okamžik…“. Teď se formulář odešle v novém okně na jiri.uldrich@ecomo.cz. Napoprvé je potřeba v tom okně potvrdit, že jde o člověka, a v e-mailu od FormSubmit kliknout na Activate Form. Pak se uložené poptávky doručí. Když okno nejde otevřít, zůstane odkaz do e-mailového klienta.
+
 ### Změněno
 
 - Tepelná čerpadla: instalujeme jen monoblok značky Kensol. Ze stránky zmizel výběr split, monoblok a hydrosplit i věta, že značku necháváme otevřenou. Cena počítá s venkovní jednotkou a trasou topné vody.

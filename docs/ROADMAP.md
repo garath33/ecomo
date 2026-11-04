@@ -40,7 +40,7 @@ Zásady, které platí pořád: ostří je `main`, obsah náhledu i ostří bere
 - Tepelná čerpadla vzduch–voda značky Kensol v provedení monoblok: zhruba třetinová spotřeba elektřiny oproti přímotopu u nízkoteplotní soustavy, novostavba, rekonstrukce, kombinace s fotovoltaikou, co cena obvykle obsahuje. Fotografie venkovní jednotky ukazuje skříň s ventilátorem rovnoběžně u zdi domu.
 - O nás: samostatná stránka `/o-nas/`, odkaz v hlavním menu. Na úvodu se sekce nevykresluje.
 - Firemní údaje (IČO, DIČ, sídlo, telefon, e-mail, web, role) z jednoho místa, `src/site.config.ts`.
-- Poptávka: kontrola jména, českého telefonu, e-mailu, tématu a zprávy a skryté pole `_honey`. Odeslání jde na `jiri.uldrich@ecomo.cz` přes FormSubmit. Když služba nepustí požadavek napřímo, prohlížeč formulář odešle sám. Bez sítě zůstane odkaz do e-mailového klienta a telefon. První odeslání musí jednatel potvrdit v e-mailu od FormSubmit, jinak se zpráva nedoručí.
+- Poptávka: kontrola jména, českého telefonu, e-mailu, tématu a zprávy a skryté pole `_honey`. Odeslání jde na `jiri.uldrich@ecomo.cz` přes FormSubmit v novém okně, aby stránka nezůstala na „Odesílám…“. Bez sítě nebo bez nového okna zůstane odkaz do e-mailového klienta a telefon. První odeslání musí jednatel potvrdit v e-mailu od FormSubmit (odkaz Activate Form), jinak se zpráva nedoručí.
 - SEO: titulky a popisy stránek, canonical, Open Graph, Twitter card, JSON-LD `LocalBusiness`, `sitemap-index.xml`, `robots.txt`.
 - Náhled z větve `cursor/**` nebo `feature/**` je na `/preview/` a ukazuje žluto-černý pruh „Náhledové prostředí“. Ostří z `main` pruh nemá a pracovní větev ho nepřepisuje.
 - Testy rozvržení na 375 / 768 / 1024 / 1280 px a kontrola, že na stránce jsou stejné firemní údaje jako v konfiguraci.

@@ -526,19 +526,22 @@ p {
   border: 1px solid var(--danger);
 }
 
-.form-status.is-success {
+.form-status.is-success,
+.form-status.is-check {
   display: grid;
   gap: 0.35rem;
   padding: 1rem 1.1rem;
 }
 
-.form-status.is-success p {
+.form-status.is-success p,
+.form-status.is-check p {
   margin: 0;
   font-weight: 300;
   line-height: 1.45;
 }
 
-.form-status.is-success .form-status__title {
+.form-status.is-success .form-status__title,
+.form-status.is-check .form-status__title {
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.03em;

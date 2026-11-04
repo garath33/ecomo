@@ -98,6 +98,17 @@ export function inquiryPayload(input: InquiryInput): Record<string, string> {
   };
 }
 
+/** Pole pro běžné odeslání stránky. `_url` nahrazuje Referer, `_next` vrací návštěvníka po doručení. */
+export function inquiryHandoffFields(input: InquiryInput, pageUrl: string, nextUrl: string): Record<string, string> {
+  const payload = { ...inquiryPayload(input) };
+  delete payload._honey;
+  return {
+    ...payload,
+    _url: pageUrl,
+    _next: nextUrl,
+  };
+}
+
 export async function submitInquiry(input: InquiryInput, to: string): Promise<InquirySubmitResult> {
   const mailto = buildMailto(input, to);
   if (input.website?.trim()) return { ok: false, reason: "spam", mailto };
