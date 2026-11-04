@@ -70,6 +70,62 @@ export function buildMailto(input: InquiryInput, to: string): string {
   return `mailto:${to}?subject=${subject}&body=${body}`;
 }
 
+/** Adresa klasického POST, když v prohlížeči neběží skript. */
+export function inquiryFormAction(to: string): string {
+  return `https://formsubmit.co/${to}`;
+}
+
+export function inquirySubmitUrl(to: string): string {
+  return `https://formsubmit.co/ajax/${to}`;
+}
+
+export type InquirySubmitResult =
+  | { ok: true }
+  | { ok: false; reason: "rejected" | "offline" | "spam"; mailto: string };
+
+export function inquiryPayload(input: InquiryInput): Record<string, string> {
+  return {
+    [messages.form.mailName]: input.name.trim(),
+    [messages.form.mailPhone]: input.phone.trim(),
+    [messages.form.mailEmail]: input.email.trim(),
+    [messages.form.mailTopic]: topicLabel(input.topic),
+    [messages.form.mailMessage]: input.message.trim(),
+    _replyto: input.email.trim(),
+    _subject: `${messages.cta.inquiry} — ${topicLabel(input.topic)}`,
+    _template: "table",
+    _captcha: "false",
+    _honey: "",
+  };
+}
+
+export async function submitInquiry(input: InquiryInput, to: string): Promise<InquirySubmitResult> {
+  const mailto = buildMailto(input, to);
+  if (input.website?.trim()) return { ok: false, reason: "spam", mailto };
+  if (typeof navigator !== "undefined" && navigator.onLine === false) {
+    return { ok: false, reason: "offline", mailto };
+  }
+
+  try {
+    const response = await fetch(inquirySubmitUrl(to), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(inquiryPayload(input)),
+      signal: AbortSignal.timeout(15_000),
+    });
+    if (!response.ok) return { ok: false, reason: "rejected", mailto };
+    const payload = (await response.json()) as { success?: string | boolean };
+    if (payload.success === true || payload.success === "true") return { ok: true };
+    return { ok: false, reason: "rejected", mailto };
+  } catch (error) {
+    const unreachable = typeof navigator === "undefined" || navigator.onLine !== true;
+    if (error instanceof TypeError && unreachable) return { ok: false, reason: "offline", mailto };
+    return { ok: false, reason: "rejected", mailto };
+  }
+}
+
 export function readInquiryForm(form: Pick<HTMLFormElement, "elements">): InquiryInput {
   const data = new FormData(form as HTMLFormElement);
   return {
@@ -78,6 +134,6 @@ export function readInquiryForm(form: Pick<HTMLFormElement, "elements">): Inquir
     email: String(data.get("email") ?? ""),
     topic: String(data.get("topic") ?? ""),
     message: String(data.get("message") ?? ""),
-    website: String(data.get("website") ?? ""),
+    website: String(data.get("_honey") ?? ""),
   };
 }
