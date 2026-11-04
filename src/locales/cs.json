@@ -84,8 +84,8 @@
   },
   "contact": {
     "title": "Ozvěte se nezávazně",
-    "beforePhone": "Zavolejte na",
-    "afterPhone": "nebo nám napište přes formulář níže. Ozveme se a domluvíme si první schůzku."
+    "afterName": " vám rád pomůže. Zavolejte na",
+    "afterPhone": ", nebo napište přes formulář níže. Ozve se osobně a domluvíme si první schůzku."
   },
   "form": {
     "name": "Jméno a příjmení",

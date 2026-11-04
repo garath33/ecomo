@@ -14,6 +14,7 @@ test.describe("homepage @regression", () => {
     );
     await expect(page.getByTestId("offer")).not.toContainText("Komerční");
     await expect(page.getByTestId("contact-intro")).toContainText("Ozvěte se nezávazně");
+    await expect(page.getByTestId("contact-intro")).toContainText("Jiří Uldrich vám rád pomůže");
     await expect(page.getByTestId("contact-intro")).toContainText("domluvíme si první schůzku");
     await expect(page.getByTestId("contact-intro")).not.toContainText("balíček z ceníku");
     await expect(page.getByTestId("contact")).toBeVisible();
@@ -30,12 +31,18 @@ test.describe("homepage @regression", () => {
     );
   });
 
-  test("navigates from CTA to the inquiry form", async ({ page }) => {
+  test("navigates from CTA to the text above the inquiry form", async ({ page }) => {
     await page.goto("./");
     await page.getByTestId("hero").getByRole("link", { name: "Kontaktujte nás" }).click();
+    const heading = page.getByRole("heading", { name: "Ozvěte se nezávazně" });
+    await expect(heading).toBeInViewport();
+    const headingBox = await heading.boundingBox();
+    const headerBox = await page.locator("header.site-header").boundingBox();
+    expect(headingBox).toBeTruthy();
+    expect(headerBox).toBeTruthy();
+    expect(headingBox!.y).toBeGreaterThanOrEqual(headerBox!.y + headerBox!.height - 1);
     await expect(page.locator("#poptavka")).toBeVisible();
     await expect(page.getByRole("button", { name: "Odeslat poptávku" })).toBeVisible();
-    await expect(page.locator("#poptavka")).toBeInViewport();
   });
 
   test("opens service pages from the offer section", async ({ page }) => {
