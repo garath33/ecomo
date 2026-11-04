@@ -1,9 +1,17 @@
 ---
+import AudienceArt, { type AudienceId } from "../components/AudienceArt.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Contact from "../components/Contact.astro";
 import { messages } from "../locales";
 import { site } from "../site.config";
 import { withBase } from "../lib/paths";
+
+const audienceIds: readonly AudienceId[] = ["house", "commercial", "town", "apartments"];
+
+function audienceId(value: string): AudienceId {
+  if ((audienceIds as readonly string[]).includes(value)) return value as AudienceId;
+  throw new Error(`Unknown audience illustration: ${value}`);
+}
 ---
 
 <BaseLayout
@@ -26,14 +34,17 @@ import { withBase } from "../lib/paths";
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" data-testid="pv-audiences">
     <div class="wrap grid-2">
       {
         messages.pvPage.audiences.map((item) => (
-          <article class="card">
-            <h2>{item.title}</h2>
-            <p>{item.body}</p>
-            <p class="muted">{item.note}</p>
+          <article class="card audience">
+            <AudienceArt id={audienceId(item.id)} />
+            <div class="audience__copy">
+              <h2>{item.title}</h2>
+              <p>{item.body}</p>
+              <p class="muted">{item.note}</p>
+            </div>
           </article>
         ))
       }
