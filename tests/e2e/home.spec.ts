@@ -47,6 +47,12 @@ test.describe("homepage @regression", () => {
     await expect(page.getByText("Energie z vlastní střechy", { exact: false })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Obce a města" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Bytové domy a SVJ" })).toBeVisible();
+    const audiences = page.getByTestId("pv-audiences");
+    await expect(audiences.locator("[data-audience]")).toHaveCount(4);
+    await expect(audiences.locator("[data-audience='house'] svg")).toBeVisible();
+    await expect(audiences.locator("[data-audience='commercial'] svg")).toBeVisible();
+    await expect(audiences.locator("[data-audience='town'] svg")).toBeVisible();
+    await expect(audiences.locator("[data-audience='apartments'] svg")).toBeVisible();
 
     await page.goto("./");
     await page.getByRole("link", { name: "Více o tepelných čerpadlech" }).click();
