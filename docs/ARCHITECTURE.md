@@ -61,7 +61,7 @@ Menu v `navigation` vede na `/#nabidka`, `/fotovoltaika/`, `/tepelna-cerpadla/`,
 | `Hero` | Úvodní fotografie panelů, claim, jeden odkaz „Kontaktujte nás“ na `#poptavka`, tři krátké body (na klíč, osobně, dva obory). |
 | `Offer` | `#nabidka`. Dvě karty: fotovoltaika (`images/nabidka-fv.jpg`) a tepelné čerpadlo (`images/nabidka-tc.jpg`), každá s odkazem na podstránku. |
 | `Contact` | Výzva s telefonem a karta `#poptavka` s `InquiryForm`. |
-| `InquiryForm` | Pole jméno, telefon, e-mail, téma (`inquiryTopics`), zpráva a skryté pole `website`. Po submitu načte `src/scripts/inquiry.ts`. |
+| `InquiryForm` | Pole jméno, telefon, e-mail, téma (`inquiryTopics`), zpráva a skryté pole `_honey`. `action` míří na FormSubmit. Po submitu načte `src/scripts/inquiry.ts`. |
 | `About` | Text o firmě a jednateli, tři body, CTA na poptávku. Používá ho jen `/o-nas/`. |
 | `Projects` | `#zakazky`. Karty z pole `projects`. Žádná stránka ji teď neimportuje. |
 | `PreviewBanner` | Pruh náhledu, jen když `isPreview()` vrátí pravdu. |
@@ -76,15 +76,16 @@ Menu v `navigation` vede na `/#nabidka`, `/fotovoltaika/`, `/tepelna-cerpadla/`,
 
 `src/lib/inquiry.ts` (bez DOM, kryté unit testy)
 
-- `validateInquiry` vrací chyby po polích. Neprázdné `website` skončí obecnou chybou `form` a dál nekontroluje.
+- `validateInquiry` vrací chyby po polích. Neprázdné `website` (ve formuláři pole `_honey`) skončí obecnou chybou `form` a dál nekontroluje.
 - Telefon po vyhození mezer a závorek musí sedět na `^(\+420)?[1-9]\d{8}$`.
 - Zpráva má alespoň 10 znaků, jméno alespoň 2, téma musí být v `inquiryTopics`.
 - `buildMailto` složí předmět a tělo na danou adresu.
-- `readInquiryForm` čte `FormData`.
+- `submitInquiry` pošle JSON na `https://formsubmit.co/ajax/`. `ok` znamená, že služba zprávu přijala. `rejected` znamená, že odpověď není úspěch (včetně stránky s kontrolou prohlížeče). `offline` znamená, že požadavek vůbec neodešel.
+- `readInquiryForm` čte `FormData`. Pole `_honey` ukládá do `website`.
 
 `src/lib/local-business.ts` skládá schema.org `LocalBusiness`: adresa, geo, telefon, e-mail, IČO, DIČ, founder, `areaServed`, `knowsAbout`. `sameAs` dostane web a jen neprázdné `maps.googlePlace` / `maps.mapyPlace`.
 
-`src/scripts/inquiry.ts` poslouchá submit na `[data-inquiry-form]`, vypíše chyby do `[data-error-for]`, nastaví `aria-invalid` a při úspěchu ukáže odkaz „Otevřít e-mailový klient“. Mailto si formulář pamatuje v `data-last-mailto`.
+`src/scripts/inquiry.ts` poslouchá submit na `[data-inquiry-form]`, vypíše chyby do `[data-error-for]` a nastaví `aria-invalid`. Platnou poptávku nejdřív odešle přes `submitInquiry`. Při úspěchu poděkuje, napíše, že se zpráva odeslala, a formulář vyprázdní. Když služba požadavek odmítne, formulář přejde na běžné odeslání na `action` (FormSubmit), aby ho prohlížeč dokončil sám, a po návratu na `?poptavka=odeslana` ukáže stejné potvrzení. Když není síť, ukáže odkaz „Otevřít e-mailový klient“ a adresu uloží do `data-last-mailto`.
 
 ## Vzhled
 

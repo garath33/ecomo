@@ -15,6 +15,8 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 ### Změněno
 
 - Tepelná čerpadla: instalujeme jen monoblok značky Kensol. Ze stránky zmizel výběr split, monoblok a hydrosplit i věta, že značku necháváme otevřenou. Cena počítá s venkovní jednotkou a trasou topné vody.
+- Po odeslání poptávky se ukáže poděkování a věta, že se zpráva odeslala.
+- Formulář poptávky po vyplnění odešle zprávu na jiri.uldrich@ecomo.cz přes FormSubmit. Souhlas už neříká, že údaje jdou přímo. Když služba nepustí požadavek napřímo, formulář se odešle běžným odesláním stránky. Bez sítě zůstane odkaz do e-mailového klienta. První zpráva čeká, až jednatel potvrdí schránku v e-mailu od FormSubmit.
 - Fotografie venkovní jednotky (`public/images/nabidka-tc.jpg`) ukazuje tepelné čerpadlo postavené rovnoběžně se zdí domu. Čelo skříně s ventilátorem je v rovině stěny a jednotka stojí na betonovém základu. Stejný snímek je na kartě nabídky i v hlavičce stránky tepelných čerpadel.
 - Fotovoltaika: nadpis „Firemní instalace“ a věta „Energie z vlastní střechy“. Stejný název je i v odrážce na úvodu, s nižšími provozními náklady ve výrobě, skladu i kancelářích.
 - Hlavní moto je „Osobní přístup k vám i vašemu domu“. Slovo „na míru“ z webu zmizelo. Texty jsou psané lidštěji a každý blok nese jinou informaci: věta pod motem mluví o návratnosti a ceně, údaje pod tlačítkem o tom, kdo zakázku vede a komu zavolat po předání, nabídka o tom, z čeho vycházíme. Opravený pád u „jednáte s Jiří Uldrich“. O nás má nadpis „Mluvíte s tím, kdo zakázku vede“. Jiří zakázku vede a na montáž dohlíží. Kontakt je bez „Neváhejte nás kontaktovat“.

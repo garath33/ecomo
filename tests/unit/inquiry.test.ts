@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
-import { buildMailto, validateInquiry } from "../../src/lib/inquiry";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { buildMailto, submitInquiry, validateInquiry } from "../../src/lib/inquiry";
 
 const valid = {
   name: "Jan Novák",
@@ -49,5 +49,77 @@ describe("buildMailto", () => {
     expect(href.startsWith("mailto:jiri.uldrich@ecomo.cz?")).toBe(true);
     expect(decodeURIComponent(href)).toContain("Jan Novák");
     expect(decodeURIComponent(href)).toContain("Instalace fotovoltaiky");
+  });
+});
+
+describe("submitInquiry", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it("posts the inquiry to the company inbox", async () => {
+    const fetchMock = vi.fn(async () => Response.json({ success: "true" }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    await expect(submitInquiry(valid, "jiri.uldrich@ecomo.cz")).resolves.toEqual({ ok: true });
+
+    const [url, init] = fetchMock.mock.calls[0] as unknown as [string, RequestInit];
+    expect(url).toBe("https://formsubmit.co/ajax/jiri.uldrich@ecomo.cz");
+    const body = JSON.parse(String(init.body)) as Record<string, string>;
+    expect(body["Jméno"]).toBe("Jan Novák");
+    expect(body["Telefon"]).toBe("604 251 324");
+    expect(body["Zájem"]).toBe("Instalace fotovoltaiky");
+    expect(body["Zpráva"]).toContain("Rodinný dům");
+    expect(body._replyto).toBe("jan@example.cz");
+    expect(body._honey).toBe("");
+    expect(body.website).toBeUndefined();
+  });
+
+  it("treats an HTML challenge as a rejection the browser can finish", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => new Response("<html>challenge</html>", { status: 200, headers: { "Content-Type": "text/html" } })),
+    );
+
+    const result = await submitInquiry(valid, "jiri.uldrich@ecomo.cz");
+
+    expect(result.ok).toBe(false);
+    if (!result.ok) expect(result.reason).toBe("rejected");
+  });
+
+  it("reports a rejection when the service does not accept the inquiry", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => new Response("<html>", { status: 403 })));
+
+    const result = await submitInquiry(valid, "jiri.uldrich@ecomo.cz");
+
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
+      expect(result.reason).toBe("rejected");
+      expect(result.mailto.startsWith("mailto:jiri.uldrich@ecomo.cz?")).toBe(true);
+    }
+  });
+
+  it("reports offline when the browser cannot reach the service", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => {
+        throw new TypeError("Failed to fetch");
+      }),
+    );
+
+    const result = await submitInquiry(valid, "jiri.uldrich@ecomo.cz");
+
+    expect(result.ok).toBe(false);
+    if (!result.ok) expect(result.reason).toBe("offline");
+  });
+
+  it("does not post when the honeypot is filled", async () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+
+    const result = await submitInquiry({ ...valid, website: "http://spam" }, "jiri.uldrich@ecomo.cz");
+
+    expect(result.ok).toBe(false);
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 });
