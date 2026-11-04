@@ -6,7 +6,7 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 
 ### Přidáno
 
-- Stránka fotovoltaiky má u karet segmentů vektorové ilustrace v barvách značky: rodinný dům se solární střechou, firemní hala, radnice a bytové domy s panely na ploché střeše.
+- Stránka fotovoltaiky má u karet segmentů vektorové ilustrace v barvách značky: rodinný dům se solární střechou, firemní hala, radnice s hodinovou věží mezi dvěma veřejnými budovami a bytové domy s panely na ploché střeše.
 - Náhled pracovní větve žije na https://garath33.github.io/ecomo/preview/ se žluto-černou lištou. Ostří na https://garath33.github.io/ecomo/ se z pracovní větve nepřepisuje a po merge do `main` lištu nemá. Pravidla drží `.cursor/rules/github-workflow.mdc`.
 - `.cursorignore` a `.cursorrules`: AI neindexuje `node_modules/`, build, lockfile, logy ani `.git/` a drží se pravidel minimalizace kontextu, architektury a dokumentace.
 - Git workflow: člověk pracuje na `feature/<nazev>`, cloud agent na `cursor/<nazev>-<id>`. Merge do `main` až po schválení. CI kontroluje conventional commits (`feat`, `fix`, `docs`, `ci`, `chore`, `test`, `refactor`) a šablona PR žádá náhled, kontrolu a screenshoty.
