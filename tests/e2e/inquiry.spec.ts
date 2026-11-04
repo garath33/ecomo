@@ -21,53 +21,34 @@ test.describe("inquiry form @regression", () => {
   });
 
   test("sends a valid inquiry to the company inbox", async ({ page }) => {
-    let body: Record<string, string> | undefined;
-    await page.route(
-      (url) => url.hostname === "formsubmit.co",
-      async (route) => {
-        body = route.request().postDataJSON() as Record<string, string>;
-        await route.fulfill({
-          status: 200,
-          contentType: "application/json",
-          body: JSON.stringify({ success: "true" }),
-        });
-      },
-    );
-
-    await fillValidInquiry(page);
-    await page.getByRole("button", { name: "Odeslat poptávku" }).click();
-
-    await expect(page.locator("[data-inquiry-status]")).toBeVisible();
-    await expect(page.locator("[data-inquiry-status]")).toContainText("Děkujeme za poptávku");
-    await expect(page.locator("[data-inquiry-status]")).toContainText("Zpráva se odeslala");
-    await expect(page.getByRole("link", { name: "Otevřít e-mailový klient" })).toHaveCount(0);
-    expect(body?.["Jméno"]).toBe("Marie Svobodová");
-    expect(body?.["Zájem"]).toBe("Fotovoltaika i tepelné čerpadlo");
-    expect(body?._replyto).toBe("marie@example.cz");
-    expect(body?._honey).toBe("");
-  });
-
-  test("posts the form in the browser when the direct request is rejected", async ({ page }) => {
     let posted: URLSearchParams | undefined;
-    await page.route((url) => url.hostname === "formsubmit.co", async (route) => {
-      if (route.request().resourceType() === "document") {
-        posted = new URLSearchParams(route.request().postData() ?? "");
-        const next = posted.get("_next") ?? "./";
-        await route.fulfill({ status: 303, headers: { location: next } });
-        return;
-      }
-      await route.fulfill({ status: 403, contentType: "text/html", body: "<html>challenge</html>" });
+    await page.context().route((url) => url.hostname === "formsubmit.co", async (route) => {
+      posted = new URLSearchParams(route.request().postData() ?? "");
+      const next = posted.get("_next") ?? "./";
+      await route.fulfill({ status: 303, headers: { location: next } });
     });
 
     await fillValidInquiry(page);
+    const popupPromise = page.waitForEvent("popup");
     await page.getByRole("button", { name: "Odeslat poptávku" }).click();
+    const popup = await popupPromise;
 
-    await expect(page.locator("[data-inquiry-status]")).toContainText("Děkujeme za poptávku");
-    await expect(page.locator("[data-inquiry-status]")).toContainText("Zpráva se odeslala");
+    await expect(page.locator("[data-inquiry-status]")).toContainText("Potvrďte odeslání v novém okně");
+    await expect(page.locator("[data-inquiry-status]")).toContainText("Activate Form");
+    await expect(page.locator("[data-inquiry-status]")).toContainText("jiri.uldrich@ecomo.cz");
+    await expect(page.getByRole("button", { name: "Odeslat poptávku" })).toBeEnabled();
+    await expect(page.getByRole("link", { name: "Otevřít e-mailový klient" })).toHaveAttribute(
+      "href",
+      /mailto:jiri\.uldrich@ecomo\.cz/,
+    );
+    await expect(popup.locator("[data-inquiry-status]")).toContainText("Děkujeme za poptávku");
+    await expect(popup.locator("[data-inquiry-status]")).toContainText("Zpráva se odeslala");
     expect(posted?.get("Jméno")).toBe("Marie Svobodová");
     expect(posted?.get("Zájem")).toBe("Fotovoltaika i tepelné čerpadlo");
     expect(posted?.get("_replyto")).toBe("marie@example.cz");
-    expect(posted?.get("_honey") ?? "").toBe("");
+    expect(posted?.get("_captcha")).toBe("false");
+    expect(posted?.get("_url")).toContain("#poptavka");
+    expect(posted?.get("_next")).toContain("poptavka=odeslana");
     expect(posted?.get("name")).toBeNull();
   });
 

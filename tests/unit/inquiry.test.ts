@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { buildMailto, submitInquiry, validateInquiry } from "../../src/lib/inquiry";
+import { buildMailto, inquiryHandoffFields, submitInquiry, validateInquiry } from "../../src/lib/inquiry";
 
 const valid = {
   name: "Jan Novák",
@@ -49,6 +49,22 @@ describe("buildMailto", () => {
     expect(href.startsWith("mailto:jiri.uldrich@ecomo.cz?")).toBe(true);
     expect(decodeURIComponent(href)).toContain("Jan Novák");
     expect(decodeURIComponent(href)).toContain("Instalace fotovoltaiky");
+  });
+});
+
+describe("inquiryHandoffFields", () => {
+  it("prepares a browser post back to the same page", () => {
+    const fields = inquiryHandoffFields(
+      valid,
+      "https://garath33.github.io/ecomo/#poptavka",
+      "https://garath33.github.io/ecomo/?poptavka=odeslana#poptavka",
+    );
+    expect(fields["Jméno"]).toBe("Jan Novák");
+    expect(fields._replyto).toBe("jan@example.cz");
+    expect(fields._captcha).toBe("false");
+    expect(fields._url).toBe("https://garath33.github.io/ecomo/#poptavka");
+    expect(fields._next).toBe("https://garath33.github.io/ecomo/?poptavka=odeslana#poptavka");
+    expect(fields._honey).toBeUndefined();
   });
 });
 
