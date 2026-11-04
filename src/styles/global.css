@@ -490,6 +490,16 @@ p {
   font-weight: 700;
 }
 
+.form-status.is-error {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+
+.form-status a {
+  text-decoration: underline;
+}
+
 .contact-stack {
   display: flex;
   flex-direction: column;
