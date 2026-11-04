@@ -59,7 +59,11 @@ test.describe("homepage @regression", () => {
     const process = page
       .locator("section")
       .filter({ has: page.getByRole("heading", { name: "Jak probíhá zakázka" }) });
-    await expect(process.locator(".step__mark")).toHaveCount(3);
+    const cards = process.locator("article.step");
+    await expect(cards).toHaveCount(3);
+    await expect(cards.nth(0).locator(".step__mark")).toHaveCount(3);
+    await expect(cards.nth(1).locator(".step__mark")).toHaveCount(1);
+    await expect(cards.nth(2).locator(".step__mark")).toHaveCount(1);
 
     await page.goto("./");
     await page.getByRole("link", { name: "Více o tepelných čerpadlech" }).click();
