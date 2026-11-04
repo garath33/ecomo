@@ -54,6 +54,24 @@ test.describe("homepage @regression", () => {
     await expect(page.getByText("Energie z vlastní střechy", { exact: false })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Obce a města" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Bytové domy a SVJ" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Jak probíhá zakázka" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "1. Kontakt a smlouva" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "2. Administrativa" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "3. Realizace" })).toBeVisible();
+    await expect(
+      page.getByText("První kontakt, naměření, nacenění, vyhotovení a podpis smlouvy o dílo."),
+    ).toBeVisible();
+    await expect(
+      page.getByText("Instalace, nastavení, předání a revize — v tomhle pořadí."),
+    ).toBeVisible();
+    const process = page
+      .locator("section")
+      .filter({ has: page.getByRole("heading", { name: "Jak probíhá zakázka" }) });
+    const cards = process.locator(".step");
+    await expect(cards).toHaveCount(3);
+    await expect(cards.nth(0).locator(".step__mark")).toHaveCount(1);
+    await expect(cards.nth(1).locator(".step__mark")).toHaveCount(1);
+    await expect(cards.nth(2).locator(".step__mark")).toHaveCount(1);
     const audiences = page.getByTestId("pv-audiences");
     await expect(audiences.locator("[data-audience]")).toHaveCount(4);
     await expect(audiences.locator("[data-audience='house'] svg")).toBeVisible();
