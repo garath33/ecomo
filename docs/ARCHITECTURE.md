@@ -56,14 +56,14 @@ Menu v `navigation` vede na `/#nabidka`, `/fotovoltaika/`, `/tepelna-cerpadla/`,
 | Komponenta | Úloha |
 | --- | --- |
 | `Header` | Wordmark, odkazy z `navigation`, CTA poptávky. Do 1100 px hamburger (`data-nav-toggle`) otevírá `#hlavni-menu`. `aria-current="page"` sedí, když cesta přesně odpovídá `href`. |
-| `Footer` | `#kontakt`. Sídlo, IČO, DIČ, osoba, telefon, e-mail, web a odkazy na poptávku a obě služby. Wordmark ve variantě `onDark`. |
+| `Footer` | Sídlo, IČO, DIČ, osoba, telefon, e-mail, web a odkazy na poptávku a obě služby. Wordmark ve variantě `onDark`. |
 | `Logo` | PNG wordmark. `onDark` přepne na bílý soubor. `alt` je `ecomo`. |
-| `Hero` | Úvodní fotografie panelů, claim, jeden odkaz „Kontaktujte nás“ na `#poptavka`, tři krátké body (na klíč, osobně, dva obory). |
+| `Hero` | Úvodní fotografie panelů, claim, jeden odkaz „Kontaktujte nás“ na `#kontakt`, tři krátké body (na klíč, jeden člověk, po předání). |
 | `Offer` | `#nabidka`. Dvě karty: fotovoltaika (`images/nabidka-fv.jpg`) a tepelné čerpadlo (`images/nabidka-tc.jpg`), každá s odkazem na podstránku. |
 | `AudienceArt` | Vektorová ilustrace segmentu na `/fotovoltaika/`. `id` z `pvPage.audiences` vybere soubor v `src/assets/audience/`. Kresba je dekorativní (`aria-hidden`). |
-| `Contact` | Výzva s telefonem a karta `#poptavka` s `InquiryForm`. |
+| `Contact` | Kotva `#kontakt` na výzvě „Ozvěte se nezávazně“ a karta `#poptavka` s `InquiryForm`. |
 | `InquiryForm` | Pole jméno, telefon, e-mail, téma (`inquiryTopics`), zpráva a skryté pole `_honey`. `action` míří na FormSubmit. Po submitu načte `src/scripts/inquiry.ts`. |
-| `About` | Text o firmě a jednateli, tři body, CTA na poptávku. Používá ho jen `/o-nas/`. |
+| `About` | Text o firmě a jednateli, tři body, CTA „Kontaktujte nás“ na `#kontakt`. Používá ho jen `/o-nas/`. |
 | `Projects` | `#zakazky`. Karty z pole `projects`. Žádná stránka ji teď neimportuje. |
 | `PreviewBanner` | Pruh náhledu, jen když `isPreview()` vrátí pravdu. |
 | `JsonLd` | `<script type="application/ld+json">` z `localBusinessJsonLd`. |
