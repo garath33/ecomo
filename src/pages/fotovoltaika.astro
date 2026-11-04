@@ -2,10 +2,17 @@
 import AudienceArt, { type AudienceId } from "../components/AudienceArt.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Contact from "../components/Contact.astro";
+import ProcessMark from "../components/ProcessMark.astro";
 import { messages } from "../locales";
 import { site } from "../site.config";
 import { withBase } from "../lib/paths";
 
+const marks = ["smlouva", "administrativa", "realizace"] as const;
+const stepHighlights: ReadonlyArray<ReadonlyArray<string>> = [
+  ["1. kontakt", "Naměření", "Nacenění", "Smlouva o dílo"],
+  ["Projekt", "Podklady", "Žádosti", "Dotace a síť"],
+  ["Instalace", "Nastavení", "Předání", "Revize"],
+];
 const audienceIds: readonly AudienceId[] = ["house", "commercial", "town", "apartments"];
 
 function audienceId(value: string): AudienceId {
@@ -51,21 +58,175 @@ function audienceId(value: string): AudienceId {
     </div>
   </section>
 
-  <section class="section alt">
+  <section class="section alt process-section">
     <div class="wrap">
-      <h2>{messages.pvPage.processTitle}</h2>
-      <div class="grid-3">
-        {
-          messages.pvPage.steps.map((step) => (
-            <article class="card">
-              <h3>{step.title}</h3>
-              <p>{step.body}</p>
-            </article>
-          ))
-        }
+      <div class="process-head">
+        <p class="eyebrow">{messages.nav.pv}</p>
+        <h2>{messages.pvPage.processTitle}</h2>
       </div>
+      <ol class="process-grid">
+        {
+          messages.pvPage.steps.map((step, index) => {
+            const mark = marks[index];
+            const stepNum = String(index + 1).padStart(2, "0");
+            const tags = stepHighlights[index] ?? [];
+            return (
+              <li class="card step">
+                <div class="step__top">
+                  {mark && <ProcessMark name={mark} />}
+                  <div class="step__badge" aria-hidden="true">
+                    <span class="step__num">{stepNum}</span>
+                  </div>
+                </div>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+                <ul class="step__tags" aria-hidden="true">
+                  {tags.map((tag) => (
+                    <li>{tag}</li>
+                  ))}
+                </ul>
+              </li>
+            );
+          })
+        }
+      </ol>
     </div>
   </section>
 
   <Contact />
 </BaseLayout>
+
+<style>
+  .process-section {
+    background:
+      linear-gradient(180deg, var(--white) 0%, var(--paper) 100%);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .process-head {
+    margin-bottom: 2.4rem;
+  }
+
+  .process-head h2 {
+    margin-bottom: 0;
+  }
+
+  .process-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  @media (min-width: 800px) {
+    .process-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .process-grid::before {
+      content: "";
+      position: absolute;
+      top: 4rem;
+      left: 12%;
+      right: 12%;
+      height: 2px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--ink) 0 10px,
+        transparent 10px 18px
+      );
+      opacity: 0.28;
+      z-index: 0;
+    }
+  }
+
+  .step {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.85rem 1.75rem 1.65rem;
+    background: var(--white);
+    border: 1.5px solid var(--ink);
+    border-radius: 6px;
+    box-shadow: 6px 6px 0 var(--ink);
+  }
+
+  .step::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--brand);
+    border-bottom: 1.5px solid var(--ink);
+    border-radius: 4px 4px 0 0;
+  }
+
+  .step__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.35rem;
+    margin-bottom: 1.35rem;
+  }
+
+  .step__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem 0.65rem;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+  }
+
+  .step__num {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+  }
+
+  .step h3 {
+    font-size: 1.32rem;
+    margin-bottom: 0.55rem;
+  }
+
+  .step p {
+    color: var(--ink-soft);
+    margin-bottom: 1.35rem;
+  }
+
+  .step__tags {
+    list-style: none;
+    margin: auto 0 0;
+    padding: 1rem 0 0;
+    border-top: 1px dashed var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .step__tags li {
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.22rem 0.55rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink);
+  }
+
+  .step:last-child .step__tags li {
+    background: rgb(216 231 22 / 28%);
+    border-color: var(--ink);
+  }
+</style>
