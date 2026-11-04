@@ -15,7 +15,7 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 ### Změněno
 
 - Fotografie venkovní jednotky (`public/images/nabidka-tc.jpg`) ukazuje tepelné čerpadlo postavené rovnoběžně se zdí domu. Čelo skříně s ventilátorem je v rovině stěny a jednotka stojí na betonovém základu. Stejný snímek je na kartě nabídky i v hlavičce stránky tepelných čerpadel.
-- Fotovoltaika: nadpis „Firemní instalace“ a věta „Energie z vlastní střechy“.
+- Fotovoltaika: nadpis „Firemní instalace“ a věta „Energie z vlastní střechy“. Stejný název je i v odrážce na úvodu, s nižšími provozními náklady ve výrobě, skladu i kancelářích.
 - Tepelné čerpadlo: místo „Obnovitelné zdroje…“ údaj, že dobře navržené čerpadlo bere na stejné teplo zhruba třetinu elektřiny oproti přímotopu nebo elektrokotli. U starších radiátorů text říká, že úspora bývá menší.
 
 ## [0.1.0] — 2026-10-02
