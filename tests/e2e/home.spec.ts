@@ -51,6 +51,10 @@ test.describe("homepage @regression", () => {
     await expect(
       page.getByText("Instalace, nastavení, předání a revize — v tomhle pořadí."),
     ).toBeVisible();
+    const process = page
+      .locator("section")
+      .filter({ has: page.getByRole("heading", { name: "Jak probíhá zakázka" }) });
+    await expect(process.locator(".step__mark")).toHaveCount(3);
 
     await page.goto("./");
     await page.getByRole("link", { name: "Více o tepelných čerpadlech" }).click();

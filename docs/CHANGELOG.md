@@ -15,6 +15,7 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 ### Změněno
 
 - Postup zakázky na stránce fotovoltaiky: 1. kontakt, naměření, nacenění a smlouva o dílo, 2. administrativa (projekt, podklady, žádosti), 3. realizace v pořadí instalace, nastavení, předání a revize.
+- Kroky zakázky mají žlutou značku s ikonou (smlouva, podklady, panel) ve stejném žluto-černém stylu jako tlačítka a hlavička.
 
 ## [0.1.0] — 2026-10-02
 

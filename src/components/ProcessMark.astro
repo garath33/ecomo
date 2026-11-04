@@ -1,0 +1,59 @@
+---
+interface Props {
+  name: "smlouva" | "administrativa" | "realizace";
+}
+
+const { name } = Astro.props;
+---
+
+<span class="step__mark" aria-hidden="true">
+  {
+    name === "smlouva" && (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="miter">
+        <path d="M6.75 3.25h7.2L18.75 8.1V20.75H6.75z" />
+        <path d="M13.95 3.25V8.1h4.8" />
+        <path d="M9.5 12.25h5" />
+        <path d="M9.6 16.35l1.55 1.55 3.35-3.45" />
+      </svg>
+    )
+  }
+  {
+    name === "administrativa" && (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="miter">
+        <path d="M8.25 4.25h10.5V16.25H8.25z" />
+        <path d="M5.25 7.5h10.25V19.75H5.25z" fill="var(--brand)" />
+        <path d="M7.75 11.75h5.25" />
+        <path d="M7.75 15h3.5" />
+      </svg>
+    )
+  }
+  {
+    name === "realizace" && (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="miter">
+        <path d="M3.5 5.25h17v12.5h-17z" />
+        <path d="M3.5 11.5h17" />
+        <path d="M9.15 5.25v12.5" />
+        <path d="M14.85 5.25v12.5" />
+      </svg>
+    )
+  }
+</span>
+
+<style>
+  .step__mark {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-bottom: 1rem;
+    background: var(--brand);
+    color: var(--ink);
+    border-radius: var(--radius);
+  }
+
+  .step__mark svg {
+    width: 1.45rem;
+    height: 1.45rem;
+    display: block;
+  }
+</style>

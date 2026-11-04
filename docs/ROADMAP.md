@@ -36,7 +36,7 @@ Zásady, které platí pořád: ostří je `main`, obsah náhledu i ostří bere
 - Repozitář, Astro 5, TypeScript, ESLint, Vitest, Playwright, GitHub Actions a nasazení na GitHub Pages (`https://garath33.github.io/ecomo/`).
 - Vzhled podle brandingu: žlutá `#D8E716`, černá, písmo Sansation (Light a Bold), rastrový wordmark na světlém i tmavém pozadí.
 - Úvodní stránka: hero s jedním CTA „Kontaktujte nás“, sekce Co nabízíme (fotovoltaika a tepelná čerpadla), kontakt a formulář.
-- Fotovoltaika: rodinné domy, firmy, obce a města, bytové domy a SVJ, postup zakázky (kontakt a smlouva, administrativa, realizace).
+- Fotovoltaika: rodinné domy, firmy, obce a města, bytové domy a SVJ, postup zakázky (kontakt a smlouva, administrativa, realizace) se žlutou značkou u každého kroku.
 - Tepelná čerpadla vzduch–voda: novostavba, rekonstrukce, kombinace s fotovoltaikou, co cena obvykle obsahuje.
 - O nás: samostatná stránka `/o-nas/`, odkaz v hlavním menu. Na úvodu se sekce nevykresluje.
 - Firemní údaje (IČO, DIČ, sídlo, telefon, e-mail, web, role) z jednoho místa, `src/site.config.ts`.

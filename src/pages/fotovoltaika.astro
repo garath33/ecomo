@@ -1,9 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Contact from "../components/Contact.astro";
+import ProcessMark from "../components/ProcessMark.astro";
 import { messages } from "../locales";
 import { site } from "../site.config";
 import { withBase } from "../lib/paths";
+
+const marks = ["smlouva", "administrativa", "realizace"] as const;
 ---
 
 <BaseLayout
@@ -45,12 +48,16 @@ import { withBase } from "../lib/paths";
       <h2>{messages.pvPage.processTitle}</h2>
       <div class="grid-3">
         {
-          messages.pvPage.steps.map((step) => (
-            <article class="card">
-              <h3>{step.title}</h3>
-              <p>{step.body}</p>
-            </article>
-          ))
+          messages.pvPage.steps.map((step, index) => {
+            const mark = marks[index];
+            return (
+              <article class="card step">
+                {mark && <ProcessMark name={mark} />}
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </article>
+            );
+          })
         }
       </div>
     </div>
@@ -58,3 +65,9 @@ import { withBase } from "../lib/paths";
 
   <Contact />
 </BaseLayout>
+
+<style>
+  .step p:last-child {
+    margin-bottom: 0;
+  }
+</style>
