@@ -38,7 +38,8 @@ test.describe("homepage @regression", () => {
     await page.getByRole("link", { name: "Více o fotovoltaice" }).click();
     await expect(page.getByRole("heading", { level: 1 })).toContainText("Fotovoltaika");
     await expect(page.getByRole("heading", { name: "Rodinné domy" })).toBeVisible();
-    await expect(page.getByRole("heading", { name: "Komerční instalace" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Firemní instalace" })).toBeVisible();
+    await expect(page.getByText("Energie z vlastní střechy", { exact: false })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Obce a města" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Bytové domy a SVJ" })).toBeVisible();
 
@@ -46,6 +47,7 @@ test.describe("homepage @regression", () => {
     await page.getByRole("link", { name: "Více o tepelných čerpadlech" }).click();
     await expect(page.getByRole("heading", { level: 1 })).toContainText("Tepelná čerpadla");
     await expect(page.getByText("Vzduch–voda", { exact: false })).toBeVisible();
+    await expect(page.getByText("zhruba třikrát méně elektřiny", { exact: false })).toBeVisible();
   });
 
   test("offer cards use a panel install photo and the heat-pump photo", async ({ page }) => {

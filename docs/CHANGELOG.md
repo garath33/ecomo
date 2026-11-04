@@ -12,6 +12,11 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 - CI ukládá desktop screenshoty úvodu, fotovoltaiky, tepelných čerpadel a kontaktu jako artifact `preview-screenshots`. Deploy na Pages běží i z větví `feature/**`.
 - Jazyk webu zůstává jen čeština, dokud uživatel nenahlásí další.
 
+### Změněno
+
+- Fotovoltaika: nadpis „Firemní instalace“ a věta „Energie z vlastní střechy“.
+- Tepelné čerpadlo: místo „Obnovitelné zdroje…“ údaj, že dobře navržené čerpadlo bere na stejné teplo zhruba třetinu elektřiny oproti přímotopu nebo elektrokotli. U starších radiátorů text říká, že úspora bývá menší.
+
 ## [0.1.0] — 2026-10-02
 
 První veřejná podoba prezentačního webu. Nasazuje se na GitHub Pages.
