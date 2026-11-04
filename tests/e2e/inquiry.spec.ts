@@ -6,7 +6,7 @@ async function fillValidInquiry(page: Page): Promise<void> {
   await page.getByLabel("Telefon").fill("604 251 324");
   await page.getByLabel("E-mail").fill("marie@example.cz");
   await page.getByLabel("Mám zájem o").selectOption("both");
-  await page.getByLabel("Stručně popište dům / poptávku").fill(
+  await page.getByLabel("Pár slov o domě a o tom, co chcete řešit").fill(
     "Novostavba u Zdib, zájem o FVE i tepelné čerpadlo.",
   );
 }
