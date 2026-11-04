@@ -13,7 +13,7 @@ test.describe("about page @regression", () => {
     await page.getByRole("navigation").getByRole("link", { name: "O nás" }).click();
     await expect(page).toHaveURL(/\/o-nas\/$/);
     await expect(page.getByTestId("about").getByRole("heading", { level: 1 })).toContainText(
-      "Mluvíte s tím, kdo to postaví",
+      "Mluvíte s tím, kdo zakázku vede",
     );
     await expect(page.getByTestId("about")).toContainText("Jiří Uldrich");
     await expect(page.getByTestId("about")).toContainText("nezačínáme ceníkem, ale rozhovorem");
