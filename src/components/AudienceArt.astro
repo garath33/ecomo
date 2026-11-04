@@ -1,0 +1,17 @@
+---
+import apartments from "../assets/audience/apartments.svg?raw";
+import commercial from "../assets/audience/commercial.svg?raw";
+import house from "../assets/audience/house.svg?raw";
+import town from "../assets/audience/town.svg?raw";
+
+export type AudienceId = "house" | "commercial" | "town" | "apartments";
+
+interface Props {
+  id: AudienceId;
+}
+
+const art: Record<AudienceId, string> = { house, commercial, town, apartments };
+const { id } = Astro.props;
+---
+
+<div class="audience-art" data-audience={id} aria-hidden="true" set:html={art[id]} />

@@ -65,6 +65,12 @@ test.describe("homepage @regression", () => {
     await expect(cards.nth(0).locator(".step__mark")).toHaveCount(1);
     await expect(cards.nth(1).locator(".step__mark")).toHaveCount(1);
     await expect(cards.nth(2).locator(".step__mark")).toHaveCount(1);
+    const audiences = page.getByTestId("pv-audiences");
+    await expect(audiences.locator("[data-audience]")).toHaveCount(4);
+    await expect(audiences.locator("[data-audience='house'] svg")).toBeVisible();
+    await expect(audiences.locator("[data-audience='commercial'] svg")).toBeVisible();
+    await expect(audiences.locator("[data-audience='town'] svg")).toBeVisible();
+    await expect(audiences.locator("[data-audience='apartments'] svg")).toBeVisible();
 
     await page.goto("./");
     await page.getByRole("link", { name: "Více o tepelných čerpadlech" }).click();

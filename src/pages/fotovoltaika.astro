@@ -1,4 +1,5 @@
 ---
+import AudienceArt, { type AudienceId } from "../components/AudienceArt.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Contact from "../components/Contact.astro";
 import ProcessMark from "../components/ProcessMark.astro";
@@ -12,6 +13,12 @@ const stepHighlights: ReadonlyArray<ReadonlyArray<string>> = [
   ["Projekt", "Podklady", "Žádosti", "Dotace a síť"],
   ["Instalace", "Nastavení", "Předání", "Revize"],
 ];
+const audienceIds: readonly AudienceId[] = ["house", "commercial", "town", "apartments"];
+
+function audienceId(value: string): AudienceId {
+  if ((audienceIds as readonly string[]).includes(value)) return value as AudienceId;
+  throw new Error(`Unknown audience illustration: ${value}`);
+}
 ---
 
 <BaseLayout
@@ -34,14 +41,17 @@ const stepHighlights: ReadonlyArray<ReadonlyArray<string>> = [
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" data-testid="pv-audiences">
     <div class="wrap grid-2">
       {
         messages.pvPage.audiences.map((item) => (
-          <article class="card">
-            <h2>{item.title}</h2>
-            <p>{item.body}</p>
-            <p class="muted">{item.note}</p>
+          <article class="card audience">
+            <AudienceArt id={audienceId(item.id)} />
+            <div class="audience__copy">
+              <h2>{item.title}</h2>
+              <p>{item.body}</p>
+              <p class="muted">{item.note}</p>
+            </div>
           </article>
         ))
       }
