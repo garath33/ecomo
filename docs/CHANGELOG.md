@@ -16,6 +16,8 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 
 - Postup zakázky na stránce fotovoltaiky: 1. kontakt, naměření, nacenění a smlouva o dílo, 2. administrativa (projekt, podklady, žádosti), 3. realizace v pořadí instalace, nastavení, předání a revize.
 - Kroky zakázky mají žlutou značku s ikonou (smlouva, podklady, panel) ve stejném žluto-černém stylu jako tlačítka a hlavička.
+- Fotovoltaika: nadpis „Firemní instalace“ a věta „Energie z vlastní střechy“. Stejný název je i v odrážce na úvodu, s nižšími provozními náklady ve výrobě, skladu i kancelářích.
+- Tepelné čerpadlo: místo „Obnovitelné zdroje…“ údaj, že dobře navržené čerpadlo bere na stejné teplo zhruba třetinu elektřiny oproti přímotopu nebo elektrokotli. U starších radiátorů text říká, že úspora bývá menší.
 
 ## [0.1.0] — 2026-10-02
 
