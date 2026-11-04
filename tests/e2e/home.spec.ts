@@ -4,12 +4,17 @@ test.describe("homepage @regression", () => {
   test("shows the live sections and a single contact CTA", async ({ page }) => {
     await page.goto("./");
     await expect(page.getByTestId("hero").getByRole("heading", { level: 1 })).toContainText(
-      "Smysluplné elektrárny",
+      "Osobní přístup k vám i vašemu domu",
     );
+    await expect(page.getByTestId("hero")).not.toContainText("na míru");
+    await expect(page.getByTestId("hero")).toContainText("celou zakázku vede Jiří Uldrich");
     await expect(page.getByTestId("offer")).toContainText("Co nabízíme");
+    await expect(page.getByTestId("offer")).toContainText(
+      "Firemní instalace — nižší provozní náklady ve výrobě, skladu i kancelářích",
+    );
+    await expect(page.getByTestId("offer")).not.toContainText("Komerční");
     await expect(page.getByTestId("contact-intro")).toContainText("Ozvěte se nezávazně");
-    await expect(page.getByTestId("contact-intro")).toContainText("Neváhejte nás kontaktovat");
-    await expect(page.getByTestId("contact-intro")).toContainText("které sedí právě vám");
+    await expect(page.getByTestId("contact-intro")).toContainText("domluvíme si první schůzku");
     await expect(page.getByTestId("contact-intro")).not.toContainText("balíček z ceníku");
     await expect(page.getByTestId("contact")).toBeVisible();
     await expect(page.getByTestId("projects")).toHaveCount(0);
@@ -18,7 +23,7 @@ test.describe("homepage @regression", () => {
     await expect(heroCta).toBeVisible();
     await expect(heroCta).toHaveCount(1);
     await expect(page.getByTestId("hero").getByRole("link", { name: /Zavolat/ })).toHaveCount(0);
-    await expect(page.getByTestId("hero")).toContainText("osobním a lidském přístupu");
+    await expect(page.getByTestId("hero")).toContainText("Nejdřív vás vyslechneme");
     await expect(page.getByTestId("hero").getByRole("img")).toHaveAttribute(
       "src",
       /hero-fv-panels/,

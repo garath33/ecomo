@@ -28,44 +28,44 @@
     "other": "Jiné / konzultace"
   },
   "copy": {
-    "tagline": "Smysluplné fotovoltaické elektrárny s řešením na míru a rozumnou cenou",
+    "tagline": "Osobní přístup k vám i vašemu domu",
     "description": "Ecomo navrhuje a instaluje fotovoltaiku a tepelná čerpadla. Od studie návratnosti a dotací až po montáž a spuštění u vás.",
     "about": "Zajišťujeme kompletní servis při realizaci fotovoltaiky. Od návrhu systému, studie jeho smysluplnosti a návratnosti, přes vyřízení dotací, připojení k distribuční soustavě a případnou změnu dodavatele elektřiny, až po odbornou montáž a spuštění technologie u zákazníka doma.",
-    "approach": "Zakládáme si na osobním a lidském přístupu. Umíme vyjít vstříc potřebám na míru — od první schůzky až po předání díla."
+    "approach": "Nejdřív vás vyslechneme a spočítáme, jestli se vám fotovoltaika nebo tepelné čerpadlo vyplatí."
   },
   "seo": {
-    "homeTitle": "Fotovoltaika a tepelná čerpadla na míru | Ecomo Zdiby",
-    "homeDescription": "Ecomo s.r.o. ze Zdib navrhuje a instaluje fotovoltaiku a tepelná čerpadla. Osobní přístup, řešení na míru, dotace a montáž na klíč v Praze a Středočeském kraji.",
+    "homeTitle": "Fotovoltaika a tepelná čerpadla s osobním přístupem | Ecomo Zdiby",
+    "homeDescription": "Ecomo ze Zdib navrhuje a staví fotovoltaiku a tepelná čerpadla v Praze a Středočeském kraji. Zakázku vede osobně Jiří Uldrich, od výpočtu přes dotace až po montáž.",
     "fotovoltaikaTitle": "Fotovoltaika pro rodinné domy, firmy i obce | Ecomo",
     "fotovoltaikaDescription": "Instalace fotovoltaiky na klíč pro rodinné domy, firmy, obce i SVJ. Návrh podle spotřeby, dotace, připojení k síti a montáž. Ecomo, Zdiby.",
     "tepelnaTitle": "Tepelná čerpadla vzduch–voda na klíč | Ecomo",
     "tepelnaDescription": "Tepelná čerpadla vzduch–voda pro vytápění, chlazení a ohřev vody. Návrh výkonu, technické šetření a montáž na klíč. Ecomo, Zdiby.",
     "aboutTitle": "O nás | Ecomo — Jiří Uldrich",
-    "aboutDescription": "Ecomo s.r.o. ze Zdib. Za firmou stojí Jiří Uldrich. Osobní a lidský přístup, řešení na míru a znalost technologie i montáže od A do Z.",
+    "aboutDescription": "Za Ecomo ze Zdib stojí Jiří Uldrich. Zná technologii i řemeslo a každou zakázku vede sám, od první schůzky po spuštění.",
     "knowsAbout": ["Fotovoltaika", "Tepelná čerpadla", "Dotace na obnovitelné zdroje"],
     "addressLabel": "Adresa"
   },
   "hero": {
     "imageAlt": "Detail černých fotovoltaických panelů",
     "eyebrow": "Fotovoltaika a tepelná čerpadla",
-    "title": "Smysluplné elektrárny na míru, s rozumnou cenou",
-    "afterApproach": "Nejdřív si poslechneme, co dům a rodina potřebují, spočítáme, jestli se to vyplatí — a teprve potom stavíme.",
+    "title": "Osobní přístup k vám i vašemu domu",
+    "afterApproach": "Když ano, navrhneme sestavu za rozumnou cenu a postavíme ji. Když ne, řekneme vám to rovnou.",
     "meta": [
       { "title": "Na klíč", "text": "návrh, dotace, montáž, připojení" },
-      { "title": "Osobně", "text": "jednáte s" },
-      { "title": "Dva obory", "text": "FVE i tepelná čerpadla" }
+      { "title": "Jeden člověk", "text": "celou zakázku vede" },
+      { "title": "Po předání", "text": "víte, komu zavolat" }
     ]
   },
   "offer": {
-    "title": "Instalace, které šetří energie i starosti",
-    "lede": "Navrhujeme řešení podle spotřeby, střechy a rozpočtu. Neprodáváme balíček z katalogu — vyjdeme vstříc tomu, co dům a rodina skutečně potřebují, a teprve potom stavíme.",
+    "title": "Elektřina ze střechy, teplo ze vzduchu",
+    "lede": "Neprodáváme balíčky z katalogu. Vycházíme z toho, kolik energie spotřebujete, jakou máte střechu a kolik chcete investovat.",
     "pv": {
       "imageAlt": "Montáž černých fotovoltaických panelů na střešní lišty",
       "title": "Instalace fotovoltaiky",
-      "body": "Elektrárna pro rodinný dům, firmu, obec i bytový dům. Cílem je snížit účty za elektřinu, pokrýt vlastní spotřebu a zkrátit návratnost díky vhodnému návrhu a dotačnímu titulu.",
+      "body": "Elektrárna pro rodinný dům, firmu, obec i bytový dům. Sníží účty za elektřinu a pokryje velkou část vlastní spotřeby. Dobře zvolený výkon a dotace zkrátí dobu, za kterou se vám vrátí.",
       "points": [
         "Rodinné domy — vlastní výroba, baterie, vyšší hodnota nemovitosti",
-        "Komerční střechy — nižší provozní náklady a větší nezávislost",
+        "Firemní instalace — nižší provozní náklady ve výrobě, skladu i kancelářích",
         "Obce, města a veřejné budovy",
         "Bytové domy a SVJ — sdílení výroby v domě"
       ]
@@ -73,19 +73,19 @@
     "hp": {
       "imageAlt": "Venkovní jednotka tepelného čerpadla u domu",
       "title": "Instalace tepelných čerpadel",
-      "body": "Tepelné čerpadlo vytápí, chladí a ohřívá vodu z obnovitelného zdroje. Hodí se k novostavbě i k rekonstrukci a výborně se doplňuje s fotovoltaikou.",
+      "body": "Tepelné čerpadlo topí, v létě umí chladit a ohřívá vodu. Energii bere hlavně z venkovního vzduchu. Hodí se do novostavby i při rekonstrukci a s fotovoltaikou si výborně rozumí.",
       "points": [
         "Vzduch–voda pro domácnosti i menší provozy",
-        "Návrh výkonu podle tepelné ztráty objektu",
-        "Technické šetření na místě před montáží",
-        "Kombinace s FVE pro levnější provoz v zimě"
+        "Výkon spočítaný podle tepelné ztráty domu",
+        "Před montáží se přijedeme podívat na místo",
+        "Spolu s fotovoltaikou ještě levnější provoz"
       ]
     }
   },
   "contact": {
     "title": "Ozvěte se nezávazně",
-    "beforePhone": "Neváhejte nás kontaktovat. Zavolejte na",
-    "afterPhone": "ohledně řešení a konzultace, napište e-mail, nebo vyplňte formulář níže. Ozveme se osobně a domluvíme řešení, které sedí právě vám."
+    "beforePhone": "Zavolejte na",
+    "afterPhone": "nebo nám napište přes formulář níže. Ozveme se a domluvíme si první schůzku."
   },
   "form": {
     "name": "Jméno a příjmení",
@@ -93,7 +93,7 @@
     "email": "E-mail",
     "topic": "Mám zájem o",
     "topicEmpty": "Vyberte",
-    "message": "Stručně popište dům / poptávku",
+    "message": "Pár slov o domě a o tom, co chcete řešit",
     "honeypot": "Web",
     "consent": "Odesláním souhlasíte se zpracováním údajů jen kvůli vyřízení poptávky. Údaje jdou přímo na",
     "submit": "Odeslat poptávku",
@@ -115,16 +115,16 @@
     }
   },
   "about": {
-    "title": "Lidský přístup a znalost od A do Z",
-    "afterNames": "Zakázku vede osobně — od prvního výpočtu až po montáž a spuštění u vás.",
+    "title": "Mluvíte s tím, kdo zakázku vede",
+    "afterNames": "Každou zakázku vede sám, od první schůzky po montáž a spuštění.",
     "paragraphs": [
-      "Zakládáme si na osobním a lidském přístupu. Každý dům, střecha i rodina mají jiné potřeby, proto navrhujeme řešení na míru a vyjdeme vstříc tomu, co opravdu dává smysl.",
-      "Jiří má hluboké znalosti od A do Z: zná technologii i řemeslo. Spočítá, jestli se elektrárna nebo čerpadlo vyplatí, navrhne sestavu, vyřídí připojení a postaví ji tak, aby držela. Když po předání něco potřebujete, voláte člověku, který dílo zná."
+      "Žádné dva domy nejsou stejné a žádné dvě rodiny nežijí stejně. Proto nezačínáme ceníkem, ale rozhovorem o tom, co od elektrárny nebo čerpadla čekáte.",
+      "Jiří zná technologii i řemeslo. Ví, co se dá spočítat na papíře a co se ukáže až na střeše, a dohlíží na to, aby instalace vydržela. A když po předání něco potřebujete, voláte člověku, který ji zná."
     ],
     "points": [
-      "Osobní a lidský přístup, bez zbytečného tlaku",
-      "Individuální návrh podle domu, spotřeby a rozpočtu",
-      "Technologie i montáž v jedněch rukách"
+      "Bez tlaku na rychlé rozhodnutí",
+      "Návrh podle vašeho domu, spotřeby a rozpočtu",
+      "Dotace a připojení k síti vyřídíme za vás"
     ]
   },
   "footer": {
@@ -155,8 +155,8 @@
   },
   "pvPage": {
     "imageAlt": "Černé fotovoltaické panely",
-    "title": "Fotovoltaika, která má v tomhle domě smysl",
-    "lede": "Navrhujeme elektrárny podle spotřeby, orientace střechy a rozpočtu. Cílem není maximum panelů, ale řešení, které se vrací a které umíme poctivě postavit.",
+    "title": "Fotovoltaika, která má u vás smysl",
+    "lede": "Nejde nám o co nejvíc panelů na střeše, ale o elektrárnu, která se vám vrátí a kterou umíme poctivě postavit. Výkon proto počítáme podle spotřeby, orientace střechy a rozpočtu.",
     "audiences": [
       {
         "id": "house",
@@ -168,7 +168,7 @@
         "id": "commercial",
         "title": "Firemní instalace",
         "body": "Firmě fotovoltaika snižuje provozní náklady nejen v létě. Energie z vlastní střechy se projeví ve výrobě, skladu, obchodě i kancelářích. Dobře navržený výkon snižuje nákup ze sítě v hodinách, kdy objekt bere nejvíc energie.",
-        "note": "Umíme navrhnout řešení pro výrobní haly, obchody, sklady i administrativní budovy."
+        "note": "Pomůžeme s dotací i s připojením většího výkonu do sítě."
       },
       {
         "id": "town",
@@ -187,11 +187,11 @@
     "steps": [
       {
         "title": "1. Studie",
-        "body": "Spočítáme spotřebu, vhodný výkon a návratnost. Pokud se to nevyplatí, řekneme to."
+        "body": "Spočítáme spotřebu, vhodný výkon a návratnost. S čísly v ruce se rozhodnete sami."
       },
       {
         "title": "2. Dotace a síť",
-        "body": "Připravíme podklady k dotačnímu titulu a k připojení do distribuční soustavy."
+        "body": "Vyřídíme dotaci i připojení k distribuční síti. Papíry nemusíte řešit sami."
       },
       {
         "title": "3. Montáž a spuštění",
@@ -201,11 +201,11 @@
   },
   "hpPage": {
     "title": "Tepelná čerpadla pro vytápění, chlazení i teplou vodu",
-    "lede": "Tepelné čerpadlo bere teplo z okolního vzduchu a mění ho na vytápění domu. Má nízké provozní náklady, umí i chladit a výborně se páruje s fotovoltaikou.",
+    "lede": "Tepelné čerpadlo bere teplo z venkovního vzduchu a předává ho do topení a teplé vody. Za provoz zaplatíte výrazně méně a s fotovoltaikou si výborně rozumí.",
     "whyTitle": "Proč tepelné čerpadlo",
     "why": [
       "Na stejné teplo spotřebuje domácnost s dobře navrženým tepelným čerpadlem zhruba třikrát méně elektřiny než při topení přímotopem nebo elektrokotlem. Sezónní topný faktor kolem tří je u nízkoteplotní soustavy běžný; u starších radiátorů s vyšší teplotou vody bývá úspora menší a nejdřív ji spočítáme. V zimě topí a v létě umí chladit, bez starého kotle.",
-      "Zařízení bere energii z venkovního vzduchu a předává ji do otopné soustavy a zásobníku teplé vody. Díky nízkým provozním nákladům se hodí pro domácnosti i menší provozy."
+      "Hodí se do rodinných domů i menších provozů. Odpadá přikládání, čištění kotle i skladování paliva."
     ],
     "coversTitle": "Co řešíme",
     "covers": [
