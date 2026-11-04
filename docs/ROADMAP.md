@@ -37,7 +37,7 @@ Zásady, které platí pořád: ostří je `main`, obsah náhledu i ostří bere
 - Vzhled podle brandingu: žlutá `#D8E716`, černá, písmo Sansation (Light a Bold), rastrový wordmark na světlém i tmavém pozadí.
 - Úvodní stránka: hero s jedním CTA „Kontaktujte nás“, sekce Co nabízíme (fotovoltaika a tepelná čerpadla), kontakt a formulář.
 - Fotovoltaika: rodinné domy, firmy, obce a města, bytové domy a SVJ, postup zakázky (studie, dotace a síť, montáž).
-- Tepelná čerpadla vzduch–voda: zhruba třetinová spotřeba elektřiny oproti přímotopu u nízkoteplotní soustavy, novostavba, rekonstrukce, kombinace s fotovoltaikou, co cena obvykle obsahuje.
+- Tepelná čerpadla vzduch–voda: zhruba třetinová spotřeba elektřiny oproti přímotopu u nízkoteplotní soustavy, novostavba, rekonstrukce, kombinace s fotovoltaikou, co cena obvykle obsahuje. Fotografie venkovní jednotky ukazuje skříň s ventilátorem rovnoběžně u zdi domu.
 - O nás: samostatná stránka `/o-nas/`, odkaz v hlavním menu. Na úvodu se sekce nevykresluje.
 - Firemní údaje (IČO, DIČ, sídlo, telefon, e-mail, web, role) z jednoho místa, `src/site.config.ts`.
 - Poptávka: kontrola jména, českého telefonu, e-mailu, tématu a zprávy, skryté pole proti robotům, odeslání přes `mailto` na `jiri.uldrich@ecomo.cz`.
