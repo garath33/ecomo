@@ -42,7 +42,7 @@ tests/
 | --- | --- | --- |
 | `src/pages/index.astro` | `/` | `Hero`, `Offer`, `Contact` |
 | `src/pages/fotovoltaika.astro` | `/fotovoltaika/` | vlastní hero, karty segmentů s `AudienceArt`, postup zakázky, `Contact` |
-| `src/pages/tepelna-cerpadla.astro` | `/tepelna-cerpadla/` | vlastní hero, výběr technologie, rozsah ceny, `Contact` |
+| `src/pages/tepelna-cerpadla.astro` | `/tepelna-cerpadla/` | vlastní hero, monoblok Kensol, rozsah ceny, `Contact` |
 | `src/pages/o-nas.astro` | `/o-nas/` | `About` |
 | `src/pages/404.astro` | 404 | text a odkaz na úvod |
 | `src/pages/robots.txt.ts` | `/robots.txt` | `Allow: /` a odkaz na sitemap |

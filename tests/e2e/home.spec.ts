@@ -80,10 +80,16 @@ test.describe("homepage @regression", () => {
     await expect(audiences.locator("[data-audience='apartments'] svg")).toBeVisible();
 
     await page.goto("./");
+    await expect(page.getByTestId("offer")).toContainText("Monoblok vzduch–voda značky Kensol");
     await page.getByRole("link", { name: "Více o tepelných čerpadlech" }).click();
     await expect(page.getByRole("heading", { level: 1 })).toContainText("Tepelná čerpadla");
-    await expect(page.getByText("Vzduch–voda", { exact: false })).toBeVisible();
-    await expect(page.getByText("zhruba třikrát méně elektřiny", { exact: false })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Řešení, které instalujeme" })).toBeVisible();
+    await expect(page.locator("main")).toContainText("monoblok značky Kensol");
+    await expect(page.locator("main")).toContainText("vzduch–voda");
+    await expect(page.locator("main")).toContainText("zhruba třikrát méně elektřiny");
+    await expect(page.locator("main")).not.toContainText("hydrosplit");
+    await expect(page.locator("main")).not.toContainText("split");
+    await expect(page.locator("main")).not.toContainText("Necpeme jednu značku");
   });
 
   test("offer cards use a panel install photo and the heat-pump photo", async ({ page }) => {

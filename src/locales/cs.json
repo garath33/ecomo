@@ -38,8 +38,8 @@
     "homeDescription": "Ecomo ze Zdib navrhuje a staví fotovoltaiku a tepelná čerpadla v Praze a Středočeském kraji. Zakázku vede osobně Jiří Uldrich, od výpočtu přes dotace až po montáž.",
     "fotovoltaikaTitle": "Fotovoltaika pro rodinné domy, firmy i obce | Ecomo",
     "fotovoltaikaDescription": "Instalace fotovoltaiky na klíč pro rodinné domy, firmy, obce i SVJ. Návrh podle spotřeby, dotace, připojení k síti a montáž. Ecomo, Zdiby.",
-    "tepelnaTitle": "Tepelná čerpadla vzduch–voda na klíč | Ecomo",
-    "tepelnaDescription": "Tepelná čerpadla vzduch–voda pro vytápění, chlazení a ohřev vody. Návrh výkonu, technické šetření a montáž na klíč. Ecomo, Zdiby.",
+    "tepelnaTitle": "Tepelná čerpadla Kensol monoblok na klíč | Ecomo",
+    "tepelnaDescription": "Monoblok značky Kensol pro vytápění, chlazení a ohřev vody. Návrh výkonu, technické šetření a montáž na klíč. Ecomo, Zdiby.",
     "aboutTitle": "O nás | Ecomo — Jiří Uldrich",
     "aboutDescription": "Za Ecomo ze Zdib stojí Jiří Uldrich. Zná technologii i řemeslo a každou zakázku vede sám, od první schůzky po spuštění.",
     "knowsAbout": ["Fotovoltaika", "Tepelná čerpadla", "Dotace na obnovitelné zdroje"],
@@ -73,9 +73,9 @@
     "hp": {
       "imageAlt": "Venkovní jednotka tepelného čerpadla u domu",
       "title": "Instalace tepelných čerpadel",
-      "body": "Tepelné čerpadlo topí, v létě umí chladit a ohřívá vodu. Energii bere hlavně z venkovního vzduchu. Hodí se do novostavby i při rekonstrukci a s fotovoltaikou si výborně rozumí.",
+      "body": "Instalujeme monoblok značky Kensol. Topí, v létě umí chladit a ohřívá vodu. Energii bere z venkovního vzduchu. Hodí se do novostavby i při rekonstrukci a s fotovoltaikou si výborně rozumí.",
       "points": [
-        "Vzduch–voda pro domácnosti i menší provozy",
+        "Monoblok vzduch–voda značky Kensol",
         "Výkon spočítaný podle tepelné ztráty domu",
         "Před montáží se přijedeme podívat na místo",
         "Spolu s fotovoltaikou ještě levnější provoz"
@@ -205,7 +205,7 @@
   },
   "hpPage": {
     "title": "Tepelná čerpadla pro vytápění, chlazení i teplou vodu",
-    "lede": "Tepelné čerpadlo bere teplo z venkovního vzduchu a předává ho do topení a teplé vody. Za provoz zaplatíte výrazně méně a s fotovoltaikou si výborně rozumí.",
+    "lede": "Instalujeme monoblok značky Kensol. Bere teplo z venkovního vzduchu a předává ho do topení a teplé vody. Za provoz zaplatíte výrazně méně a s fotovoltaikou si výborně rozumí.",
     "whyTitle": "Proč tepelné čerpadlo",
     "why": [
       "Na stejné teplo spotřebuje domácnost s dobře navrženým tepelným čerpadlem zhruba třikrát méně elektřiny než při topení přímotopem nebo elektrokotlem. Sezónní topný faktor kolem tří je u nízkoteplotní soustavy běžný; u starších radiátorů s vyšší teplotou vody bývá úspora menší a nejdřív ji spočítáme. V zimě topí a v létě umí chladit, bez starého kotle.",
@@ -214,13 +214,13 @@
     "coversTitle": "Co řešíme",
     "covers": [
       "Návrh výkonu podle tepelné ztráty, ne odhadem",
-      "Vzduch–voda pro radiátory i podlahové topení",
+      "Monoblok Kensol, vzduch–voda pro radiátory i podlahové topení",
       "Ohřev teplé vody a možnost chlazení",
       "Technické šetření na místě před montáží",
       "Napojení na stávající rozvody v rozumném rozsahu"
     ],
-    "choiceTitle": "Jak vybíráme technologii",
-    "choiceLede": "Značku a provedení (split, monoblok, hydrosplit) doporučíme až podle domu, hluku, prostoru venku a toho, jak hluboko v zimě potřebujete držet výkon. Necpeme jednu značku všem.",
+    "choiceTitle": "Řešení, které instalujeme",
+    "choiceLede": "Zůstáváme u jednoho provedení: monoblok značky Kensol. Chladicí okruh je celý ve venkovní jednotce a do domu vedou jen trubky s topnou vodou. Výkon a místo venku navrhneme podle tepelné ztráty, hluku a toho, jak hluboko v zimě potřebujete topit.",
     "choices": [
       {
         "title": "Novostavba",
@@ -236,6 +236,6 @@
       }
     ],
     "priceTitle": "Co cena obvykle obsahuje — a co ne",
-    "price": "Orientační nabídka počítá s venkovní a vnitřní jednotkou, základním napojením na topení a teplou vodu a s montáží. Do ceny se nemusí vejít konstrukce pod venkovní jednotku, silnější elektro přípojka, úpravy starých rozvodů nebo delší trasy mezi jednotkami. To vždycky řekneme dopředu, ne až na stavbě."
+    "price": "Orientační nabídka počítá s venkovní jednotkou monoblok Kensol, základním napojením na topení a teplou vodu a s montáží. Do ceny se nemusí vejít základ pod jednotku, silnější elektro přípojka, úpravy starých rozvodů nebo delší trasa topné vody do domu. To vždycky řekneme dopředu, ne až na stavbě."
   }
 }
