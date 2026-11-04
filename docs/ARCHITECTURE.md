@@ -41,7 +41,7 @@ tests/
 | Soubor | URL | Skládá |
 | --- | --- | --- |
 | `src/pages/index.astro` | `/` | `Hero`, `Offer`, `Contact` |
-| `src/pages/fotovoltaika.astro` | `/fotovoltaika/` | vlastní hero a karty segmentů, postup zakázky, `Contact` |
+| `src/pages/fotovoltaika.astro` | `/fotovoltaika/` | vlastní hero, karty segmentů s `AudienceArt`, postup zakázky, `Contact` |
 | `src/pages/tepelna-cerpadla.astro` | `/tepelna-cerpadla/` | vlastní hero, monoblok Kensol, rozsah ceny, `Contact` |
 | `src/pages/o-nas.astro` | `/o-nas/` | `About` |
 | `src/pages/404.astro` | 404 | text a odkaz na úvod |
@@ -60,6 +60,7 @@ Menu v `navigation` vede na `/#nabidka`, `/fotovoltaika/`, `/tepelna-cerpadla/`,
 | `Logo` | PNG wordmark. `onDark` přepne na bílý soubor. `alt` je `ecomo`. |
 | `Hero` | Úvodní fotografie panelů, claim, jeden odkaz „Kontaktujte nás“ na `#poptavka`, tři krátké body (na klíč, osobně, dva obory). |
 | `Offer` | `#nabidka`. Dvě karty: fotovoltaika (`images/nabidka-fv.jpg`) a tepelné čerpadlo (`images/nabidka-tc.jpg`), každá s odkazem na podstránku. |
+| `AudienceArt` | Vektorová ilustrace segmentu na `/fotovoltaika/`. `id` z `pvPage.audiences` vybere soubor v `src/assets/audience/`. Kresba je dekorativní (`aria-hidden`). |
 | `Contact` | Výzva s telefonem a karta `#poptavka` s `InquiryForm`. |
 | `InquiryForm` | Pole jméno, telefon, e-mail, téma (`inquiryTopics`), zpráva a skryté pole `_honey`. `action` míří na FormSubmit. Po submitu načte `src/scripts/inquiry.ts`. |
 | `About` | Text o firmě a jednateli, tři body, CTA na poptávku. Používá ho jen `/o-nas/`. |
