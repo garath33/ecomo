@@ -1,9 +1,16 @@
 ---
+import { inquiryFormAction } from "../lib/inquiry";
 import { messages } from "../locales";
 import { inquiryTopics, site } from "../site.config";
 ---
 
-<form class="form" data-inquiry-form novalidate>
+<form
+  class="form"
+  data-inquiry-form
+  action={inquiryFormAction(site.email)}
+  method="POST"
+  novalidate
+>
   <label>
     {messages.form.name}
     <input type="text" name="name" autocomplete="name" required />
@@ -34,15 +41,18 @@ import { inquiryTopics, site } from "../site.config";
   </label>
   <label class="hp" aria-hidden="true">
     {messages.form.honeypot}
-    <input type="text" name="website" tabindex="-1" autocomplete="off" />
+    <input type="text" name="_honey" tabindex="-1" autocomplete="off" />
   </label>
+  <input type="hidden" name="_subject" value={messages.cta.inquiry} />
+  <input type="hidden" name="_template" value="table" />
+  <input type="hidden" name="_captcha" value="false" />
   <p class="muted">
     {messages.form.consent}
     {site.email}.
   </p>
   <span class="error" data-error-for="form"></span>
   <button class="button" type="submit">{messages.form.submit}</button>
-  <p class="form-status" data-inquiry-status hidden></p>
+  <div class="form-status" data-inquiry-status role="status" aria-live="polite" tabindex="-1" hidden></div>
 </form>
 
 <script>
