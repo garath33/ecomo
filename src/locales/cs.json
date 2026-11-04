@@ -182,16 +182,16 @@
     "processTitle": "Jak probíhá zakázka",
     "steps": [
       {
-        "title": "1. Studie",
-        "body": "Spočítáme spotřebu, vhodný výkon a návratnost. Pokud se to nevyplatí, řekneme to."
+        "title": "1. Kontakt a smlouva",
+        "body": "První kontakt, naměření, nacenění, vyhotovení a podpis smlouvy o dílo."
       },
       {
-        "title": "2. Dotace a síť",
-        "body": "Připravíme podklady k dotačnímu titulu a k připojení do distribuční soustavy."
+        "title": "2. Administrativa",
+        "body": "Vyhotovíme projekt, připravíme podklady a žádosti i další administrativu k zakázce."
       },
       {
-        "title": "3. Montáž a spuštění",
-        "body": "Instalace, revize, nastavení a předání. Víte, s kým mluvíte i po zapnutí."
+        "title": "3. Realizace",
+        "body": "Instalace, nastavení, předání a revize — v tomhle pořadí."
       }
     ]
   },

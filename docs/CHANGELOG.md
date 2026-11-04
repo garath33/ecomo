@@ -12,6 +12,10 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 - CI ukládá desktop screenshoty úvodu, fotovoltaiky, tepelných čerpadel a kontaktu jako artifact `preview-screenshots`. Deploy na Pages běží i z větví `feature/**`.
 - Jazyk webu zůstává jen čeština, dokud uživatel nenahlásí další.
 
+### Změněno
+
+- Postup zakázky na stránce fotovoltaiky: 1. kontakt, naměření, nacenění a smlouva o dílo, 2. administrativa (projekt, podklady, žádosti), 3. realizace v pořadí instalace, nastavení, předání a revize.
+
 ## [0.1.0] — 2026-10-02
 
 První veřejná podoba prezentačního webu. Nasazuje se na GitHub Pages.

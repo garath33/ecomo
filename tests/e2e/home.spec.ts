@@ -41,6 +41,16 @@ test.describe("homepage @regression", () => {
     await expect(page.getByRole("heading", { name: "Komerční instalace" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Obce a města" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Bytové domy a SVJ" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Jak probíhá zakázka" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "1. Kontakt a smlouva" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "2. Administrativa" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "3. Realizace" })).toBeVisible();
+    await expect(
+      page.getByText("První kontakt, naměření, nacenění, vyhotovení a podpis smlouvy o dílo."),
+    ).toBeVisible();
+    await expect(
+      page.getByText("Instalace, nastavení, předání a revize — v tomhle pořadí."),
+    ).toBeVisible();
 
     await page.goto("./");
     await page.getByRole("link", { name: "Více o tepelných čerpadlech" }).click();
