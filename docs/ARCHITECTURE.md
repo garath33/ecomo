@@ -85,7 +85,7 @@ Menu v `navigation` vede na `/#nabidka`, `/fotovoltaika/`, `/tepelna-cerpadla/`,
 
 `src/lib/local-business.ts` skládá schema.org `LocalBusiness`: adresa, geo, telefon, e-mail, IČO, DIČ, founder, `areaServed`, `knowsAbout`. `sameAs` dostane web a jen neprázdné `maps.googlePlace` / `maps.mapyPlace`.
 
-`src/scripts/inquiry.ts` poslouchá submit na `[data-inquiry-form]`, vypíše chyby do `[data-error-for]` a nastaví `aria-invalid`. Platnou poptávku nejdřív odešle přes `submitInquiry`. Při úspěchu ukáže „Poptávku jsme dostali. Ozveme se.“ a formulář vyprázdní. Když služba požadavek odmítne, formulář přejde na běžné odeslání na `action` (FormSubmit), aby ho prohlížeč dokončil sám, a po návratu na `?poptavka=odeslana` ukáže stejné potvrzení. Když není síť, ukáže odkaz „Otevřít e-mailový klient“ a adresu uloží do `data-last-mailto`.
+`src/scripts/inquiry.ts` poslouchá submit na `[data-inquiry-form]`, vypíše chyby do `[data-error-for]` a nastaví `aria-invalid`. Platnou poptávku nejdřív odešle přes `submitInquiry`. Při úspěchu poděkuje, napíše, že se zpráva odeslala, a formulář vyprázdní. Když služba požadavek odmítne, formulář přejde na běžné odeslání na `action` (FormSubmit), aby ho prohlížeč dokončil sám, a po návratu na `?poptavka=odeslana` ukáže stejné potvrzení. Když není síť, ukáže odkaz „Otevřít e-mailový klient“ a adresu uloží do `data-last-mailto`.
 
 ## Vzhled
 

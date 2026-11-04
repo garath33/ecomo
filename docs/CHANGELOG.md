@@ -14,6 +14,7 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 
 ### Změněno
 
+- Po odeslání poptávky se ukáže poděkování a věta, že se zpráva odeslala.
 - Formulář poptávky po vyplnění odešle zprávu na jiri.uldrich@ecomo.cz přes FormSubmit. Souhlas už neříká, že údaje jdou přímo. Když služba nepustí požadavek napřímo, formulář se odešle běžným odesláním stránky. Bez sítě zůstane odkaz do e-mailového klienta. První zpráva čeká, až jednatel potvrdí schránku v e-mailu od FormSubmit.
 - Fotovoltaika: nadpis „Firemní instalace“ a věta „Energie z vlastní střechy“. Stejný název je i v odrážce na úvodu, s nižšími provozními náklady ve výrobě, skladu i kancelářích.
 - Tepelné čerpadlo: místo „Obnovitelné zdroje…“ údaj, že dobře navržené čerpadlo bere na stejné teplo zhruba třetinu elektřiny oproti přímotopu nebo elektrokotli. U starších radiátorů text říká, že úspora bývá menší.

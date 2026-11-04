@@ -38,7 +38,8 @@ test.describe("inquiry form @regression", () => {
     await page.getByRole("button", { name: "Odeslat poptávku" }).click();
 
     await expect(page.locator("[data-inquiry-status]")).toBeVisible();
-    await expect(page.locator("[data-inquiry-status]")).toContainText("Poptávku jsme dostali");
+    await expect(page.locator("[data-inquiry-status]")).toContainText("Děkujeme za poptávku");
+    await expect(page.locator("[data-inquiry-status]")).toContainText("Zpráva se odeslala");
     await expect(page.getByRole("link", { name: "Otevřít e-mailový klient" })).toHaveCount(0);
     expect(body?.["Jméno"]).toBe("Marie Svobodová");
     expect(body?.["Zájem"]).toBe("Fotovoltaika i tepelné čerpadlo");
@@ -61,7 +62,8 @@ test.describe("inquiry form @regression", () => {
     await fillValidInquiry(page);
     await page.getByRole("button", { name: "Odeslat poptávku" }).click();
 
-    await expect(page.locator("[data-inquiry-status]")).toContainText("Poptávku jsme dostali");
+    await expect(page.locator("[data-inquiry-status]")).toContainText("Děkujeme za poptávku");
+    await expect(page.locator("[data-inquiry-status]")).toContainText("Zpráva se odeslala");
     expect(posted?.get("Jméno")).toBe("Marie Svobodová");
     expect(posted?.get("Zájem")).toBe("Fotovoltaika i tepelné čerpadlo");
     expect(posted?.get("_replyto")).toBe("marie@example.cz");

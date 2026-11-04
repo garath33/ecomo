@@ -26,6 +26,7 @@ function setErrors(form: HTMLFormElement, errors: InquiryErrors): void {
 function renderStatus(status: HTMLElement, kind: "pending" | "success" | "error", mailto?: string): void {
   status.hidden = false;
   status.classList.toggle("is-error", kind === "error");
+  status.classList.toggle("is-success", kind === "success");
   status.replaceChildren();
 
   if (kind === "pending") {
@@ -34,7 +35,12 @@ function renderStatus(status: HTMLElement, kind: "pending" | "success" | "error"
   }
 
   if (kind === "success") {
-    status.textContent = messages.form.sent;
+    const title = document.createElement("p");
+    title.className = "form-status__title";
+    title.textContent = messages.form.sentTitle;
+    const text = document.createElement("p");
+    text.textContent = messages.form.sent;
+    status.append(title, text);
     return;
   }
 
@@ -106,7 +112,7 @@ export function initInquiryForm(): void {
 
     if (Object.keys(errors).length > 0) {
       status.hidden = true;
-      status.classList.remove("is-error");
+      status.classList.remove("is-error", "is-success");
       form.querySelector<HTMLElement>("[aria-invalid='true']")?.focus();
       return;
     }
