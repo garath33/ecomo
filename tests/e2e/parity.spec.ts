@@ -51,7 +51,7 @@ test.describe("preview matches production content @regression", () => {
     const banners = page.getByTestId("preview-banner");
     await expect(banners).toHaveCount(1);
     await expect(banners).toHaveText(messages.preview);
-    await expect(page.getByTestId("hero")).toContainText("Smysluplné elektrárny");
+    await expect(page.getByTestId("hero")).toContainText(site.tagline);
     await expect(page.getByTestId("hero")).toContainText(site.approach);
     await expect(page.getByTestId("offer")).toContainText("Instalace fotovoltaiky");
     await expect(page.getByTestId("projects")).toHaveCount(0);
