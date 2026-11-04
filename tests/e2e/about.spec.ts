@@ -13,10 +13,10 @@ test.describe("about page @regression", () => {
     await page.getByRole("navigation").getByRole("link", { name: "O nás" }).click();
     await expect(page).toHaveURL(/\/o-nas\/$/);
     await expect(page.getByTestId("about").getByRole("heading", { level: 1 })).toContainText(
-      "Lidský přístup a znalost od A do Z",
+      "Mluvíte s tím, kdo to postaví",
     );
     await expect(page.getByTestId("about")).toContainText("Jiří Uldrich");
-    await expect(page.getByTestId("about")).toContainText("osobním a lidském přístupu");
+    await expect(page.getByTestId("about")).toContainText("nezačínáme ceníkem, ale rozhovorem");
     await expect(page.getByTestId("about")).toContainText("technologii i řemeslo");
     await expect(page.getByTestId("about")).toContainText("montáž");
   });

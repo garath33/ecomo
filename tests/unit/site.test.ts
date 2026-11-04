@@ -19,8 +19,8 @@ describe("production content contract", () => {
     expect(site.address.city).toBe("Zdiby");
     expect(site.address.district).toBe("Praha-východ");
     expect(site.address.region).toBe("Středočeský kraj");
-    expect(site.approach).toMatch(/osobním a lidském přístupu/);
-    expect(site.approach).toMatch(/vstříc potřebám na míru/);
+    expect(site.tagline).toBe("Osobní přístup k vám i vašemu domu");
+    expect(site.approach).toMatch(/Nejdřív vás vyslechneme/);
   });
 
   it("exposes every production fact for preview/production parity checks", () => {
