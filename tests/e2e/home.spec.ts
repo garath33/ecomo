@@ -59,9 +59,9 @@ test.describe("homepage @regression", () => {
     const process = page
       .locator("section")
       .filter({ has: page.getByRole("heading", { name: "Jak probíhá zakázka" }) });
-    const cards = process.locator("article.step");
+    const cards = process.locator(".step");
     await expect(cards).toHaveCount(3);
-    await expect(cards.nth(0).locator(".step__mark")).toHaveCount(3);
+    await expect(cards.nth(0).locator(".step__mark")).toHaveCount(1);
     await expect(cards.nth(1).locator(".step__mark")).toHaveCount(1);
     await expect(cards.nth(2).locator(".step__mark")).toHaveCount(1);
 
