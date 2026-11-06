@@ -8,12 +8,12 @@ cd "$root"
 tmp="${RUNNER_TEMP:-$(mktemp -d)}"
 preview_dist="$tmp/ecomo-preview-dist"
 main_dir="$tmp/ecomo-main-src"
-site_url="${PUBLIC_SITE_URL:-https://garath33.github.io}"
+site_url="${PUBLIC_SITE_URL:-https://ecomo.cz}"
 
 rm -rf "$preview_dist" "$main_dir"
 
 echo "Náhled z $(git rev-parse --short HEAD)"
-PUBLIC_SITE_ENV=preview PUBLIC_BASE_PATH=/ecomo/preview PUBLIC_SITE_URL="$site_url" npm run build
+PUBLIC_SITE_ENV=preview PUBLIC_BASE_PATH=/preview PUBLIC_SITE_URL="$site_url" npm run build
 mkdir -p "$preview_dist"
 cp -a dist/. "$preview_dist/"
 
@@ -29,7 +29,7 @@ echo "Ostří z origin/main"
 (
   cd "$main_dir"
   npm ci
-  PUBLIC_SITE_ENV=production PUBLIC_BASE_PATH=/ecomo PUBLIC_SITE_URL="$site_url" npm run build
+  PUBLIC_SITE_ENV=production PUBLIC_BASE_PATH=/ PUBLIC_SITE_URL="$site_url" npm run build
 )
 
 rm -rf dist
