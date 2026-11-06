@@ -62,7 +62,7 @@ Menu v `navigation` vede na `/#nabidka`, `/fotovoltaika/`, `/tepelna-cerpadla/`,
 | `Offer` | `#nabidka`. Dvě karty: fotovoltaika (`images/nabidka-fv.jpg`) a tepelné čerpadlo (`images/nabidka-tc.jpg`), každá s odkazem na podstránku. |
 | `AudienceArt` | Vektorová ilustrace segmentu na `/fotovoltaika/`. `id` z `pvPage.audiences` vybere soubor v `src/assets/audience/`. Kresba je dekorativní (`aria-hidden`). |
 | `Contact` | Kotva `#kontakt` na výzvě „Ozvěte se nezávazně“ a karta `#poptavka` s `InquiryForm`. |
-| `InquiryForm` | Pole jméno, telefon, e-mail, téma (`inquiryTopics`), zpráva a skryté pole `_honey`. `action` míří na FormSubmit. Po submitu načte `src/scripts/inquiry.ts`. |
+| `InquiryForm` | Pole jméno, telefon, e-mail, téma (`inquiryTopics`), zpráva a skryté pole `_honey`. `action` je `mailto:` na firemní schránku. Po submitu načte `src/scripts/inquiry.ts`. |
 | `About` | Text o firmě a jednateli, tři body, CTA „Kontaktujte nás“ na `#kontakt`. Používá ho jen `/o-nas/`. |
 | `Projects` | `#zakazky`. Karty z pole `projects`. Žádná stránka ji teď neimportuje. |
 | `PreviewBanner` | Pruh náhledu, jen když `isPreview()` vrátí pravdu. |
@@ -81,13 +81,13 @@ Menu v `navigation` vede na `/#nabidka`, `/fotovoltaika/`, `/tepelna-cerpadla/`,
 - Telefon po vyhození mezer a závorek musí sedět na `^(\+420)?[1-9]\d{8}$`.
 - Zpráva má alespoň 10 znaků, jméno alespoň 2, téma musí být v `inquiryTopics`.
 - `buildMailto` složí předmět a tělo na danou adresu.
-- `submitInquiry` pošle JSON na `https://formsubmit.co/ajax/`. `ok` znamená, že služba zprávu přijala. `rejected` znamená, že odpověď není úspěch. `offline` znamená, že požadavek vůbec neodešel. Stránka tuhle cestu nevolá: adresa `/ajax/` v prohlížeči spadne na kontrole Cloudflare a formulář by zůstal na „Odesílám…“.
-- `inquiryHandoffFields` složí pole pro běžné odeslání formuláře, včetně `_url` a `_next`.
+- `inquiryFormAction` vrací `mailto:` na danou adresu. Formulář ji má v `action`, když v prohlížeči neběží skript.
+- `submitInquiry` umí poslat JSON na `https://formsubmit.co/ajax/`. Stránka ji nevolá. FormSubmit v prohlížeči skončí na chybě Cloudflare a poptávka se tam nedoručí.
 - `readInquiryForm` čte `FormData`. Pole `_honey` ukládá do `website`.
 
 `src/lib/local-business.ts` skládá schema.org `LocalBusiness`: adresa, geo, telefon, e-mail, IČO, DIČ, founder, `areaServed`, `knowsAbout`. `sameAs` dostane web a jen neprázdné `maps.googlePlace` / `maps.mapyPlace`.
 
-`src/scripts/inquiry.ts` poslouchá submit na `[data-inquiry-form]`, vypíše chyby do `[data-error-for]` a nastaví `aria-invalid`. Platnou poptávku odešle běžným POST na FormSubmit v novém okně `ecomo-inquiry`, aby šla dokončit kontrola prohlížeče a první aktivace schránky. Původní stránka zůstane na místě, tlačítko se znovu zapne a stav vysvětlí krok Activate Form. Po doručení FormSubmit vrátí nové okno na `?poptavka=odeslana`, kde se ukáže poděkování. Když okno nejde otevřít nebo není síť, ukáže se odkaz „Otevřít e-mailový klient“ a adresa se uloží do `data-last-mailto`. Návrat zpět na stránku (`pageshow`) tlačítko znovu odemkne.
+`src/scripts/inquiry.ts` poslouchá submit na `[data-inquiry-form]`, vypíše chyby do `[data-error-for]` a nastaví `aria-invalid`. Platnou poptávku otevře v e-mailovém programu jako zprávu na `site.email`. Stránka zůstane na místě, tlačítko jde použít znovu a stav řekne, že zprávu je potřeba v programu odeslat. Stejný odkaz je v „Otevřít e-mailový klient“ a v `data-last-mailto`. Na FormSubmit se neodchází.
 
 ## Vzhled
 

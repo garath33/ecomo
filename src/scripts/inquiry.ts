@@ -1,12 +1,5 @@
 import { messages } from "../locales";
-import {
-  validateInquiry,
-  readInquiryForm,
-  inquiryHandoffFields,
-  buildMailto,
-  type InquiryErrors,
-  type InquiryInput,
-} from "../lib/inquiry";
+import { validateInquiry, readInquiryForm, buildMailto, type InquiryErrors, type InquiryInput } from "../lib/inquiry";
 import { site } from "../site.config";
 
 function setErrors(form: HTMLFormElement, errors: InquiryErrors): void {
@@ -23,96 +16,44 @@ function setErrors(form: HTMLFormElement, errors: InquiryErrors): void {
   }
 }
 
-function renderStatus(status: HTMLElement, kind: "pending" | "success" | "error" | "check", mailto?: string): void {
+function renderStatus(status: HTMLElement, kind: "success" | "error" | "mail", mailto?: string): void {
   status.hidden = false;
   status.classList.toggle("is-error", kind === "error");
   status.classList.toggle("is-success", kind === "success");
-  status.classList.toggle("is-check", kind === "check");
+  status.classList.toggle("is-mail", kind === "mail");
   status.replaceChildren();
 
-  if (kind === "pending") {
-    status.textContent = messages.form.sending;
-    return;
-  }
-
-  if (kind === "success" || kind === "check") {
+  if (kind === "success" || kind === "mail") {
     const title = document.createElement("p");
     title.className = "form-status__title";
-    title.textContent = kind === "success" ? messages.form.sentTitle : messages.form.checkTitle;
+    title.textContent = kind === "success" ? messages.form.sentTitle : messages.form.mailTitle;
     const text = document.createElement("p");
     text.textContent =
-      kind === "success"
-        ? messages.form.sent
-        : `${messages.form.checkBefore}${site.email}${messages.form.checkAfter}`;
+      kind === "success" ? messages.form.sent : `${messages.form.mailBefore}${site.email}${messages.form.mailAfter}`;
     status.append(title, text);
     if (kind === "success") return;
-    const mailLink = document.createElement("a");
-    mailLink.href = mailto ?? `mailto:${site.email}`;
-    mailLink.textContent = messages.form.openMail;
-    status.append(mailLink);
-    return;
+  } else {
+    status.append(messages.form.failed);
   }
 
-  status.append(messages.form.failed);
   const mailLink = document.createElement("a");
   mailLink.href = mailto ?? `mailto:${site.email}`;
   mailLink.textContent = messages.form.openMail;
   status.append(mailLink);
-  status.append(`${messages.form.callPrefix}${site.phoneShort}${messages.form.callSuffix}`);
-}
-
-function setHidden(form: HTMLFormElement, name: string, value: string): void {
-  const existing = form.querySelector<HTMLInputElement>(`input[type="hidden"][name="${CSS.escape(name)}"]`);
-  if (existing) {
-    existing.value = value;
-    return;
-  }
-  const input = document.createElement("input");
-  input.type = "hidden";
-  input.name = name;
-  input.value = value;
-  form.append(input);
-}
-
-const providerWindow = "ecomo-inquiry";
-
-function pageAddress(): string {
-  const url = new URL(window.location.href);
-  url.hash = "poptavka";
-  url.searchParams.delete("poptavka");
-  return url.toString();
-}
-
-function returnAddress(): string {
-  const url = new URL(window.location.href);
-  url.hash = "poptavka";
-  url.searchParams.set("poptavka", "odeslana");
-  return url.toString();
-}
-
-function setFieldEnabled(form: HTMLFormElement, enabled: boolean): void {
-  for (const field of ["name", "phone", "email", "topic", "message"] as const) {
-    const control = form.elements.namedItem(field);
-    if (!(control instanceof HTMLElement)) continue;
-    if (enabled) control.removeAttribute("disabled");
-    else control.setAttribute("disabled", "disabled");
+  if (kind === "error") {
+    status.append(`${messages.form.callPrefix}${site.phoneShort}${messages.form.callSuffix}`);
   }
 }
 
-/** Běžné odeslání v novém okně. AJAX na FormSubmit neprojde přes kontrolu Cloudflare a stránka by zůstala na „Odesílám…“. */
-function postToProvider(form: HTMLFormElement, input: InquiryInput): boolean {
-  const popup = window.open("about:blank", providerWindow);
-  if (!popup || popup.closed) return false;
-
-  for (const [name, value] of Object.entries(inquiryHandoffFields(input, pageAddress(), returnAddress()))) {
-    setHidden(form, name, value);
-  }
-
-  form.target = providerWindow;
-  setFieldEnabled(form, false);
-  form.submit();
-  setFieldEnabled(form, true);
-  return true;
+function openMail(input: InquiryInput): string {
+  const mailto = buildMailto(input, site.email);
+  const link = document.createElement("a");
+  link.href = mailto;
+  link.hidden = true;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  return mailto;
 }
 
 export function initInquiryForm(): void {
@@ -139,41 +80,17 @@ export function initInquiryForm(): void {
 
     if (Object.keys(errors).length > 0) {
       status.hidden = true;
-      status.classList.remove("is-error", "is-success", "is-check");
+      status.classList.remove("is-error", "is-success", "is-mail");
       form.querySelector<HTMLElement>("[aria-invalid='true']")?.focus();
       return;
     }
 
-    const mailto = buildMailto(input, site.email);
-    if (typeof navigator !== "undefined" && navigator.onLine === false) {
-      form.dataset.lastMailto = mailto;
-      renderStatus(status, "error", mailto);
-      status.focus();
-      return;
-    }
-
     form.dataset.sending = "true";
-    const opened = postToProvider(form, input);
+    const mailto = openMail(input);
     form.dataset.sending = "false";
-    button.disabled = false;
-
-    if (!opened) {
-      form.dataset.lastMailto = mailto;
-      renderStatus(status, "error", mailto);
-      status.focus();
-      return;
-    }
-
     form.dataset.lastMailto = mailto;
-    renderStatus(status, "check", mailto);
+    renderStatus(status, "mail", mailto);
     status.focus();
-  });
-
-  window.addEventListener("pageshow", () => {
-    form.dataset.sending = "false";
-    button.disabled = false;
-    if (button.textContent === messages.form.sending) button.textContent = messages.form.submit;
-    setFieldEnabled(form, true);
   });
 }
 

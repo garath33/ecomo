@@ -40,7 +40,7 @@ Zásady, které platí pořád: ostří je `main`, obsah náhledu i ostří bere
 - Tepelná čerpadla vzduch–voda značky Kensol v provedení monoblok: zhruba třetinová spotřeba elektřiny oproti přímotopu u nízkoteplotní soustavy, novostavba, rekonstrukce, kombinace s fotovoltaikou, co cena obvykle obsahuje. Fotografie venkovní jednotky ukazuje skříň s ventilátorem rovnoběžně u zdi domu.
 - O nás: samostatná stránka `/o-nas/`, odkaz v hlavním menu. Na úvodu se sekce nevykresluje.
 - Firemní údaje (IČO, DIČ, sídlo, telefon, e-mail, web, role) z jednoho místa, `src/site.config.ts`.
-- Poptávka: kontrola jména, českého telefonu, e-mailu, tématu a zprávy a skryté pole `_honey`. Odeslání jde na `jiri.uldrich@ecomo.cz` přes FormSubmit v novém okně, aby stránka nezůstala na „Odesílám…“. Bez sítě nebo bez nového okna zůstane odkaz do e-mailového klienta a telefon. První odeslání musí jednatel potvrdit v e-mailu od FormSubmit (odkaz Activate Form), jinak se zpráva nedoručí.
+- Poptávka: kontrola jména, českého telefonu, e-mailu, tématu a zprávy a skryté pole `_honey`. Odeslání otevře e-mail na `jiri.uldrich@ecomo.cz`. Na FormSubmit se neodchází, protože v prohlížeči vrací chybu Cloudflare.
 - SEO: titulky a popisy stránek, canonical, Open Graph, Twitter card, JSON-LD `LocalBusiness`, `sitemap-index.xml`, `robots.txt`.
 - Náhled z větve `cursor/**` nebo `feature/**` je na `/preview/` a ukazuje žluto-černý pruh „Náhledové prostředí“. Ostří z `main` pruh nemá a pracovní větev ho nepřepisuje.
 - Testy rozvržení na 375 / 768 / 1024 / 1280 px a kontrola, že na stránce jsou stejné firemní údaje jako v konfiguraci.
@@ -58,7 +58,7 @@ Zásady, které platí pořád: ostří je `main`, obsah náhledu i ostří bere
 
 - Další fotografie, hlavně tepelných čerpadel, a popisy hotových zakázek. Texty a fotky jdou na web až se souhlasem klienta. Až budou, vrátí se sekce z `src/components/Projects.astro` (data jsou v `projects` v `src/site.config.ts`).
 - Vlastní SVG wordmark, až designér dodá čistý vektor. Do té doby zůstávají PNG v `public/brand/`.
-- Text o zpracování osobních údajů. Krátký souhlas u formuláře říká, že údaje jsou jen k vyřízení poptávky a zpráva se odešle na firemní e-mail. Samostatný text zatím není a má jmenovat FormSubmit, přes který se poptávka doručuje.
+- Text o zpracování osobních údajů. Krátký souhlas u formuláře říká, že údaje jsou jen k vyřízení poptávky a zpráva se odešle na firemní e-mail. Samostatný text zatím není.
 - Veřejná adresa na vlastní doméně ecomo.cz. Teď web běží na `garath33.github.io/ecomo`. Až doména poběží: custom domain na GitHub Pages, `PUBLIC_SITE_URL=https://www.ecomo.cz`, `PUBLIC_BASE_PATH=/`, kontrola sitemap, `robots.txt`, canonical a Open Graph, Search Console a úprava odkazů v README a CONTRIBUTING.
 - Ochrana větve `main` (Require a pull request before merging). Token agenta na to nemá právo.
 - Vyplnit `maps.googlePlace` a `maps.mapyPlace` v `src/site.config.ts`, až budou existovat profily. Prázdné hodnoty se do JSON-LD nedávají.

@@ -70,9 +70,9 @@ export function buildMailto(input: InquiryInput, to: string): string {
   return `mailto:${to}?subject=${subject}&body=${body}`;
 }
 
-/** Adresa klasického POST, když v prohlížeči neběží skript. */
+/** Adresa odeslání, když v prohlížeči neběží skript. FormSubmit vrací chybu Cloudflare. */
 export function inquiryFormAction(to: string): string {
-  return `https://formsubmit.co/${to}`;
+  return `mailto:${to}`;
 }
 
 export function inquirySubmitUrl(to: string): string {
@@ -95,17 +95,6 @@ export function inquiryPayload(input: InquiryInput): Record<string, string> {
     _template: "table",
     _captcha: "false",
     _honey: "",
-  };
-}
-
-/** Pole pro běžné odeslání stránky. `_url` nahrazuje Referer, `_next` vrací návštěvníka po doručení. */
-export function inquiryHandoffFields(input: InquiryInput, pageUrl: string, nextUrl: string): Record<string, string> {
-  const payload = { ...inquiryPayload(input) };
-  delete payload._honey;
-  return {
-    ...payload,
-    _url: pageUrl,
-    _next: nextUrl,
   };
 }
 

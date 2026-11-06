@@ -15,7 +15,7 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 
 ### Opraveno
 
-- Poptávka se po kliknutí na Odeslat už nezasekne na „Odesílám poptávku…“. FormSubmit v prohlížeči nebere tichý požadavek (kontrola Cloudflare) a stránka kvůli tomu zůstávala ve stavu odesílání, nebo přešla na ověření „Okamžik…“. Teď se formulář odešle v novém okně na jiri.uldrich@ecomo.cz. Napoprvé je potřeba v tom okně potvrdit, že jde o člověka, a v e-mailu od FormSubmit kliknout na Activate Form. Pak se uložené poptávky doručí. Když okno nejde otevřít, zůstane odkaz do e-mailového klienta.
+- Poptávka se po odeslání už neotevírá na stránce FormSubmit s chybou Cloudflare. Zpráva se složí do e-mailu na jiri.uldrich@ecomo.cz a otevře se v e-mailovém programu. Stránka zůstane na místě.
 
 ### Změněno
 
@@ -23,8 +23,7 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 - Postup zakázky na stránce fotovoltaiky: 1. kontakt, naměření, nacenění a smlouva o dílo, 2. administrativa (projekt, podklady, žádosti), 3. realizace v pořadí instalace, nastavení, předání a revize.
 - Kroky zakázky mají přepracovaný layout a jednu propracovanou ikonu u každého kroku: telefon s bublinou hovoru, štos podkladů a montér s helmou a maticovým klíčem.
 - Položka Kontakt v menu a tlačítko „Kontaktujte nás“ zastaví u nadpisu „Ozvěte se nezávazně“, ne až u formuláře. Nad formulářem je věta, že Jiří Uldrich rád pomůže, a zůstává telefon i výzva k první schůzce.
-- Po odeslání poptávky se ukáže poděkování a věta, že se zpráva odeslala.
-- Formulář poptávky po vyplnění odešle zprávu na jiri.uldrich@ecomo.cz přes FormSubmit. Souhlas už neříká, že údaje jdou přímo. Když služba nepustí požadavek napřímo, formulář se odešle běžným odesláním stránky. Bez sítě zůstane odkaz do e-mailového klienta. První zpráva čeká, až jednatel potvrdí schránku v e-mailu od FormSubmit.
+- Formulář poptávky po vyplnění otevře e-mail na jiri.uldrich@ecomo.cz. Souhlas už neříká, že údaje jdou přímo.
 - Fotografie venkovní jednotky (`public/images/nabidka-tc.jpg`) ukazuje tepelné čerpadlo postavené rovnoběžně se zdí domu. Čelo skříně s ventilátorem je v rovině stěny a jednotka stojí na betonovém základu. Stejný snímek je na kartě nabídky i v hlavičce stránky tepelných čerpadel.
 - Fotovoltaika: nadpis „Firemní instalace“ a věta „Energie z vlastní střechy“. Stejný název je i v odrážce na úvodu, s nižšími provozními náklady ve výrobě, skladu i kancelářích.
 - Hlavní moto je „Osobní přístup k vám i vašemu domu“. Slovo „na míru“ z webu zmizelo. Texty jsou psané lidštěji a každý blok nese jinou informaci: věta pod motem mluví o návratnosti a ceně, údaje pod tlačítkem o tom, kdo zakázku vede a komu zavolat po předání, nabídka o tom, z čeho vycházíme. Opravený pád u „jednáte s Jiří Uldrich“. O nás má nadpis „Mluvíte s tím, kdo zakázku vede“. Jiří zakázku vede a na montáž dohlíží. Kontakt je bez „Neváhejte nás kontaktovat“.

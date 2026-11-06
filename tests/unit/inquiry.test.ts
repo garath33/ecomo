@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { buildMailto, inquiryHandoffFields, submitInquiry, validateInquiry } from "../../src/lib/inquiry";
+import { buildMailto, inquiryFormAction, submitInquiry, validateInquiry } from "../../src/lib/inquiry";
 
 const valid = {
   name: "Jan Novák",
@@ -52,19 +52,9 @@ describe("buildMailto", () => {
   });
 });
 
-describe("inquiryHandoffFields", () => {
-  it("prepares a browser post back to the same page", () => {
-    const fields = inquiryHandoffFields(
-      valid,
-      "https://garath33.github.io/ecomo/#poptavka",
-      "https://garath33.github.io/ecomo/?poptavka=odeslana#poptavka",
-    );
-    expect(fields["Jméno"]).toBe("Jan Novák");
-    expect(fields._replyto).toBe("jan@example.cz");
-    expect(fields._captcha).toBe("false");
-    expect(fields._url).toBe("https://garath33.github.io/ecomo/#poptavka");
-    expect(fields._next).toBe("https://garath33.github.io/ecomo/?poptavka=odeslana#poptavka");
-    expect(fields._honey).toBeUndefined();
+describe("inquiryFormAction", () => {
+  it("opens the company inbox in the mail client", () => {
+    expect(inquiryFormAction("jiri.uldrich@ecomo.cz")).toBe("mailto:jiri.uldrich@ecomo.cz");
   });
 });
 
