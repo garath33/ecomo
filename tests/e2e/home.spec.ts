@@ -4,7 +4,7 @@ test.describe("homepage @regression", () => {
   test("shows the live sections and a single contact CTA", async ({ page }) => {
     await page.goto("./");
     await expect(page.getByTestId("hero").getByRole("heading", { level: 1 })).toContainText(
-      "Osobní přístup k vám i vašemu domu",
+      "Osobní přístup k vám i vašemu projektu",
     );
     await expect(page.getByTestId("hero")).not.toContainText("na míru");
     await expect(page.getByTestId("hero")).toContainText("celou zakázku vede Jiří Uldrich");

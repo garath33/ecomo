@@ -28,7 +28,7 @@
     "other": "Jiné / konzultace"
   },
   "copy": {
-    "tagline": "Osobní přístup k vám i vašemu domu",
+    "tagline": "Osobní přístup k vám i vašemu projektu",
     "description": "Ecomo navrhuje a instaluje fotovoltaiku a tepelná čerpadla. Od studie návratnosti a dotací až po montáž a spuštění u vás.",
     "about": "Zajišťujeme kompletní servis při realizaci fotovoltaiky. Od návrhu systému, studie jeho smysluplnosti a návratnosti, přes vyřízení dotací, připojení k distribuční soustavě a případnou změnu dodavatele elektřiny, až po odbornou montáž a spuštění technologie u zákazníka doma.",
     "approach": "Nejdřív vás vyslechneme a spočítáme, jestli se vám fotovoltaika nebo tepelné čerpadlo vyplatí."
@@ -48,7 +48,7 @@
   "hero": {
     "imageAlt": "Detail černých fotovoltaických panelů",
     "eyebrow": "Fotovoltaika a tepelná čerpadla",
-    "title": "Osobní přístup k vám i vašemu domu",
+    "title": "Osobní přístup k vám i vašemu projektu",
     "afterApproach": "Když ano, navrhneme sestavu za rozumnou cenu a postavíme ji. Když ne, řekneme vám to rovnou.",
     "meta": [
       { "title": "Na klíč", "text": "návrh, dotace, montáž, připojení" },
