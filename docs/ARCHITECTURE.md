@@ -1,6 +1,6 @@
 # Architektura
 
-Statický prezentační web [Ecomo s.r.o.](https://www.ecomo.cz). Sestavení dělá Astro 5 (`output` je výchozí static). Node 22. Veřejná cesta je `/ecomo` na `https://garath33.github.io`, dokud nepřijde vlastní doména.
+Statický prezentační web [Ecomo s.r.o.](https://ecomo.cz). Sestavení dělá Astro 5 (`output` je výchozí static). Node 22. Ostří je v kořeni `https://ecomo.cz`. Lokální vývoj a e2e dál jedou pod `/ecomo`.
 
 Jediný zdroj firemních údajů je `src/site.config.ts`. Stránky, patička, JSON-LD i testy shody berou údaje odtud.
 
@@ -32,9 +32,9 @@ tests/
 
 `BaseLayout` obalí každou routu. Do `<head>` dává titul, popis, geo meta, canonical, favicon, Open Graph, Twitter card a `JsonLd`. V `<body>` je odkaz „Přeskočit na obsah“, `PreviewBanner`, `Header`, `<main id="obsah">` a `Footer`. Skript v layoutu po načtení a při `hashchange` scrolluje na kotvu.
 
-`PUBLIC_SITE_ENV` se do buildu vkládá ve `vite.define` v `astro.config.mjs`. `isPreview()` v `src/lib/paths.ts` je pravda, když hodnota není `production`, a tehdy `BaseLayout` vloží náhledovou lištu a `noindex`. Lokální `npm run dev` proto pruh ukazuje. Workflow Pages na `main` staví jen ostří (`PUBLIC_BASE_PATH=/ecomo`). Workflow z `feature/**` a `cursor/**` přidá náhled do `/ecomo/preview/` a ostří vedle něj znovu sestaví z `origin/main`.
+`PUBLIC_SITE_ENV` se do buildu vkládá ve `vite.define` v `astro.config.mjs`. `isPreview()` v `src/lib/paths.ts` je pravda, když hodnota není `production`, a tehdy `BaseLayout` vloží náhledovou lištu a `noindex`. Lokální `npm run dev` proto pruh ukazuje. Workflow Pages na `main` staví jen ostří (`PUBLIC_SITE_URL=https://ecomo.cz`, `PUBLIC_BASE_PATH=/`). Workflow z `feature/**` a `cursor/**` přidá náhled do `/preview/` a ostří vedle něj znovu sestaví z `origin/main` se stejnou adresou a kořenovou cestou.
 
-`site` a `base` v `astro.config.mjs` berou `PUBLIC_SITE_URL` (výchozí `https://garath33.github.io`) a `PUBLIC_BASE_PATH` (výchozí `/ecomo`). Odkazy v komponentách jdou přes `withBase()`, aby fungovaly pod touto cestou. `trailingSlash` je `always`, formát buildu je `directory`.
+`site` a `base` v `astro.config.mjs` berou `PUBLIC_SITE_URL` (výchozí `https://garath33.github.io`) a `PUBLIC_BASE_PATH` (výchozí `/ecomo`). Výchozí hodnoty platí pro lokální vývoj a e2e. Odkazy v komponentách jdou přes `withBase()`, aby fungovaly pod touto cestou. `trailingSlash` je `always`, formát buildu je `directory`.
 
 ## Stránky
 
@@ -106,4 +106,4 @@ Fotografie v `public/images/`: `hero-fv-panels.jpg`, `nabidka-fv.jpg`, `nabidka-
 
 E2E soubory: `home.spec.ts`, `about.spec.ts`, `inquiry.spec.ts`, `responsive.spec.ts`, `parity.spec.ts`. Projekty Playwright jsou `chromium` a `mobile` (Pixel 7). `parity` hlídá, že na stránce jsou hodnoty z `productionFacts`.
 
-`.github/workflows/ci.yml` pouští lint, unit, build a e2e na pull requestu a na push do `main` a `cursor/**`. `.github/workflows/pages.yml` nasadí GitHub Pages. Prostředí se jmenuje `production` na `main` (https://garath33.github.io/ecomo/) a `preview` na pracovní větvi (https://garath33.github.io/ecomo/preview/). Nasazení se řadí za sebe, aby se ostří a náhled nepřepsaly v půlce.
+`.github/workflows/ci.yml` pouští lint, unit, build a e2e na pull requestu a na push do `main` a `cursor/**`. `.github/workflows/pages.yml` nasadí GitHub Pages. Prostředí se jmenuje `production` na `main` (https://ecomo.cz/) a `preview` na pracovní větvi (https://ecomo.cz/preview/). Nasazení se řadí za sebe, aby se ostří a náhled nepřepsaly v půlce. Vlastní doména je v nastavení Pages repozitáře `ecomo.cz`. `www.ecomo.cz` má CNAME na `garath33.github.io` a GitHub ho přesměruje na apex.
