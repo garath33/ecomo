@@ -19,6 +19,7 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 
 ### Změněno
 
+- Hlavní moto v hero je „Osobní přístup k vám i vašemu projektu“.
 - Tepelná čerpadla: instalujeme jen monoblok značky Kensol. Ze stránky zmizel výběr split, monoblok a hydrosplit i věta, že značku necháváme otevřenou. Cena počítá s venkovní jednotkou a trasou topné vody.
 - Postup zakázky na stránce fotovoltaiky: 1. kontakt, naměření, nacenění a smlouva o dílo, 2. administrativa (projekt, podklady, žádosti), 3. realizace v pořadí instalace, nastavení, předání a revize.
 - Kroky zakázky mají přepracovaný layout a jednu propracovanou ikonu u každého kroku: telefon s bublinou hovoru, štos podkladů a montér s helmou a maticovým klíčem.

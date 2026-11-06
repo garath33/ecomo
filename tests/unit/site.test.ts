@@ -19,7 +19,7 @@ describe("production content contract", () => {
     expect(site.address.city).toBe("Zdiby");
     expect(site.address.district).toBe("Praha-východ");
     expect(site.address.region).toBe("Středočeský kraj");
-    expect(site.tagline).toBe("Osobní přístup k vám i vašemu domu");
+    expect(site.tagline).toBe("Osobní přístup k vám i vašemu projektu");
     expect(site.approach).toMatch(/Nejdřív vás vyslechneme/);
   });
 

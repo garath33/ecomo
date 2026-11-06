@@ -35,7 +35,7 @@ Zásady, které platí pořád: ostří je `main`, obsah náhledu i ostří bere
 
 - Repozitář, Astro 5, TypeScript, ESLint, Vitest, Playwright, GitHub Actions a nasazení na GitHub Pages (`https://garath33.github.io/ecomo/`).
 - Vzhled podle brandingu: žlutá `#D8E716`, černá, písmo Sansation (Light a Bold), rastrový wordmark na světlém i tmavém pozadí.
-- Úvodní stránka: hero s motem „Osobní přístup k vám i vašemu domu“ a jedním CTA „Kontaktujte nás“, sekce Co nabízíme (fotovoltaika a tepelná čerpadla), kontakt a formulář. Menu Kontakt i „Kontaktujte nás“ doscrollují na výzvu „Ozvěte se nezávazně“. Text nad formulářem říká, že Jiří Uldrich rád pomůže.
+- Úvodní stránka: hero s motem „Osobní přístup k vám i vašemu projektu“ a jedním CTA „Kontaktujte nás“, sekce Co nabízíme (fotovoltaika a tepelná čerpadla), kontakt a formulář. Menu Kontakt i „Kontaktujte nás“ doscrollují na výzvu „Ozvěte se nezávazně“. Text nad formulářem říká, že Jiří Uldrich rád pomůže.
 - Fotovoltaika: rodinné domy, firmy, obce a města, bytové domy a SVJ, každý segment s vlastní ilustrací v barvách značky. Postup zakázky je kontakt a smlouva, administrativa a realizace, u každého kroku žlutá značka.
 - Tepelná čerpadla vzduch–voda značky Kensol v provedení monoblok: zhruba třetinová spotřeba elektřiny oproti přímotopu u nízkoteplotní soustavy, novostavba, rekonstrukce, kombinace s fotovoltaikou, co cena obvykle obsahuje. Fotografie venkovní jednotky ukazuje skříň s ventilátorem rovnoběžně u zdi domu.
 - O nás: samostatná stránka `/o-nas/`, odkaz v hlavním menu. Na úvodu se sekce nevykresluje.
