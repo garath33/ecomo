@@ -20,7 +20,7 @@ Příklad: `feature/responsive-navigation`.
 4. Lokálně: `npm run test:all` (lint, unit, build, smoke, validace HTML/CSS, Playwright).
 5. Push a pull request do `main`.
 6. CI musí být zelené, včetně jobu Broken links. Job uloží screenshoty úvodu, fotovoltaiky, tepelných čerpadel a kontaktu jako artifact `preview-screenshots` a snímky vizuální regrese jako `visual-screenshots`.
-7. GitHub Pages nasadí náhled: https://garath33.github.io/ecomo/preview/ . Ostří na https://garath33.github.io/ecomo/ zůstane z `main`.
+7. GitHub Pages nasadí náhled: https://ecomo.cz/preview/ . Ostří na https://ecomo.cz/ je sestava z `main`.
 8. Web je jen v češtině. Další jazyk se nepřidává a `npm run test:i18n` se nespouští, dokud o něj uživatel výslovně nepožádá.
 9. Uživateli se předloží odkaz na PR, náhled, výsledek CI a screenshoty. Merge do `main` až po jeho schválení.
 10. Merge na `main` nasadí ostrou verzi bez náhledového pruhu. Složka `/preview/` z tohoto nasazení zmizí.
@@ -55,7 +55,7 @@ Neslučujeme více nesouvisejících věcí v jednom PR.
 
 GitHub Pages má jednu adresu repa. Nasazení z pracovní větve proto pošle obě verze najednou:
 
-- `https://garath33.github.io/ecomo/` je ostří sestavené z aktuálního `main`, bez lišty
-- `https://garath33.github.io/ecomo/preview/` je tato větev (`feature/**` nebo `cursor/**`) s lištou
+- `https://ecomo.cz/` je ostří sestavené z aktuálního `main`, bez lišty
+- `https://ecomo.cz/preview/` je tato větev (`feature/**` nebo `cursor/**`) s lištou
 
 Push na `main` nasadí jen ostří. Lišta v HTML vznikne jen když `PUBLIC_SITE_ENV` není `production`.

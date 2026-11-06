@@ -15,6 +15,7 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 
 ### Opraveno
 
+- Ostří na `https://ecomo.cz/` se sestavuje z kořene domény. Předchozí build mířil na `https://garath33.github.io/ecomo/` a na vlastní doméně proto nenačetl styly ani podstránky. Náhled pracovní větve je `https://ecomo.cz/preview/`.
 - Poptávka se po kliknutí na Odeslat už nezasekne na „Odesílám poptávku…“. FormSubmit v prohlížeči nebere tichý požadavek (kontrola Cloudflare) a stránka kvůli tomu zůstávala ve stavu odesílání, nebo přešla na ověření „Okamžik…“. Teď se formulář odešle v novém okně na jiri.uldrich@ecomo.cz. Napoprvé je potřeba v tom okně potvrdit, že jde o člověka, a v e-mailu od FormSubmit kliknout na Activate Form. Pak se uložené poptávky doručí. Když okno nejde otevřít, zůstane odkaz do e-mailového klienta.
 
 ### Změněno

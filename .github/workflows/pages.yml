@@ -32,8 +32,8 @@ jobs:
         run: npm run build
         env:
           PUBLIC_SITE_ENV: production
-          PUBLIC_SITE_URL: https://garath33.github.io
-          PUBLIC_BASE_PATH: /ecomo
+          PUBLIC_SITE_URL: https://ecomo.cz
+          PUBLIC_BASE_PATH: /
       - name: Assert production has no preview bar
         if: github.ref == 'refs/heads/main'
         run: node scripts/assert-preview-banner.mjs dist production
@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.ref_name == 'main' && 'production' || 'preview' }}
-      url: ${{ github.ref_name == 'main' && 'https://garath33.github.io/ecomo/' || 'https://garath33.github.io/ecomo/preview/' }}
+      url: ${{ github.ref_name == 'main' && 'https://ecomo.cz/' || 'https://ecomo.cz/preview/' }}
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
