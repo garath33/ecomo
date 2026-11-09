@@ -20,7 +20,7 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 
 ### Změněno
 
-- Nad formulářem je výzva „Neváhejte se na nás obrátit“ a věta „Rádi vám pomůžeme“. Telefon zůstává. První schůzku domluví Jiří Uldrich, bez opakování, že se ozve osobně a že rád pomůže.
+- Nad formulářem je výzva „Pojďme si promluvit o vašem projektu“ a text mluví přímo za Jiřího Uldricha: „Jmenuji se Jiří Uldrich. Zavolejte mi…, ozvu se vám a domluvíme první schůzku, nezávazně.“ Bez množného čísla a bez třetí osoby, takže mezi klientem a Jiřím není odstup. Stejným hlasem je potvrzení po odeslání poptávky („Děkuji za poptávku… Ozvu se vám“). Zbytek webu mluví o firmě v množném čísle („instalujeme“, „navrhneme“) a o Jiřím ve třetí osobě, to zůstává.
 - Hlavní moto v hero je „Osobní přístup k vám i vašemu projektu“.
 - Tepelná čerpadla: instalujeme jen monoblok značky Kensol. Ze stránky zmizel výběr split, monoblok a hydrosplit i věta, že značku necháváme otevřenou. Cena počítá s venkovní jednotkou a trasou topné vody.
 - Postup zakázky na stránce fotovoltaiky: 1. kontakt, naměření, nacenění a smlouva o dílo, 2. administrativa (projekt, podklady, žádosti), 3. realizace v pořadí instalace, nastavení, předání a revize.

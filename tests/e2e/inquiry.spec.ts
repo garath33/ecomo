@@ -41,7 +41,7 @@ test.describe("inquiry form @regression", () => {
       "href",
       /mailto:jiri\.uldrich@ecomo\.cz/,
     );
-    await expect(popup.locator("[data-inquiry-status]")).toContainText("Děkujeme za poptávku");
+    await expect(popup.locator("[data-inquiry-status]")).toContainText("Děkuji za poptávku");
     await expect(popup.locator("[data-inquiry-status]")).toContainText("Zpráva se odeslala");
     expect(posted?.get("Jméno")).toBe("Marie Svobodová");
     expect(posted?.get("Zájem")).toBe("Fotovoltaika i tepelné čerpadlo");

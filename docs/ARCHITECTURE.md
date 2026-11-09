@@ -61,7 +61,7 @@ Menu v `navigation` vede na `/#nabidka`, `/fotovoltaika/`, `/tepelna-cerpadla/`,
 | `Hero` | Úvodní fotografie panelů, claim, jeden odkaz „Kontaktujte nás“ na `#kontakt`, tři krátké body (na klíč, jeden člověk, po předání). |
 | `Offer` | `#nabidka`. Dvě karty: fotovoltaika (`images/nabidka-fv.jpg`) a tepelné čerpadlo (`images/nabidka-tc.jpg`), každá s odkazem na podstránku. |
 | `AudienceArt` | Vektorová ilustrace segmentu na `/fotovoltaika/`. `id` z `pvPage.audiences` vybere soubor v `src/assets/audience/`. Kresba je dekorativní (`aria-hidden`). |
-| `Contact` | Kotva `#kontakt` na výzvě „Neváhejte se na nás obrátit“ a karta `#poptavka` s `InquiryForm`. |
+| `Contact` | Kotva `#kontakt` na výzvě „Pojďme si promluvit o vašem projektu“ a karta `#poptavka` s `InquiryForm`. |
 | `InquiryForm` | Pole jméno, telefon, e-mail, téma (`inquiryTopics`), zpráva a skryté pole `_honey`. `action` míří na FormSubmit. Po submitu načte `src/scripts/inquiry.ts`. |
 | `About` | Text o firmě a jednateli, tři body, CTA „Kontaktujte nás“ na `#kontakt`. Používá ho jen `/o-nas/`. |
 | `Projects` | `#zakazky`. Karty z pole `projects`. Žádná stránka ji teď neimportuje. |

@@ -9,7 +9,7 @@ import { site } from "../site.config";
     <div id="kontakt" data-testid="contact-intro">
       <h2>{messages.contact.title}</h2>
       <p class="lede">
-        {messages.contact.beforePhone}<a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>{messages.contact.afterPhone}{site.person}{messages.contact.afterName}
+        {messages.contact.beforeName}{site.person}{messages.contact.afterName}<a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>{messages.contact.afterPhone}
       </p>
     </div>
     <div class="card" id="poptavka">

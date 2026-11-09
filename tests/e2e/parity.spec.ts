@@ -72,7 +72,7 @@ test.describe("preview matches production content @regression", () => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto("./");
     await page.getByRole("navigation").getByRole("link", { name: "Kontakt" }).click();
-    const heading = page.getByRole("heading", { name: "Neváhejte se na nás obrátit" });
+    const heading = page.getByRole("heading", { name: "Pojďme si promluvit o vašem projektu" });
     await expect(heading).toBeInViewport();
     const headingBox = await heading.boundingBox();
     const headerBox = await page.locator("header.site-header").boundingBox();
