@@ -13,9 +13,9 @@ test.describe("homepage @regression", () => {
       "Firemní instalace — nižší provozní náklady ve výrobě, skladu i kancelářích",
     );
     await expect(page.getByTestId("offer")).not.toContainText("Komerční");
-    await expect(page.getByTestId("contact-intro")).toContainText("Ozvěte se nezávazně");
-    await expect(page.getByTestId("contact-intro")).toContainText("Jiří Uldrich vám rád pomůže");
-    await expect(page.getByTestId("contact-intro")).toContainText("domluvíme si první schůzku");
+    await expect(page.getByTestId("contact-intro")).toContainText("Pojďme si promluvit o vašem projektu");
+    await expect(page.getByTestId("contact-intro")).toContainText("Jmenuji se Jiří Uldrich");
+    await expect(page.getByTestId("contact-intro")).toContainText("domluvíme první schůzku");
     await expect(page.getByTestId("contact-intro")).not.toContainText("balíček z ceníku");
     await expect(page.getByTestId("contact")).toBeVisible();
     await expect(page.getByTestId("projects")).toHaveCount(0);
@@ -34,7 +34,7 @@ test.describe("homepage @regression", () => {
   test("navigates from CTA to the text above the inquiry form", async ({ page }) => {
     await page.goto("./");
     await page.getByTestId("hero").getByRole("link", { name: "Kontaktujte nás" }).click();
-    const heading = page.getByRole("heading", { name: "Ozvěte se nezávazně" });
+    const heading = page.getByRole("heading", { name: "Pojďme si promluvit o vašem projektu" });
     await expect(heading).toBeInViewport();
     const headingBox = await heading.boundingBox();
     const headerBox = await page.locator("header.site-header").boundingBox();

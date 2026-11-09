@@ -83,9 +83,10 @@
     }
   },
   "contact": {
-    "title": "Ozvěte se nezávazně",
-    "afterName": " vám rád pomůže. Zavolejte na",
-    "afterPhone": ", nebo napište přes formulář níže. Ozve se osobně a domluvíme si první schůzku."
+    "title": "Pojďme si promluvit o vašem projektu",
+    "beforeName": "Jmenuji se ",
+    "afterName": ". Zavolejte mi na ",
+    "afterPhone": ", nebo napište přes formulář. Ozvu se vám a domluvíme první schůzku, nezávazně."
   },
   "form": {
     "name": "Jméno a příjmení",
@@ -98,8 +99,8 @@
     "consent": "Odesláním souhlasíte se zpracováním údajů jen kvůli vyřízení poptávky. Zpráva se odešle na",
     "submit": "Odeslat poptávku",
     "sending": "Odesílám poptávku…",
-    "sentTitle": "Děkujeme za poptávku.",
-    "sent": "Zpráva se odeslala. Ozveme se osobně a domluvíme řešení, které sedí právě vám.",
+    "sentTitle": "Děkuji za poptávku.",
+    "sent": "Zpráva se odeslala. Ozvu se vám a domluvíme řešení, které sedí právě vám.",
     "checkTitle": "Potvrďte odeslání v novém okně.",
     "checkBefore": "Zaškrtněte, že jste člověk. Napoprvé přijde na ",
     "checkAfter": " e-mail od FormSubmit s odkazem Activate Form. Až na něj kliknete, poptávka se doručí. Kdyby okno nešlo otevřít, odešlete ji odkazem níže.",
@@ -223,7 +224,7 @@
       "Napojení na stávající rozvody v rozumném rozsahu"
     ],
     "choiceTitle": "Řešení, které instalujeme",
-    "choiceLede": "Zůstáváme u jednoho provedení: monoblok značky Kensol. Chladicí okruh je celý ve venkovní jednotce a do domu vedou jen trubky s topnou vodou. Výkon a místo venku navrhneme podle tepelné ztráty, hluku a toho, jak hluboko v zimě potřebujete topit.",
+    "choiceLede": "Zůstáváme u jednoho provedení: monoblok značky Kensol. Chladicí okruh je celý ve venkovní jednotce a do domu vedou jen trubky s topnou vodou. Výkon a místo venku navrhneme podle tepelné ztráty domu, hluku a nejnižších venkovních teplot, při kterých potřebujete topit.",
     "choices": [
       {
         "title": "Novostavba",
