@@ -83,9 +83,10 @@
     }
   },
   "contact": {
-    "title": "Ozvěte se nezávazně",
-    "afterName": " vám rád pomůže. Zavolejte na",
-    "afterPhone": ", nebo napište přes formulář níže. Ozve se osobně a domluvíme si první schůzku."
+    "title": "Neváhejte se na nás obrátit",
+    "beforePhone": "Rádi vám pomůžeme. Zavolejte na ",
+    "afterPhone": ", nebo napište přes formulář. ",
+    "afterName": " s vámi domluví první schůzku."
   },
   "form": {
     "name": "Jméno a příjmení",
