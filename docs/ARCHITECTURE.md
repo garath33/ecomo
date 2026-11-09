@@ -49,14 +49,14 @@ tests/
 
 Sitemap skládá integrace `@astrojs/sitemap`. Filtr vynechá URL obsahující `/404`.
 
-Menu v `navigation` vede na `/#nabidka`, `/fotovoltaika/`, `/tepelna-cerpadla/`, `/o-nas/` a `/#kontakt`. Tlačítko v hlavičce míří na `/#poptavka`.
+Menu v `navigation` vede na `/#nabidka`, `/fotovoltaika/`, `/tepelna-cerpadla/`, `/o-nas/` a `/#kontakt`. Tlačítko v hlavičce míří na `/#kontakt`. Když stránka sama obsahuje blok kontaktu, kliknutí na odkaz s `#kontakt` nebo `#poptavka` doscrolluje na text nad formulářem na téže stránce.
 
 ## Komponenty
 
 | Komponenta | Úloha |
 | --- | --- |
 | `Header` | Wordmark, odkazy z `navigation`, CTA poptávky. Do 1100 px hamburger (`data-nav-toggle`) otevírá `#hlavni-menu`. `aria-current="page"` sedí, když cesta přesně odpovídá `href`. |
-| `Footer` | Sídlo, IČO, DIČ, osoba, telefon, e-mail, web a odkazy na poptávku a obě služby. Wordmark ve variantě `onDark`. |
+| `Footer` | Sídlo, IČO, DIČ, osoba, telefon, e-mail, web a odkazy na poptávku (`/#kontakt`) a obě služby. Wordmark ve variantě `onDark`. |
 | `Logo` | PNG wordmark. `onDark` přepne na bílý soubor. `alt` je `ecomo`. |
 | `Hero` | Úvodní fotografie panelů, claim, jeden odkaz „Kontaktujte nás“ na `#kontakt`, tři krátké body (na klíč, jeden člověk, po předání). |
 | `Offer` | `#nabidka`. Dvě karty: fotovoltaika (`images/nabidka-fv.jpg`) a tepelné čerpadlo (`images/nabidka-tc.jpg`), každá s odkazem na podstránku. |
