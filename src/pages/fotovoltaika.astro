@@ -9,7 +9,7 @@ import { withBase } from "../lib/paths";
 
 const marks = ["smlouva", "administrativa", "realizace"] as const;
 const stepHighlights: ReadonlyArray<ReadonlyArray<string>> = [
-  ["1. kontakt", "Naměření", "Nacenění", "Smlouva o dílo"],
+  ["Kontakt", "Naměření", "Nacenění", "Smlouva o dílo"],
   ["Projekt", "Podklady", "Žádosti", "Dotace a síť"],
   ["Instalace", "Nastavení", "Předání", "Revize"],
 ];
@@ -68,15 +68,11 @@ function audienceId(value: string): AudienceId {
         {
           messages.pvPage.steps.map((step, index) => {
             const mark = marks[index];
-            const stepNum = String(index + 1).padStart(2, "0");
             const tags = stepHighlights[index] ?? [];
             return (
               <li class="card step">
                 <div class="step__top">
                   {mark && <ProcessMark name={mark} />}
-                  <div class="step__badge" aria-hidden="true">
-                    <span class="step__num">{stepNum}</span>
-                  </div>
                 </div>
                 <h3>{step.title}</h3>
                 <p>{step.body}</p>
@@ -130,7 +126,7 @@ function audienceId(value: string): AudienceId {
     .process-grid::before {
       content: "";
       position: absolute;
-      top: 4rem;
+      top: calc(1.5px + 1.85rem + 0.35rem + 2.25rem);
       left: 12%;
       right: 12%;
       height: 2px;
@@ -171,28 +167,8 @@ function audienceId(value: string): AudienceId {
   .step__top {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
     margin-top: 0.35rem;
-    margin-bottom: 1.35rem;
-  }
-
-  .step__badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.3rem 0.65rem;
-    background: var(--paper);
-    border: 1.5px solid var(--ink);
-    border-radius: 999px;
-  }
-
-  .step__num {
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 0.08em;
-    color: var(--ink);
+    margin-bottom: 1.15rem;
   }
 
   .step h3 {

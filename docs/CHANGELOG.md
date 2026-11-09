@@ -20,6 +20,7 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 
 ### Změněno
 
+- Postup zakázky na fotovoltaice má číslo kroku jen v nadpisu. Odznaky 01, 02 a 03 v rohu karty jsou pryč a štítek prvního kroku je „Kontakt“, stejně jako ostatní činnosti. Věta u realizace zní „Instalace, nastavení, předání a revize.“
 - Hlavní moto v hero je „Osobní přístup k vám i vašemu projektu“.
 - Tepelná čerpadla: instalujeme jen monoblok značky Kensol. Ze stránky zmizel výběr split, monoblok a hydrosplit i věta, že značku necháváme otevřenou. Cena počítá s venkovní jednotkou a trasou topné vody.
 - Postup zakázky na stránce fotovoltaiky: 1. kontakt, naměření, nacenění a smlouva o dílo, 2. administrativa (projekt, podklady, žádosti), 3. realizace v pořadí instalace, nastavení, předání a revize.

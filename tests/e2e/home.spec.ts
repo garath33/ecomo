@@ -61,9 +61,8 @@ test.describe("homepage @regression", () => {
     await expect(
       page.getByText("První kontakt, naměření, nacenění, vyhotovení a podpis smlouvy o dílo."),
     ).toBeVisible();
-    await expect(
-      page.getByText("Instalace, nastavení, předání a revize — v tomhle pořadí."),
-    ).toBeVisible();
+    await expect(page.getByText("Instalace, nastavení, předání a revize.")).toBeVisible();
+    await expect(page.getByText("v tomhle pořadí")).toHaveCount(0);
     const process = page
       .locator("section")
       .filter({ has: page.getByRole("heading", { name: "Jak probíhá zakázka" }) });
@@ -72,6 +71,10 @@ test.describe("homepage @regression", () => {
     await expect(cards.nth(0).locator(".step__mark")).toHaveCount(1);
     await expect(cards.nth(1).locator(".step__mark")).toHaveCount(1);
     await expect(cards.nth(2).locator(".step__mark")).toHaveCount(1);
+    await expect(process.locator(".step__badge, .step__num")).toHaveCount(0);
+    await expect(cards.nth(0)).not.toContainText("01");
+    await expect(cards.nth(1)).not.toContainText("02");
+    await expect(cards.nth(2)).not.toContainText("03");
     const audiences = page.getByTestId("pv-audiences");
     await expect(audiences.locator("[data-audience]")).toHaveCount(4);
     await expect(audiences.locator("[data-audience='house'] svg")).toBeVisible();
