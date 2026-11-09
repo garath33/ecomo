@@ -223,7 +223,7 @@
       "Napojení na stávající rozvody v rozumném rozsahu"
     ],
     "choiceTitle": "Řešení, které instalujeme",
-    "choiceLede": "Zůstáváme u jednoho provedení: monoblok značky Kensol. Chladicí okruh je celý ve venkovní jednotce a do domu vedou jen trubky s topnou vodou. Výkon a místo venku navrhneme podle tepelné ztráty, hluku a toho, jak hluboko v zimě potřebujete topit.",
+    "choiceLede": "Zůstáváme u jednoho provedení: monoblok značky Kensol. Chladicí okruh je celý ve venkovní jednotce a do domu vedou jen trubky s topnou vodou. Výkon a místo venku navrhneme podle tepelné ztráty domu, hluku a nejnižších venkovních teplot, při kterých potřebujete topit.",
     "choices": [
       {
         "title": "Novostavba",
