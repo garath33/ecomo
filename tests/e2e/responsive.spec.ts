@@ -53,7 +53,20 @@ test.describe("responsiveness @regression", () => {
     await page.getByRole("button", { name: "Menu" }).click();
     await expect(page.getByRole("navigation").getByRole("link", { name: "Kontakt" })).toBeVisible();
     await page.getByRole("navigation").getByRole("link", { name: "Nezávazná poptávka" }).click();
-    await expect(page.locator("#poptavka")).toBeInViewport();
+    await expect.poll(async () => {
+      return page.evaluate(() => {
+        const intro = document.getElementById("kontakt");
+        const header = document.querySelector("header.site-header");
+        const phone = intro?.querySelector("a[href^='tel:']");
+        if (!intro || !header || !phone) return false;
+        const margin = Number.parseFloat(getComputedStyle(intro).scrollMarginTop) || 0;
+        const introTop = intro.getBoundingClientRect().top;
+        const headerBottom = header.getBoundingClientRect().bottom;
+        const phoneTop = phone.getBoundingClientRect().top;
+        return Math.abs(introTop - margin) < 3 && introTop >= headerBottom - 1 && phoneTop < window.innerHeight;
+      });
+    }).toBe(true);
+    await expect(page.locator("#poptavka")).toBeVisible();
   });
 
   test("desktop keeps inline navigation without a menu button", async ({ page }) => {

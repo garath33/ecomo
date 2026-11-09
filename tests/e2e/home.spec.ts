@@ -1,4 +1,31 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
+
+async function openNavIfNeeded(page: Page) {
+  const menu = page.getByRole("button", { name: "Menu" });
+  if (await menu.isVisible()) await menu.click();
+}
+
+async function expectIntroAboveForm(page: Page) {
+  await expect.poll(async () => {
+    return page.evaluate(() => {
+      const intro = document.getElementById("kontakt");
+      const header = document.querySelector("header.site-header");
+      const form = document.getElementById("poptavka");
+      const phone = intro?.querySelector("a[href^='tel:']");
+      if (!intro || !header || !form || !phone) return false;
+      const margin = Number.parseFloat(getComputedStyle(intro).scrollMarginTop) || 0;
+      const introTop = intro.getBoundingClientRect().top;
+      const headerBottom = header.getBoundingClientRect().bottom;
+      const phoneTop = phone.getBoundingClientRect().top;
+      const formTop = form.getBoundingClientRect().top;
+      const settled = Math.abs(introTop - margin) < 3;
+      const belowHeader = introTop >= headerBottom - 1;
+      const phoneVisible = phoneTop >= headerBottom - 1 && phoneTop < window.innerHeight;
+      return settled && belowHeader && phoneVisible && formTop > introTop;
+    });
+  }).toBe(true);
+  await expect(page.getByRole("button", { name: "Odeslat poptávku" })).toBeVisible();
+}
 
 test.describe("homepage @regression", () => {
   test("shows the live sections and a single contact CTA", async ({ page }) => {
@@ -34,15 +61,24 @@ test.describe("homepage @regression", () => {
   test("navigates from CTA to the text above the inquiry form", async ({ page }) => {
     await page.goto("./");
     await page.getByTestId("hero").getByRole("link", { name: "Kontaktujte nás" }).click();
-    const heading = page.getByRole("heading", { name: "Ozvěte se nezávazně" });
-    await expect(heading).toBeInViewport();
-    const headingBox = await heading.boundingBox();
-    const headerBox = await page.locator("header.site-header").boundingBox();
-    expect(headingBox).toBeTruthy();
-    expect(headerBox).toBeTruthy();
-    expect(headingBox!.y).toBeGreaterThanOrEqual(headerBox!.y + headerBox!.height - 1);
-    await expect(page.locator("#poptavka")).toBeVisible();
-    await expect(page.getByRole("button", { name: "Odeslat poptávku" })).toBeVisible();
+    await expectIntroAboveForm(page);
+    await expect(page).toHaveURL(/#kontakt$/);
+
+    await page.goto("./");
+    await openNavIfNeeded(page);
+    await page.getByRole("navigation").getByRole("link", { name: "Nezávazná poptávka" }).click();
+    await expectIntroAboveForm(page);
+    await expect(page).toHaveURL(/#kontakt$/);
+
+    await page.goto("./");
+    await page.getByTestId("site-footer").getByRole("link", { name: "Nezávazná poptávka" }).click();
+    await expectIntroAboveForm(page);
+    await expect(page).toHaveURL(/#kontakt$/);
+
+    await page.goto("./");
+    await openNavIfNeeded(page);
+    await page.getByRole("navigation").getByRole("link", { name: "Kontakt" }).click();
+    await expectIntroAboveForm(page);
   });
 
   test("opens service pages from the offer section", async ({ page }) => {
@@ -78,6 +114,14 @@ test.describe("homepage @regression", () => {
     await expect(audiences.locator("[data-audience='commercial'] svg")).toBeVisible();
     await expect(audiences.locator("[data-audience='town'] svg")).toBeVisible();
     await expect(audiences.locator("[data-audience='apartments'] svg")).toBeVisible();
+    await page.locator(".hero").getByRole("link", { name: "Nezávazná poptávka" }).click();
+    await expect(page).toHaveURL(/\/fotovoltaika\/#kontakt$/);
+    await expectIntroAboveForm(page);
+    await page.goto("./fotovoltaika/");
+    await openNavIfNeeded(page);
+    await page.getByRole("navigation").getByRole("link", { name: "Nezávazná poptávka" }).click();
+    await expect(page).toHaveURL(/\/fotovoltaika\/#kontakt$/);
+    await expectIntroAboveForm(page);
 
     await page.goto("./");
     await expect(page.getByTestId("offer")).toContainText("Monoblok vzduch–voda značky Kensol");
@@ -90,6 +134,9 @@ test.describe("homepage @regression", () => {
     await expect(page.locator("main")).not.toContainText("hydrosplit");
     await expect(page.locator("main")).not.toContainText("split");
     await expect(page.locator("main")).not.toContainText("Necpeme jednu značku");
+    await page.locator(".hero").getByRole("link", { name: "Nezávazná poptávka" }).click();
+    await expect(page).toHaveURL(/\/tepelna-cerpadla\/#kontakt$/);
+    await expectIntroAboveForm(page);
   });
 
   test("offer cards use a panel install photo and the heat-pump photo", async ({ page }) => {

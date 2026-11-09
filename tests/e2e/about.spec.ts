@@ -19,10 +19,13 @@ test.describe("about page @regression", () => {
     await expect(page.getByTestId("about")).toContainText("nezačínáme ceníkem, ale rozhovorem");
     await expect(page.getByTestId("about")).toContainText("technologii i řemeslo");
     await expect(page.getByTestId("about")).toContainText("montáž");
-    await expect(page.getByTestId("about").getByRole("link", { name: "Kontaktujte nás" })).toHaveAttribute(
-      "href",
-      /#kontakt$/,
-    );
+    const contact = page.getByTestId("about").getByRole("link", { name: "Kontaktujte nás" });
+    await expect(contact).toHaveAttribute("href", /#kontakt$/);
+    await contact.click();
+    await expect(page).toHaveURL(/\/#kontakt$/);
+    await expect(page.getByRole("heading", { name: "Ozvěte se nezávazně" })).toBeInViewport();
+    await expect(page.getByTestId("contact-intro").getByRole("link", { name: "+420 604 251 324" })).toBeInViewport();
+    await expect(page.locator("#poptavka")).toBeVisible();
   });
 
   test("does not overflow on a narrow screen", async ({ page }) => {

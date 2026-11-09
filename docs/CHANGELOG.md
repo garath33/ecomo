@@ -20,6 +20,7 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 
 ### Změněno
 
+- Tlačítko „Nezávazná poptávka“ v hlavičce, odkaz v patičce a výzvy na stránkách fotovoltaiky a tepelných čerpadel zastaví u textu „Ozvěte se nezávazně“, ne až u polí formuláře. Ve výřezu zůstane věta, že Jiří Uldrich rád pomůže, telefon a výzva k první schůzce. Formulář je hned pod tím. Na stránce, která blok kontaktu má, kliknutí zůstane na ní. Stránka O nás vede na stejný blok na úvodu.
 - Hlavní moto v hero je „Osobní přístup k vám i vašemu projektu“.
 - Tepelná čerpadla: instalujeme jen monoblok značky Kensol. Ze stránky zmizel výběr split, monoblok a hydrosplit i věta, že značku necháváme otevřenou. Cena počítá s venkovní jednotkou a trasou topné vody.
 - Postup zakázky na stránce fotovoltaiky: 1. kontakt, naměření, nacenění a smlouva o dílo, 2. administrativa (projekt, podklady, žádosti), 3. realizace v pořadí instalace, nastavení, předání a revize.
