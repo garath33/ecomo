@@ -21,35 +21,27 @@ test.describe("inquiry form @regression", () => {
   });
 
   test("sends a valid inquiry to the company inbox", async ({ page }) => {
-    let posted: URLSearchParams | undefined;
-    await page.context().route((url) => url.hostname === "formsubmit.co", async (route) => {
-      posted = new URLSearchParams(route.request().postData() ?? "");
-      const next = posted.get("_next") ?? "./";
-      await route.fulfill({ status: 303, headers: { location: next } });
+    let posted: Record<string, string> | undefined;
+    await page.context().route((url) => url.hostname === "api.web3forms.com", async (route) => {
+      posted = JSON.parse(route.request().postData() ?? "{}") as Record<string, string>;
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({ success: true }),
+      });
     });
 
     await fillValidInquiry(page);
-    const popupPromise = page.waitForEvent("popup");
     await page.getByRole("button", { name: "Odeslat poptávku" }).click();
-    const popup = await popupPromise;
 
-    await expect(page.locator("[data-inquiry-status]")).toContainText("Potvrďte odeslání v novém okně");
-    await expect(page.locator("[data-inquiry-status]")).toContainText("Activate Form");
-    await expect(page.locator("[data-inquiry-status]")).toContainText("jiri.uldrich@ecomo.cz");
+    await expect(page.locator("[data-inquiry-status]")).toContainText("Děkuji za poptávku");
+    await expect(page.locator("[data-inquiry-status]")).toContainText("Zpráva se odeslala");
     await expect(page.getByRole("button", { name: "Odeslat poptávku" })).toBeEnabled();
-    await expect(page.getByRole("link", { name: "Otevřít e-mailový klient" })).toHaveAttribute(
-      "href",
-      /mailto:jiri\.uldrich@ecomo\.cz/,
-    );
-    await expect(popup.locator("[data-inquiry-status]")).toContainText("Děkuji za poptávku");
-    await expect(popup.locator("[data-inquiry-status]")).toContainText("Zpráva se odeslala");
-    expect(posted?.get("Jméno")).toBe("Marie Svobodová");
-    expect(posted?.get("Zájem")).toBe("Fotovoltaika i tepelné čerpadlo");
-    expect(posted?.get("_replyto")).toBe("marie@example.cz");
-    expect(posted?.get("_captcha")).toBe("false");
-    expect(posted?.get("_url")).toContain("#poptavka");
-    expect(posted?.get("_next")).toContain("poptavka=odeslana");
-    expect(posted?.get("name")).toBeNull();
+    await expect(page).toHaveURL(/#poptavka/);
+    expect(posted?.["Jméno"]).toBe("Marie Svobodová");
+    expect(posted?.["Zájem"]).toBe("Fotovoltaika i tepelné čerpadlo");
+    expect(posted?.replyto).toBe("marie@example.cz");
+    expect(posted?.access_key).toMatch(/^[0-9a-f-]{36}$/);
   });
 
   test("offers the mail client when the browser is offline", async ({ page, context }) => {
