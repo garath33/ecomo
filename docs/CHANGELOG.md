@@ -15,12 +15,15 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 
 ### Opraveno
 
+- Poptávka se odesílá přes Web3Forms na jiri.uldrich@ecomo.cz. Návštěvník zůstane na stránce a po doručení uvidí poděkování. FormSubmit už se nepoužívá. Když služba neodpoví, zůstane odkaz do e-mailového klienta.
 - Ostří na `https://ecomo.cz/` se sestavuje z kořene domény. Předchozí build mířil na `https://garath33.github.io/ecomo/` a na vlastní doméně proto nenačetl styly ani podstránky. Náhled pracovní větve je `https://ecomo.cz/preview/`.
 - Poptávka se po kliknutí na Odeslat už nezasekne na „Odesílám poptávku…“. FormSubmit v prohlížeči nebere tichý požadavek (kontrola Cloudflare) a stránka kvůli tomu zůstávala ve stavu odesílání, nebo přešla na ověření „Okamžik…“. Teď se formulář odešle v novém okně na jiri.uldrich@ecomo.cz. Napoprvé je potřeba v tom okně potvrdit, že jde o člověka, a v e-mailu od FormSubmit kliknout na Activate Form. Pak se uložené poptávky doručí. Když okno nejde otevřít, zůstane odkaz do e-mailového klienta.
 
 ### Změněno
 
-- Tlačítko „Nezávazná poptávka“ v hlavičce, odkaz v patičce a výzvy na stránkách fotovoltaiky a tepelných čerpadel zastaví u textu „Ozvěte se nezávazně“, ne až u polí formuláře. Ve výřezu zůstane věta, že Jiří Uldrich rád pomůže, telefon a výzva k první schůzce. Formulář je hned pod tím. Na stránce, která blok kontaktu má, kliknutí zůstane na ní. Stránka O nás vede na stejný blok na úvodu.
+- Tlačítko „Nezávazná poptávka“ v hlavičce, odkaz v patičce a výzvy na stránkách fotovoltaiky a tepelných čerpadel zastaví u textu „Pojďme si promluvit o vašem projektu“, ne až u polí formuláře. Ve výřezu zůstane věta v první osobě, telefon a domluva první schůzky. Formulář je hned pod tím. Na stránce, která blok kontaktu má, kliknutí zůstane na ní. Stránka O nás vede na stejný blok na úvodu.
+- Nad formulářem je výzva „Pojďme si promluvit o vašem projektu“ a text mluví přímo za Jiřího Uldricha: „Jmenuji se Jiří Uldrich. Zavolejte mi…, ozvu se vám a domluvíme první schůzku, nezávazně.“ Bez množného čísla a bez třetí osoby, takže mezi klientem a Jiřím není odstup. Stejným hlasem je potvrzení po odeslání poptávky („Děkuji za poptávku… Ozvu se vám“). Zbytek webu mluví o firmě v množném čísle („instalujeme“, „navrhneme“) a o Jiřím ve třetí osobě, to zůstává.
+- Postup zakázky na fotovoltaice má číslo kroku jen v nadpisu. Odznaky 01, 02 a 03 v rohu karty jsou pryč a štítek prvního kroku je „Kontakt“, stejně jako ostatní činnosti. Věta u realizace zní „Instalace, nastavení, předání a revize.“
 - Hlavní moto v hero je „Osobní přístup k vám i vašemu projektu“.
 - Tepelná čerpadla: instalujeme jen monoblok značky Kensol. Ze stránky zmizel výběr split, monoblok a hydrosplit i věta, že značku necháváme otevřenou. Cena počítá s venkovní jednotkou a trasou topné vody.
 - Postup zakázky na stránce fotovoltaiky: 1. kontakt, naměření, nacenění a smlouva o dílo, 2. administrativa (projekt, podklady, žádosti), 3. realizace v pořadí instalace, nastavení, předání a revize.

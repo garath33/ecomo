@@ -61,8 +61,8 @@ Menu v `navigation` vede na `/#nabidka`, `/fotovoltaika/`, `/tepelna-cerpadla/`,
 | `Hero` | Úvodní fotografie panelů, claim, jeden odkaz „Kontaktujte nás“ na `#kontakt`, tři krátké body (na klíč, jeden člověk, po předání). |
 | `Offer` | `#nabidka`. Dvě karty: fotovoltaika (`images/nabidka-fv.jpg`) a tepelné čerpadlo (`images/nabidka-tc.jpg`), každá s odkazem na podstránku. |
 | `AudienceArt` | Vektorová ilustrace segmentu na `/fotovoltaika/`. `id` z `pvPage.audiences` vybere soubor v `src/assets/audience/`. Kresba je dekorativní (`aria-hidden`). |
-| `Contact` | Kotva `#kontakt` na výzvě „Ozvěte se nezávazně“ a karta `#poptavka` s `InquiryForm`. |
-| `InquiryForm` | Pole jméno, telefon, e-mail, téma (`inquiryTopics`), zpráva a skryté pole `_honey`. `action` míří na FormSubmit. Po submitu načte `src/scripts/inquiry.ts`. |
+| `Contact` | Kotva `#kontakt` na výzvě „Pojďme si promluvit o vašem projektu“ a karta `#poptavka` s `InquiryForm`. |
+| `InquiryForm` | Pole jméno, telefon, e-mail, téma (`inquiryTopics`), zpráva, skryté pole `_honey` a honeypot `botcheck`. `action` míří na Web3Forms. Po submitu načte `src/scripts/inquiry.ts`. |
 | `About` | Text o firmě a jednateli, tři body, CTA „Kontaktujte nás“ na `#kontakt`. Používá ho jen `/o-nas/`. |
 | `Projects` | `#zakazky`. Karty z pole `projects`. Žádná stránka ji teď neimportuje. |
 | `PreviewBanner` | Pruh náhledu, jen když `isPreview()` vrátí pravdu. |
@@ -81,13 +81,14 @@ Menu v `navigation` vede na `/#nabidka`, `/fotovoltaika/`, `/tepelna-cerpadla/`,
 - Telefon po vyhození mezer a závorek musí sedět na `^(\+420)?[1-9]\d{8}$`.
 - Zpráva má alespoň 10 znaků, jméno alespoň 2, téma musí být v `inquiryTopics`.
 - `buildMailto` složí předmět a tělo na danou adresu.
-- `submitInquiry` pošle JSON na `https://formsubmit.co/ajax/`. `ok` znamená, že služba zprávu přijala. `rejected` znamená, že odpověď není úspěch. `offline` znamená, že požadavek vůbec neodešel. Stránka tuhle cestu nevolá: adresa `/ajax/` v prohlížeči spadne na kontrole Cloudflare a formulář by zůstal na „Odesílám…“.
+- `inquiryFormAction` vrací `https://api.web3forms.com/submit`.
+- `submitInquiry` pošle JSON na stejnou adresu s veřejným `access_key` ze `site.config.ts`. `ok` znamená, že služba zprávu přijala. `rejected` znamená, že odpověď není úspěch. `offline` znamená, že požadavek vůbec neodešel.
 - `inquiryHandoffFields` složí pole pro běžné odeslání formuláře, včetně `_url` a `_next`.
 - `readInquiryForm` čte `FormData`. Pole `_honey` ukládá do `website`.
 
 `src/lib/local-business.ts` skládá schema.org `LocalBusiness`: adresa, geo, telefon, e-mail, IČO, DIČ, founder, `areaServed`, `knowsAbout`. `sameAs` dostane web a jen neprázdné `maps.googlePlace` / `maps.mapyPlace`.
 
-`src/scripts/inquiry.ts` poslouchá submit na `[data-inquiry-form]`, vypíše chyby do `[data-error-for]` a nastaví `aria-invalid`. Platnou poptávku odešle běžným POST na FormSubmit v novém okně `ecomo-inquiry`, aby šla dokončit kontrola prohlížeče a první aktivace schránky. Původní stránka zůstane na místě, tlačítko se znovu zapne a stav vysvětlí krok Activate Form. Po doručení FormSubmit vrátí nové okno na `?poptavka=odeslana`, kde se ukáže poděkování. Když okno nejde otevřít nebo není síť, ukáže se odkaz „Otevřít e-mailový klient“ a adresa se uloží do `data-last-mailto`. Návrat zpět na stránku (`pageshow`) tlačítko znovu odemkne.
+`src/scripts/inquiry.ts` poslouchá submit na `[data-inquiry-form]`, vypíše chyby do `[data-error-for]` a nastaví `aria-invalid`. Platnou poptávku odešle přes `submitInquiry` na Web3Forms. Stránka zůstane na místě. Po přijetí se formulář vyprázdní a ukáže poděkování. Když služba neodpoví, ukáže se odkaz „Otevřít e-mailový klient“ a adresa se uloží do `data-last-mailto`. Bez skriptu jde formulář běžným POST a `redirect` vrátí návštěvníka na `https://ecomo.cz/?poptavka=odeslana#poptavka`.
 
 ## Vzhled
 

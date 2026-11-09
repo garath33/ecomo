@@ -12,6 +12,8 @@ export const site = {
   phoneShort: "604 251 324",
   phoneTel: "+420604251324",
   email: "jiri.uldrich@ecomo.cz",
+  /** Veřejný klíč Web3Forms. Není to heslo, ve formuláři být má. */
+  web3formsAccessKey: "943c6c93-a6f9-4e99-88dd-aae33480cafc",
   web: "https://www.ecomo.cz",
   webDisplay: "www.ecomo.cz",
   ico: "21140456",

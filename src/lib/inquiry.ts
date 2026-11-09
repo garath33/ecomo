@@ -1,5 +1,5 @@
 import { messages } from "../locales";
-import { inquiryTopics, type InquiryTopic } from "../site.config";
+import { inquiryTopics, site, type InquiryTopic } from "../site.config";
 
 export type InquiryInput = {
   name: string;
@@ -71,12 +71,12 @@ export function buildMailto(input: InquiryInput, to: string): string {
 }
 
 /** Adresa klasického POST, když v prohlížeči neběží skript. */
-export function inquiryFormAction(to: string): string {
-  return `https://formsubmit.co/${to}`;
+export function inquiryFormAction(): string {
+  return "https://api.web3forms.com/submit";
 }
 
-export function inquirySubmitUrl(to: string): string {
-  return `https://formsubmit.co/ajax/${to}`;
+export function inquirySubmitUrl(): string {
+  return inquiryFormAction();
 }
 
 export type InquirySubmitResult =
@@ -84,28 +84,26 @@ export type InquirySubmitResult =
   | { ok: false; reason: "rejected" | "offline" | "spam"; mailto: string };
 
 export function inquiryPayload(input: InquiryInput): Record<string, string> {
+  const email = input.email.trim();
   return {
+    access_key: site.web3formsAccessKey,
+    subject: `${messages.cta.inquiry} — ${topicLabel(input.topic)}`,
+    from_name: site.legalName,
+    email,
+    replyto: email,
     [messages.form.mailName]: input.name.trim(),
     [messages.form.mailPhone]: input.phone.trim(),
-    [messages.form.mailEmail]: input.email.trim(),
+    [messages.form.mailEmail]: email,
     [messages.form.mailTopic]: topicLabel(input.topic),
     [messages.form.mailMessage]: input.message.trim(),
-    _replyto: input.email.trim(),
-    _subject: `${messages.cta.inquiry} — ${topicLabel(input.topic)}`,
-    _template: "table",
-    _captcha: "false",
-    _honey: "",
   };
 }
 
-/** Pole pro běžné odeslání stránky. `_url` nahrazuje Referer, `_next` vrací návštěvníka po doručení. */
-export function inquiryHandoffFields(input: InquiryInput, pageUrl: string, nextUrl: string): Record<string, string> {
-  const payload = { ...inquiryPayload(input) };
-  delete payload._honey;
+/** Pole pro odeslání bez skriptu. `redirect` vrátí návštěvníka na web. */
+export function inquiryHandoffFields(input: InquiryInput, redirectUrl: string): Record<string, string> {
   return {
-    ...payload,
-    _url: pageUrl,
-    _next: nextUrl,
+    ...inquiryPayload(input),
+    redirect: redirectUrl,
   };
 }
 
@@ -117,7 +115,7 @@ export async function submitInquiry(input: InquiryInput, to: string): Promise<In
   }
 
   try {
-    const response = await fetch(inquirySubmitUrl(to), {
+    const response = await fetch(inquirySubmitUrl(), {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

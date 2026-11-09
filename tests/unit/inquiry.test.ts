@@ -54,16 +54,12 @@ describe("buildMailto", () => {
 
 describe("inquiryHandoffFields", () => {
   it("prepares a browser post back to the same page", () => {
-    const fields = inquiryHandoffFields(
-      valid,
-      "https://garath33.github.io/ecomo/#poptavka",
-      "https://garath33.github.io/ecomo/?poptavka=odeslana#poptavka",
-    );
+    const fields = inquiryHandoffFields(valid, "https://ecomo.cz/?poptavka=odeslana#poptavka");
     expect(fields["Jméno"]).toBe("Jan Novák");
-    expect(fields._replyto).toBe("jan@example.cz");
-    expect(fields._captcha).toBe("false");
-    expect(fields._url).toBe("https://garath33.github.io/ecomo/#poptavka");
-    expect(fields._next).toBe("https://garath33.github.io/ecomo/?poptavka=odeslana#poptavka");
+    expect(fields.email).toBe("jan@example.cz");
+    expect(fields.replyto).toBe("jan@example.cz");
+    expect(fields.access_key).toMatch(/^[0-9a-f-]{36}$/);
+    expect(fields.redirect).toBe("https://ecomo.cz/?poptavka=odeslana#poptavka");
     expect(fields._honey).toBeUndefined();
   });
 });
@@ -80,14 +76,15 @@ describe("submitInquiry", () => {
     await expect(submitInquiry(valid, "jiri.uldrich@ecomo.cz")).resolves.toEqual({ ok: true });
 
     const [url, init] = fetchMock.mock.calls[0] as unknown as [string, RequestInit];
-    expect(url).toBe("https://formsubmit.co/ajax/jiri.uldrich@ecomo.cz");
+    expect(url).toBe("https://api.web3forms.com/submit");
     const body = JSON.parse(String(init.body)) as Record<string, string>;
     expect(body["Jméno"]).toBe("Jan Novák");
     expect(body["Telefon"]).toBe("604 251 324");
     expect(body["Zájem"]).toBe("Instalace fotovoltaiky");
     expect(body["Zpráva"]).toContain("Rodinný dům");
-    expect(body._replyto).toBe("jan@example.cz");
-    expect(body._honey).toBe("");
+    expect(body.replyto).toBe("jan@example.cz");
+    expect(body.access_key).toMatch(/^[0-9a-f-]{36}$/);
+    expect(body._honey).toBeUndefined();
     expect(body.website).toBeUndefined();
   });
 

@@ -23,7 +23,7 @@ test.describe("about page @regression", () => {
     await expect(contact).toHaveAttribute("href", /#kontakt$/);
     await contact.click();
     await expect(page).toHaveURL(/\/#kontakt$/);
-    await expect(page.getByRole("heading", { name: "Ozvěte se nezávazně" })).toBeInViewport();
+    await expect(page.getByRole("heading", { name: "Pojďme si promluvit o vašem projektu" })).toBeInViewport();
     await expect(page.getByTestId("contact-intro").getByRole("link", { name: "+420 604 251 324" })).toBeInViewport();
     await expect(page.locator("#poptavka")).toBeVisible();
   });
