@@ -241,5 +241,18 @@
     ],
     "priceTitle": "Co cena obvykle obsahuje — a co ne",
     "price": "Orientační nabídka počítá s venkovní jednotkou monoblok Kensol, základním napojením na topení a teplou vodu a s montáží. Do ceny se nemusí vejít základ pod jednotku, silnější elektro přípojka, úpravy starých rozvodů nebo delší trasa topné vody do domu. To vždycky řekneme dopředu, ne až na stavbě."
+  },
+  "stamp": {
+    "title": "Firemní razítko | Ecomo",
+    "description": "Razítko Ecomo s.r.o. pro elektronické smlouvy. Obchodní firma, sídlo, IČO, DIČ a zápis v obchodním rejstříku.",
+    "eyebrow": "Smlouvy",
+    "heading": "Firemní razítko",
+    "lede": "Razítko pro elektronické smlouvy. Má firemní značku a údaje, které na razítku běžně jsou: firmu, sídlo, IČO, DIČ a soud, u kterého je společnost zapsaná.",
+    "place": "Jméno jednatele do razítka nepatří. Na smlouvě se podpisuje vedle něj.",
+    "files": "SVG se vkládá v tiskové velikosti a zůstane ostré. PNG je průhledné, 600 dpi, a dá se položit na hotové PDF.",
+    "downloadSvg": "Stáhnout SVG",
+    "downloadPng": "Stáhnout PNG",
+    "forParty": "Za zhotovitele",
+    "imageAlt": "Razítko Ecomo s.r.o."
   }
 }

@@ -25,6 +25,7 @@ Zásady, které platí pořád: ostří je `main`, obsah náhledu i ostří bere
 | Hotové zakázky na webu | komponenta je v repu, na stránkách se nevykresluje |
 | Další fotky a popisy zakázek se souhlasem klienta | plánováno |
 | Vektorový wordmark od designéra | plánováno |
+| Firemní razítko pro elektronické smlouvy | hotovo, stránka `/razitko/` není v menu |
 | Vlastní doména ecomo.cz | hotovo, ostří `https://ecomo.cz/` |
 | Text GDPR podle způsobu odesílání | plánováno |
 | Ochrana větve `main` na GitHubu | plánováno, zapne vlastník repa |
@@ -48,6 +49,7 @@ Zásady, které platí pořád: ostří je `main`, obsah náhledu i ostří bere
 - Double-check modelu před větším úkolem: `.cursor/rules/model-adequacy.mdc`.
 - Testy: smoke po buildu, validace HTML/CSS, layout na 320 / 768 / 1024 / 1440 px, vizuální regrese úvodu a Lychee v jobu Broken links.
 - Jazyk: jen čeština (`src/locales/cs.json`). Další jazyk až na výslovnou žádost uživatele.
+- Firemní razítko pro elektronické smlouvy: wordmark, sídlo, IČO, DIČ a zápis u Městského soudu v Praze, oddíl C, vložka 397317. Soubory `public/brand/ecomo-razitko.svg` a `.png`. Náhled a stažení jsou na `/razitko/`, stránka není v menu ani v sitemapě.
 
 ## Nástroje v tomto PR
 

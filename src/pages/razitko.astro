@@ -1,0 +1,121 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { messages } from "../locales";
+import { site } from "../site.config";
+import { withBase } from "../lib/paths";
+
+const stamp = withBase("brand/ecomo-razitko.svg");
+const stampPng = withBase("brand/ecomo-razitko.png");
+const court = `${site.registry.court}, oddíl ${site.registry.section}, vložka ${site.registry.insert}`;
+---
+
+<BaseLayout
+  title={messages.stamp.title}
+  description={messages.stamp.description}
+  robots="noindex, nofollow"
+  jsonLd={false}
+>
+  <section class="section stamp-sheet">
+    <div class="wrap">
+      <p class="eyebrow">{messages.stamp.eyebrow}</p>
+      <h1>{messages.stamp.heading}</h1>
+      <p class="lede">{messages.stamp.lede}</p>
+
+      <figure class="stamp-frame">
+        <img src={stamp} alt={messages.stamp.imageAlt} width="720" height="274" />
+      </figure>
+
+      <p class="stamp-actions">
+        <a class="button" href={stamp} download="ecomo-razitko.svg">{messages.stamp.downloadSvg}</a>
+        <a class="button ghost" href={stampPng} download="ecomo-razitko.png">{messages.stamp.downloadPng}</a>
+      </p>
+      <p class="muted stamp-note">{messages.stamp.files}</p>
+
+      <article class="deed" data-testid="stamp-deed">
+        <p class="deed__party">{messages.stamp.forParty}</p>
+        <img src={stamp} alt="" width="272" height="104" />
+        <div class="deed__gap"></div>
+        <p class="deed__sign">
+          <strong>{site.person}</strong><br />
+          {site.role}
+        </p>
+      </article>
+
+      <ul class="list stamp-facts">
+        <li>{site.legalName}</li>
+        <li>{site.address.line1}, {site.address.line2}, {site.address.zip} {site.address.city}</li>
+        <li>{messages.footer.ico} {site.ico}</li>
+        <li>{messages.footer.dic} {site.dic}</li>
+        <li>{court}</li>
+      </ul>
+      <p class="muted">{messages.stamp.place}</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .stamp-sheet h1 {
+    font-size: clamp(2.1rem, 5vw, 3.2rem);
+  }
+
+  .stamp-frame {
+    width: min(100%, 44rem);
+    margin: 1.6rem 0 1.2rem;
+    padding: 1.15rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+  }
+
+  .stamp-frame img,
+  .deed img {
+    width: 100%;
+    height: auto;
+  }
+
+  .stamp-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 0 0 0.8rem;
+  }
+
+  .stamp-note {
+    max-width: 40rem;
+  }
+
+  .deed {
+    width: min(100%, 36rem);
+    margin: 2rem 0 1.6rem;
+    padding: 1.3rem 1.3rem 1.15rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+  }
+
+  .deed__party {
+    margin: 0 0 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .deed img {
+    width: min(100%, 72mm);
+  }
+
+  .deed__gap {
+    height: 2.4rem;
+  }
+
+  .deed__sign {
+    max-width: 16rem;
+    margin: 0;
+    padding-top: 0.45rem;
+    border-top: 1px solid var(--ink);
+    line-height: 1.35;
+  }
+
+  .stamp-facts {
+    max-width: 40rem;
+  }
+</style>

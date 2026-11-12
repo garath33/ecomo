@@ -18,7 +18,7 @@ src/
   styles/global.css       proměnné, layout, komponenty
   fonts/                  Sansation Light a Bold (woff2)
 public/
-  brand/                  wordmark PNG
+  brand/                  wordmark PNG, razítko SVG a PNG pro smlouvy
   images/                 hero, nabídka, zakázky
   favicon.svg
   legal/sansation-ofl.txt licence písma
@@ -45,6 +45,7 @@ tests/
 | `src/pages/tepelna-cerpadla.astro` | `/tepelna-cerpadla/` | vlastní hero, monoblok Kensol, rozsah ceny, `Contact` |
 | `src/pages/o-nas.astro` | `/o-nas/` | `About` |
 | `src/pages/404.astro` | 404 | text a odkaz na úvod |
+| `src/pages/razitko.astro` | `/razitko/` | náhled razítka a stažení SVG/PNG, mimo menu i sitemapu |
 | `src/pages/robots.txt.ts` | `/robots.txt` | `Allow: /` a odkaz na sitemap |
 
 Sitemap skládá integrace `@astrojs/sitemap`. Filtr vynechá URL obsahující `/404`.
@@ -95,6 +96,8 @@ Menu v `navigation` vede na `/#nabidka`, `/fotovoltaika/`, `/tepelna-cerpadla/`,
 `src/styles/global.css` definuje barvy (`--brand` `#d8e716`, `--ink`, `--paper`), písmo a layout (`.wrap`, `.hero`, `.card`, `.grid-2`, `.grid-3`, `.form`). Hamburger je vidět do `max-width: 1100px`. `prefers-reduced-motion: reduce` ztlumí animace.
 
 Fotografie v `public/images/`: `hero-fv-panels.jpg`, `nabidka-fv.jpg`, `nabidka-tc.jpg`, `zakazka-pristresek.jpg`, `zakazka-strecha.jpg`. Poslední dvě používá jen komponenta zakázek.
+
+Razítko pro smlouvy skládá `scripts/build-stamp.py` z `src/site.config.ts`, wordmarku v `scripts/wordmark.path` a písma Sansation. Výstup je `public/brand/ecomo-razitko.svg` a průhledné PNG v 600 dpi. Stránka `/razitko/` je mimo menu, sitemapu i JSON-LD a má `noindex`.
 
 ## Testy a nasazení
 
