@@ -13,6 +13,12 @@ describe("production content contract", () => {
     expect(site.webDisplay).toBe("www.ecomo.cz");
     expect(site.ico).toBe("21140456");
     expect(site.dic).toBe("CZ21140456");
+    expect(site.registry).toEqual({
+      court: "Městský soud v Praze",
+      section: "C",
+      insert: "397317",
+      mark: "C 397317/MSPH",
+    });
     expect(site.address.line1).toBe("Polní č.ev. 275");
     expect(site.address.line2).toBe("Přemyšlení");
     expect(site.address.zip).toBe("250 66");

@@ -6,6 +6,7 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 
 ### Přidáno
 
+- Firemní razítko pro elektronické smlouvy. Černý dvojrámeček s žlutou linkou značky, wordmark ecomo, sídlo, IČO, DIČ a zápis v obchodním rejstříku (Městský soud v Praze, oddíl C, vložka 397317). Vektor je `public/brand/ecomo-razitko.svg`, průhledné PNG v 600 dpi je vedle něj. Stránka `/razitko/` ukazuje razítko u podpisu jednatele a není v menu.
 - Stránka fotovoltaiky má u karet segmentů vektorové ilustrace v barvách značky: rodinný dům se solární střechou, firemní hala, radnice s hodinovou věží mezi dvěma veřejnými budovami a bytové domy s panely na ploché střeše.
 - Náhled pracovní větve žije na https://garath33.github.io/ecomo/preview/ se žluto-černou lištou. Ostří na https://garath33.github.io/ecomo/ se z pracovní větve nepřepisuje a po merge do `main` lištu nemá. Pravidla drží `.cursor/rules/github-workflow.mdc`.
 - `.cursorignore` a `.cursorrules`: AI neindexuje `node_modules/`, build, lockfile, logy ani `.git/` a drží se pravidel minimalizace kontextu, architektury a dokumentace.
@@ -15,6 +16,7 @@ Formát vychází z [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/). Ve
 
 ### Opraveno
 
+- Skryté políčko proti robotům ve formuláři už nemá `autocomplete`. U zaškrtávacího pole ho HTML nepovoluje a kontrola značek kvůli tomu padala.
 - Poptávka se odesílá přes Web3Forms na jiri.uldrich@ecomo.cz. Návštěvník zůstane na stránce a po doručení uvidí poděkování. FormSubmit už se nepoužívá. Když služba neodpoví, zůstane odkaz do e-mailového klienta.
 - Ostří na `https://ecomo.cz/` se sestavuje z kořene domény. Předchozí build mířil na `https://garath33.github.io/ecomo/` a na vlastní doméně proto nenačetl styly ani podstránky. Náhled pracovní větve je `https://ecomo.cz/preview/`.
 - Poptávka se po kliknutí na Odeslat už nezasekne na „Odesílám poptávku…“. FormSubmit v prohlížeči nebere tichý požadavek (kontrola Cloudflare) a stránka kvůli tomu zůstávala ve stavu odesílání, nebo přešla na ověření „Okamžik…“. Teď se formulář odešle v novém okně na jiri.uldrich@ecomo.cz. Napoprvé je potřeba v tom okně potvrdit, že jde o člověka, a v e-mailu od FormSubmit kliknout na Activate Form. Pak se uložené poptávky doručí. Když okno nejde otevřít, zůstane odkaz do e-mailového klienta.

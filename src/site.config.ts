@@ -18,6 +18,13 @@ export const site = {
   webDisplay: "www.ecomo.cz",
   ico: "21140456",
   dic: "CZ21140456",
+  /** Zápis ve veřejném rejstříku, spisová značka C 397317/MSPH. */
+  registry: {
+    court: "Městský soud v Praze",
+    section: "C",
+    insert: "397317",
+    mark: "C 397317/MSPH",
+  },
   address: {
     line1: "Polní č.ev. 275",
     line2: "Přemyšlení",
